@@ -33,7 +33,7 @@ window.WandrFlow = {
     // of nuking everything. Trips only ever restore for an authed identity -
     // this never seeds demo data itself, only the real login path does that.
     inst.hydrateFromStorage = () => {
-      const CLEAN = { trips:[], activeTripId:null, user:{ name:'', authed:false, prefs:{ pace:'balanced', styleTags:['CHILL','FOODIE'] } }, shortlist:[] };
+      const CLEAN = { trips:[], activeTripId:null, user:{ name:'', authed:false, prefs:{ pace:'', styleTags:[] } }, shortlist:[] };
       if (typeof localStorage==='undefined') return CLEAN;
       let raw;
       try { raw = localStorage.getItem(VERSION); } catch(e){ return CLEAN; }
