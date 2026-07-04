@@ -259,7 +259,7 @@ function liveStopsFromDay(day){ return ((day&&day.stops)||[]).map(function(s,i){
 
 // ---------- trip model ----------
 function genCode(){ return 'TRP-'+Math.floor(100+Math.random()*899); }
-function makeTrip(destKey, status, prefs, name, code, dates){
+function makeTrip(destKey, status, prefs, name, code, dates, groupName){
   const dest = getDestination(destKey);
   const p = prefs || { pace:'balanced', budget:'comfort', styleTags:['CHILL','FOODIE'] };
   const defDates = status==='active' ? { start:'2026-07-11', end:'2026-07-13' }
@@ -269,7 +269,7 @@ function makeTrip(destKey, status, prefs, name, code, dates){
     id: 't_'+slugify(destKey)+'_'+Math.random().toString(36).slice(2,7),
     destKey:destKey, name: name || dest.name, code: code || genCode(), emoji: dest.emoji, status:status,
     dates: dates || defDates,
-    prefs: p, days: buildPlan(dest, p),
+    prefs: p, days: buildPlan(dest, p), groupName: groupName || null,
     live: { checkins:{}, stops:null, swapped:false, dismissed:false, feedback:0, archived:false },
     group: { myVote:null, vetoes:{}, resolved:null, proceeded:false },
     events: seedEvents(dest, name || dest.name)

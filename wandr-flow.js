@@ -122,10 +122,10 @@ window.WandrFlow = {
     inst.suNav = (s) => inst.setState({ suScreen:s });
     inst.suProgFor = (screen) => {
       const imp = inst.state.suPath==='import';
-      const denom = 8;
+      const denom = 9;
       const stepMap = imp
-        ? { s2:1, s3:2, s4:3, s4b:4, s5:5, s5a:6, s6:7, s7:7, s12:7, s8:8 }
-        : { s2:1, s3:2, s4:3, s4b:4, s5:5, s6:6, s7:6, s12:6, s8:8 };
+        ? { s2:1, s3:2, s3b:3, s4:4, s4b:5, s5:6, s5a:7, s6:8, s7:8, s12:8, s8:9 }
+        : { s2:1, s3:2, s3b:3, s4:4, s4b:5, s5:6, s6:7, s7:7, s12:7, s8:9 };
       const n = stepMap[screen] || denom;
       const pad = x => (x<10?'0':'')+x;
       return { label: pad(n)+'/'+pad(denom), pct: Math.round(n/denom*100)+'%' };
@@ -145,7 +145,7 @@ window.WandrFlow = {
       const ds = inst.state.suDateStart, de = inst.state.suDateEnd;
       const pad2 = n=>String(n).padStart(2,'0');
       const dates = ds ? { start:'2026-07-'+pad2(ds), end:'2026-07-'+pad2(de||Math.min(31,ds+2)) } : { start:'2026-07-25', end:'2026-07-27' };
-      const trip = makeTrip(destKey, hasActive ? 'upcoming' : 'active', prefs, name, undefined, dates);
+      const trip = makeTrip(destKey, hasActive ? 'upcoming' : 'active', prefs, name, undefined, dates, inst.state.suGroupName.trim() || null);
       while (inst.state.trips.some(x=>x.code===trip.code)) trip.code = genCode();
       if (inst.state.suLockedTheme) trip.days = draftGen(dest, prefs, inst.state.suLockedTheme, 2, inst.state.suSeedPids);
       inst.setState(s => { s.trips = [...s.trips, trip]; s.activeTripId = trip.id; return s; });

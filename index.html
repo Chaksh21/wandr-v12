@@ -805,7 +805,7 @@
         <h1 class="wandr-hero" style="font-size:clamp(30px,8vw,40px);margin:0">Where to,<br>{{ previewName }}?</h1>
       </div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:18px">
-        <button class="wandr-btn" onClick="{{ goS4 }}" style="grid-column:1 / -1;text-align:left;border:1px solid var(--border);border-radius:20px;padding:18px;background:#fff">
+        <button class="wandr-btn" onClick="{{ goS3b }}" style="grid-column:1 / -1;text-align:left;border:1px solid var(--border);border-radius:20px;padding:18px;background:#fff">
           <div style="font-size:24px;margin-bottom:10px">🗺️</div>
           <div class="wandr-h2" style="font-size:18px;margin-bottom:3px">Plan a trip</div>
           <p style="font-size:12px;color:var(--sec);margin:0">Start a living itinerary and invite your group.</p>
@@ -830,6 +830,27 @@
         </div>
         <div style="font-size:13px;color:var(--sec)">Others are planning together. Yours is next.</div>
       </div>
+    </div>
+    </sc-if>
+
+    <sc-if value="{{ scr_s3b }}" hint-placeholder-val="{{ false }}">
+    <div class="screen" style="padding:20px 22px 64px;min-height:852px;display:flex;flex-direction:column">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:22px">
+        <button class="wandr-btn backbtn" onClick="{{ goS3 }}"><svg viewBox="0 0 256 256" width="18" height="18" fill="currentColor" style="vertical-align:middle"><path d="{{ icArrowLeft }}"/></svg></button>
+        <div style="flex:1;display:flex;align-items:center;gap:10px">
+          <span class="wandr-sys" style="font-size:14px;color:var(--sec)">{{ progLabel }}</span>
+          <div style="flex:1;height:4px;border-radius:999px;background:var(--well);overflow:hidden"><div class="wandr-bar" style="height:100%;width:{{ progPct }};background:var(--accent)"></div></div>
+        </div>
+        <button class="wandr-btn" onClick="{{ exitSetupAsk }}" aria-label="Exit setup" style="width:38px;height:38px;border-radius:999px;border:1px solid var(--border);background:#fff;color:var(--sec);flex:none;font-size:17px"><svg viewBox="0 0 256 256" width="18" height="18" fill="currentColor" style="vertical-align:middle"><path d="{{ icX }}"/></svg></button>
+      </div>
+      <div style="position:relative;margin-bottom:22px">
+        <div style="position:absolute;left:-22px;top:9px;width:16px;height:6px;border-radius:0 999px 999px 0;background:var(--accent)"></div>
+        <div class="wandr-sys" style="font-size:14px;color:var(--sec);margin-bottom:12px">Who's this for</div>
+        <h1 class="wandr-hero" style="font-size:clamp(30px,8vw,40px);margin:0">Name your group</h1>
+        <p style="font-size:14px;color:var(--sec);margin:8px 0 0">Shown to everyone you invite - you can change it later.</p>
+      </div>
+      <input class="wandr-inp" value="{{ groupName }}" onChange="{{ setGroupName }}" placeholder="e.g. The Himalaya Crew" style="margin-bottom:auto"/>
+      <button class="cta" onClick="{{ goS4 }}" style="width:100%;padding:16px;font-size:16px;display:flex;align-items:center;justify-content:center;gap:8px">Next <svg viewBox="0 0 256 256" width="13" height="13" fill="currentColor" style="vertical-align:-2px"><path d="{{ icArrowRight }}"/></svg></button>
     </div>
     </sc-if>
 
@@ -2265,7 +2286,7 @@ class Component extends DCLogic {
 
       // SETUP funnel
       suScreen:'s1', suName:'', suHomeCity:'', suPace:'', suStyleTags:[],
-      suTripName:'', suDateStart:null, suDateEnd:null, suPath:null, suConfirmed:false, suStaged:[], suLockedTheme:null,
+      suTripName:'', suGroupName:'', suDateStart:null, suDateEnd:null, suPath:null, suConfirmed:false, suStaged:[], suLockedTheme:null,
       suDestText:'', suDestConfirmed:false, suEditReturn:null,
       newDestKey:'shimla',
 
