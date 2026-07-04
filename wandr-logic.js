@@ -24,6 +24,14 @@ var MEMBERS = [
 var APP_MEMBERS = MEMBERS.filter(function(m){ return m.type!=='companion'; });
 var ALL_COUNT = MEMBERS.length;       // headcount & costs (companions travel too)
 var APP_COUNT = APP_MEMBERS.length;   // votes, vetoes, sync claims
+
+var FRIENDS = [
+  { id:'f1', name:'Kabir', bg:'#5B7565' },
+  { id:'f2', name:'Meera', bg:'#B0451A' },
+  { id:'f3', name:'Zoya',  bg:'#3FA377' },
+  { id:'f4', name:'Arjun', bg:'#7A6E5C' },
+  { id:'f5', name:'Naina', bg:'#FF5A1F' },
+];
 var PACKING_DEFAULT = [
   { label:'Bluetooth speaker', owner:'Aanya', done:false },
   { label:'First-aid kit', owner:'You', done:true },
