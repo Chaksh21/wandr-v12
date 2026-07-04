@@ -231,11 +231,14 @@ function draftGen(dest, prefs, themeId, days, seedPids){
 function buildPlan(dest, prefs){ return draftGen(dest, prefs, 'classic', 2); }
 function optionsFor(dest, prefs, memberCount){
   return DATASET.config.themes.map(function(th){
-    const days = draftGen(dest, prefs, th.id, 2);
+    const themePrefs = Object.assign({}, prefs, { pace: th.pace || prefs.pace });
+    const days = draftGen(dest, themePrefs, th.id, 2);
     const meta = (dest.drafts||[]).find(function(d){ return d.id===th.id; }) || { rating:4.3, feedbackCount:6 };
     const stops = days.reduce(function(x,d){ return x+d.stops.length; },0);
     const perPerson = days.reduce(function(x,d){ return x+d.dayCost; },0);
-    return { id:th.id, label:th.label, blurb:th.blurb, stops:stops, perPerson:perPerson, group:perPerson*memberCount, rating:meta.rating, feedbackCount:meta.feedbackCount, day1:days[0].stops };
+    const allStops = days.reduce(function(x,d){ return x.concat(d.stops); },[]);
+    const paceNote = (DATASET.config.pace[th.pace]||{}).note || '';
+    return { id:th.id, label:th.label, blurb:th.blurb, paceNote:paceNote, themePace:th.pace, stops:stops, perPerson:perPerson, group:perPerson*memberCount, rating:meta.rating, feedbackCount:meta.feedbackCount, allStops:allStops };
   });
 }
 function bestFit(dest){

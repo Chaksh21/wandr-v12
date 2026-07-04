@@ -24,9 +24,9 @@
     "categories": ["sights", "nature", "food"],
     "draftTimes": ["9:30 AM", "12:30 PM", "4:00 PM", "7:30 PM"],
     "themes": [
-      { "id": "classic",   "label": "Classic Highlights", "blurb": "The must-dos, balanced.", "prefer": ["sights", "nature"] },
-      { "id": "chill",     "label": "Slow & Scenic",      "blurb": "Fewer stops, long meals, views.", "prefer": ["nature", "food"] },
-      { "id": "adventure", "label": "Active & Out",        "blurb": "Treks, day-trips, the outdoorsy cut.", "prefer": ["nature", "sights"] }
+      { "id": "classic",   "label": "Classic Highlights", "blurb": "The must-dos, balanced.", "prefer": ["sights", "nature"], "pace": "balanced" },
+      { "id": "chill",     "label": "Slow & Scenic",      "blurb": "Fewer stops, long meals, views.", "prefer": ["nature", "food"], "pace": "slow" },
+      { "id": "adventure", "label": "Active & Out",        "blurb": "Treks, day-trips, the outdoorsy cut.", "prefer": ["nature", "sights"], "pace": "packed" }
     ]
   },
 

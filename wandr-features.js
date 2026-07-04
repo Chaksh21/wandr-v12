@@ -181,7 +181,7 @@ window.WandrFeatures = {
       const seasonalConflicts = funnelDest.places.filter(p=>p.closedMonths && p.closedMonths.includes(TRIP_MONTH));
       const showSeasonBanner = seasonalConflicts.length>0;
       const seasonBannerText = seasonalConflicts.length ? ('Heads-up · '+seasonalConflicts[0].name+' is closed in July - we\'ll plan around it') : '';
-      const suOptions = optionsFor(funnelDest, suPrefs, ALL_COUNT).map(o=>{ const sel=st.suLockedTheme===o.id; return { label:o.label, blurb:o.blurb, stops:String(o.stops), perPerson:moneyRs(o.perPerson), group:moneyRs(o.group), rating:o.rating.toFixed(1), feedback:o.feedbackCount+' NOTES', best:o.id===suBest, ring: sel?'2px solid var(--accent)':'1px solid var(--border)', cardBg: sel?'var(--accent-weak)':'#fff', checkDisplay: sel?'inline-block':'none', checkBg: sel?'var(--accent)':'transparent', checkBord: sel?'none':'2px solid var(--border)', preview:o.day1.slice(0,3).map(s=>({ name:s.name, photo:photoUrl(s.photo), q:s.photo })), onPick:()=>this.setState({ suLockedTheme:o.id }) }; });
+      const suOptions = optionsFor(funnelDest, suPrefs, ALL_COUNT).map(o=>{ const sel=st.suLockedTheme===o.id; const previewStops=o.allStops.slice(0,4); const matchesYourPace = o.themePace===suPrefs.pace; return { label:o.label, blurb:o.blurb, paceNote:o.paceNote, matchesYourPaceDisplay: matchesYourPace?'inline-flex':'none', stops:String(o.stops), perPerson:moneyRs(o.perPerson), group:moneyRs(o.group), rating:o.rating.toFixed(1), best:o.id===suBest, ring: sel?'2px solid var(--accent)':'1px solid var(--border)', cardBg: sel?'var(--accent-weak)':'#fff', checkDisplay: sel?'inline-block':'none', checkBg: sel?'var(--accent)':'transparent', checkBord: sel?'none':'2px solid var(--border)', preview:previewStops.map(s=>({ name:s.name, photo:photoUrl(s.photo), q:s.photo })), previewTileWidth: (Math.floor(100/previewStops.length)-2)+'%', onPick:()=>this.setState({ suLockedTheme:o.id }) }; });
       const suPicked = !!st.suLockedTheme;
       const prog = this.suProgFor(st.suScreen);
       return {
@@ -228,6 +228,7 @@ window.WandrFeatures = {
         scr_s1:st.suScreen==='s1', scr_s2:st.suScreen==='s2', scr_s3:st.suScreen==='s3', scr_s4:st.suScreen==='s4',
         scr_s5:st.suScreen==='s5', scr_s5a:st.suScreen==='s5a', scr_s6:st.suScreen==='s6', scr_s7:st.suScreen==='s7',
         blendYourTag: (st.suStyleTags[0]||'chill').toLowerCase(),
+        funnelDestName: funnelDest.name,
         ingChips: [ st.suPace.toUpperCase()+' PACE', (st.suBudget||'comfort').toUpperCase() ].concat(st.suStyleTags.slice(0,3)).map(x=>({ label:x, bg:'var(--well)', fg:'var(--sec)', starDisplay:'none' })).concat(st.suSeedPids.map(pid=>{ const p=funnelDest.places.find(x=>x.id===pid); return p?{ label:p.name, bg:'var(--accent-weak)', fg:'var(--tip-ink)', starDisplay:'inline-block' }:null; }).filter(Boolean)).map((x,i)=>Object.assign(x,{ delay:(i*90)+'ms' })),
         scr_s8:st.suScreen==='s8', scr_s12:st.suScreen==='s12',
         progLabel:prog.label, progPct:prog.pct,
@@ -254,7 +255,7 @@ window.WandrFeatures = {
         backFromS6:()=>{ if (st.suPath==='import') this.suNav('s5a'); else this.suNav('s5'); }, s6Cta: st.suStaged.length?'Synthesise plan':'Skip & draft',
         tasks,
         tripCode:t.code, destName: (V==='setup' ? funnelDest.name : dest.name), suMapPins, contributors, contributorsSummary, lockedLabel, invite:()=>this.toast('Invite link copied · '+t.code),
-        suOptions, showSeasonBanner, seasonBannerText, lockCtaLabel: suPicked ? ('Lock '+lockedLabel+' → view trip') : 'Select a draft to lock', lockCtaBg: suPicked?'var(--accent)':'var(--well)', lockCtaFg: suPicked?'#241F1A':'var(--sec)',
+        suOptions, showSeasonBanner, seasonBannerText, lockCtaLabel: suPicked ? ('Lock '+lockedLabel+' → view trip') : 'Select a draft to lock', lockCtaBg: suPicked?'var(--accent)':'var(--well)', lockCtaFg: suPicked?'#fff':'var(--sec)',
         lockAndGo:()=>{ if (!suPicked){ this.toast('Tap a draft to select it first'); return; } this.suCreateTrip(); this.suNav('s8'); },
       };
     };
