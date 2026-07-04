@@ -121,13 +121,17 @@ window.WandrFlow = {
     // ============================================================
     inst.suNav = (s) => inst.setState({ suScreen:s });
     inst.suProgFor = (screen) => {
-      const imp = inst.state.suPath==='import';
-      const denom = 13;
-      const stepMap = imp
-        ? { s3:5, s3b:6, s4:7, s4b:8, s5:9, s5a:10, s6:11, s7:11, s12:11, s8:13 }
-        : { s3:5, s3b:6, s4:7, s4b:8, s5:9, s6:10, s7:10, s12:10, s8:13 };
-      const n = screen==='s2' ? Math.min(4, inst.state.qzStep+1) : (stepMap[screen] || denom);
       const pad = x => (x<10?'0':'')+x;
+      if (screen==='s2'){
+        const n = Math.min(4, inst.state.qzStep+1);
+        return { label: pad(n)+'/'+pad(4), pct: Math.round(n/4*100)+'%' };
+      }
+      const imp = inst.state.suPath==='import';
+      const denom = 7;
+      const stepMap = imp
+        ? { s3b:1, s4:2, s4b:3, s5:4, s5a:5, s6:6, s7:6, s12:6, s8:7 }
+        : { s3b:1, s4:2, s4b:3, s5:4, s6:5, s7:5, s12:5, s8:7 };
+      const n = stepMap[screen] || denom;
       return { label: pad(n)+'/'+pad(denom), pct: Math.round(n/denom*100)+'%' };
     };
     inst.suPickDate = (d) => {
