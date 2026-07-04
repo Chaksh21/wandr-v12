@@ -2346,7 +2346,7 @@ class Component extends DCLogic {
       return;
     }
     this.setState(this.hydrateFromStorage());
-    this._splashT = setTimeout(()=>{ this._splashT=null; this.setState({ splashExiting:true }); this._splashT2 = setTimeout(()=>{ this._splashT2=null; this.splashAdvance(); }, 320); }, 2400);
+    this._splashT = setTimeout(()=>{ this._splashT=null; this.setState({ splashExiting:true }); this._splashT2 = setTimeout(()=>{ this._splashT2=null; this.splashAdvance(); }, 600); }, 2400);
     this._onErr = (e)=>this.handleImgError(e);
     document.addEventListener('error', this._onErr, true);
     this._onUnload = ()=>{ try { this.saveState(); } catch(e){} };

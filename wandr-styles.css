@@ -31,7 +31,7 @@ html,body{margin:0;height:100%;overflow:hidden}
 }
 @keyframes wandrSplashFadeOut{from{opacity:1}to{opacity:0}}
 /* exit: camera pushes into the text as it dissolves - scale past 1, not back to 0 */
-@keyframes wandrSplashTextZoomOut{from{opacity:1;scale:1}to{opacity:0;scale:10}}
+@keyframes wandrSplashTextZoomOut{from{opacity:1;scale:1}to{opacity:0;scale:20}}
 
 .wandr-splash-mark{
   opacity:0;
@@ -45,9 +45,9 @@ html,body{margin:0;height:100%;overflow:hidden}
     wandrSplashKickerIn 460ms var(--ease-out) 160ms both,
     wandrSplashKickerBob 2000ms ease-in-out 780ms infinite;
 }
-.wandr-splash-exit{animation:wandrSplashFadeOut 320ms var(--ease-in-out) both !important}
+.wandr-splash-exit{animation:wandrSplashFadeOut 600ms var(--ease-in-out) both !important}
 .wandr-splash-exit .wandr-splash-mark,
-.wandr-splash-exit .wandr-splash-kicker{animation:wandrSplashTextZoomOut 320ms var(--ease-in-out) both !important}
+.wandr-splash-exit .wandr-splash-kicker{animation:wandrSplashTextZoomOut 600ms var(--ease-in-out) both !important}
 
 @media (prefers-reduced-motion:reduce){
   .wandr-splash-mark,.wandr-splash-kicker{animation:wandrFadeIn 300ms ease both!important}
