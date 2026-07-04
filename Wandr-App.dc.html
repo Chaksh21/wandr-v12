@@ -50,7 +50,7 @@
           <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(36,31,26,.16),rgba(36,31,26,.62))"></div>
           <span class="lbl" style="position:absolute;top:14px;left:14px;display:flex;align-items:center;gap:6px;background:rgba(255,255,255,.94);padding:5px 10px;border-radius:999px;font-size:12px;color:var(--ink)"><span class="pulse" style="width:7px;height:7px"></span> Ongoing · {{ heroKicker }}</span>
           <div style="position:absolute;left:16px;right:16px;bottom:14px">
-            <div class="lbl" style="font-size:10px;color:rgba(255,255,255,.85);margin-bottom:3px">{{ heroCode }} · {{ heroRange }}</div>
+            <div class="lbl" style="font-size:13px;color:rgba(255,255,255,.85);margin-bottom:3px">{{ heroCode }} · {{ heroRange }}</div>
             <h2 class="ral" style="font-weight:600;font-size:34px;color:#fff;margin:0">{{ heroName }} {{ heroEmoji }}</h2>
           </div>
         </div>
@@ -195,7 +195,7 @@
           <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(36,31,26,0),rgba(36,31,26,.55))"></div>
           <span class="lbl" style="display:{{ psdMatchDisplay }};position:absolute;top:14px;left:14px;background:var(--accent);color:#fff;padding:6px 12px;border-radius:999px;font-size:13px;font-weight:600;align-items:center">{{ psdMatchLabel }}</span>
           <div style="position:absolute;left:16px;right:16px;bottom:14px">
-            <div class="lbl" style="font-size:10px;color:rgba(255,255,255,.9);margin-bottom:4px">{{ psdCity }} {{ psdEmoji }}</div>
+            <div class="lbl" style="font-size:13px;color:rgba(255,255,255,.9);margin-bottom:4px">{{ psdCity }} {{ psdEmoji }}</div>
             <h2 class="ral" style="font-weight:600;font-size:26px;color:#fff;margin:0">{{ psdName }}</h2>
           </div>
         </div>
@@ -263,7 +263,7 @@
         <div class="card" style="display:flex;gap:12px;align-items:center;padding:12px;margin-bottom:8px">
           <div style="width:34px;height:34px;border-radius:999px;background:var(--well);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;color:var(--sec);flex:none">{{ s.seq }}</div>
           <div style="flex:1;min-width:0">
-            <div style="display:flex;gap:6px;align-items:center;margin-bottom:2px"><span class="lbl" style="font-size:9.5px;background:{{ s.pillBg }};color:{{ s.pillFg }};padding:3px 7px;border-radius:6px">{{ s.cat }}</span><span class="lbl" style="font-size:10px;color:var(--sec)">{{ s.time }}</span></div>
+            <div style="display:flex;gap:6px;align-items:center;margin-bottom:2px"><span class="lbl" style="font-size:9.5px;background:{{ s.pillBg }};color:{{ s.pillFg }};padding:3px 7px;border-radius:6px">{{ s.cat }}</span><span class="lbl" style="font-size:13px;color:var(--sec)">{{ s.time }}</span></div>
             <div style="font-size:14px;font-weight:600;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ s.name }}</div>
           </div>
           <div class="lbl" style="font-size:11px;color:var(--sec);flex:none">{{ s.cost }}</div>
@@ -302,7 +302,7 @@
       </span>
       <span style="display:flex;align-items:center;gap:10px;padding:12px 15px">
         <span style="flex:1;height:4px;border-radius:999px;background:var(--well);overflow:hidden;display:block"><span class="wandr-bar" style="display:block;height:100%;width:{{ tpHeroProgress }};background:var(--accent)"></span></span>
-        <span class="lbl" style="font-size:10px;color:var(--sec);flex:none">{{ tpHeroProgressLabel }}</span>
+        <span class="lbl" style="font-size:13px;color:var(--sec);flex:none">{{ tpHeroProgressLabel }}</span>
       </span>
     </button>
     </sc-if>
@@ -425,7 +425,7 @@
       <button onClick="{{ ovBack }}" style="position:absolute;left:16px;top:58px;width:38px;height:38px;border-radius:999px;border:none;background:rgba(255,255,255,.92);font-size:17px;cursor:pointer;z-index:2"><svg viewBox="0 0 256 256" width="18" height="18" fill="currentColor" style="vertical-align:middle"><path d="{{ icArrowLeft }}"/></svg></button>
       <button onClick="{{ ovShare }}" aria-label="Share" style="position:absolute;right:16px;top:62px;border:none;background:rgba(255,255,255,.94);color:var(--ink);padding:0;width:38px;height:38px;border-radius:999px;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:2"><svg viewBox="0 0 256 256" width="16" height="16" fill="currentColor"><path d="M176,160a39.89,39.89,0,0,0-28.62,12.09l-46.1-29.63a39.8,39.8,0,0,0,0-28.92l46.1-29.63a40,40,0,1,0-8.66-13.45l-46.1,29.63a40,40,0,1,0,0,55.82l46.1,29.63A40,40,0,1,0,176,160Z"/></svg></button>
       <div style="position:absolute;left:20px;right:20px;bottom:14px">
-        <div class="lbl" style="font-size:10px;color:rgba(255,255,255,.85);margin-bottom:3px">{{ ovCode }} · {{ ovRange }}</div>
+        <div class="lbl" style="font-size:13px;color:rgba(255,255,255,.85);margin-bottom:3px">{{ ovCode }} · {{ ovRange }}</div>
         <h1 class="ral" style="font-weight:600;font-size:34px;color:#fff;margin:0 0 6px">{{ ovName }} {{ ovEmoji }}</h1>
         <div style="display:flex">
           <sc-for list="{{ ovAvatars }}" as="a" hint-placeholder-count="4">
@@ -436,7 +436,7 @@
     </div>
     <div style="padding:14px 20px 0">
       <div class="card" style="padding:15px 16px;margin-bottom:12px">
-        <div class="lbl" style="font-size:10px;color:var(--accent);margin-bottom:8px">{{ ovStateKicker }}</div>
+        <div class="lbl" style="font-size:13px;color:var(--accent);margin-bottom:8px">{{ ovStateKicker }}</div>
         <sc-if value="{{ ovIsUpcoming }}" hint-placeholder-val="{{ false }}">
           <sc-for list="{{ ovChecklist }}" as="k" hint-placeholder-count="3">
             <div style="display:flex;align-items:center;gap:9px;padding:4px 0;font-size:13.5px;color:var(--ink)"><span style="color:{{ k.fg }};font-weight:600"><svg viewBox="0 0 256 256" width="12" height="12" fill="currentColor" style="vertical-align:-1px"><path d="{{ k.dotIcon }}"/></svg></span> {{ k.label }}</div>
@@ -466,7 +466,7 @@
       <div class="card" style="padding:6px 4px">
         <sc-for list="{{ ovStops }}" as="s3" hint-placeholder-count="3">
           <div style="display:flex;align-items:center;gap:11px;padding:9px 12px;border-bottom:1px solid var(--border)">
-            <span class="lbl" style="font-size:10px;color:var(--accent);flex:none;width:60px">{{ s3.time }}</span>
+            <span class="lbl" style="font-size:13px;color:var(--accent);flex:none;width:60px">{{ s3.time }}</span>
             <span style="flex:1;min-width:0;font-size:14px;font-weight:600;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ s3.name }}</span>
             <span style="font-size:12px;color:var(--sec);flex:none">{{ s3.cost }}</span>
           </div>
@@ -540,7 +540,7 @@
           <div style="position:absolute;left:16px;bottom:12px"><span class="ral" style="font-weight:600;font-size:26px;color:#fff">{{ joTripName }} {{ joTripEmoji }}</span></div>
         </div>
         <div style="padding:13px 16px">
-          <div class="lbl" style="font-size:10px;color:var(--accent);margin-bottom:5px">Aanya invited you</div>
+          <div class="lbl" style="font-size:13px;color:var(--accent);margin-bottom:5px">Aanya invited you</div>
           <div style="font-size:13.5px;color:var(--sec)">{{ joTripRange }} · one living plan the group edits together.</div>
           <div style="display:flex;margin-top:10px">
             <sc-for list="{{ joMembers }}" as="m" hint-placeholder-count="4">
@@ -1212,7 +1212,7 @@
       <div style="display:flex;align-items:center;gap:12px;padding:20px 20px 0">
         <button onClick="{{ plBackToOverview }}" class="wandr-btn backbtn" style="flex:none"><svg viewBox="0 0 256 256" width="18" height="18" fill="currentColor" style="vertical-align:middle"><path d="{{ icArrowLeft }}"/></svg></button>
         <div style="flex:1;min-width:0">
-          <div class="lbl" style="font-size:10px;color:var(--accent)">{{ dayCodeLabel }}</div>
+          <div class="lbl" style="font-size:13px;color:var(--accent)">{{ dayCodeLabel }}</div>
           <div style="font-size:18px;font-weight:600;color:var(--ink);font-family:'Raleway'">{{ destName }} {{ destEmoji }}</div>
         </div>
         <span class="lbl" style="flex:none;display:flex;align-items:center;gap:6px;background:var(--well);padding:6px 11px;border-radius:999px;font-size:9.5px;color:var(--ink)"><span class="dotpulse" style="width:7px;height:7px;border-radius:999px;background:var(--accent)"></span> LIVE PLAN</span>
@@ -1304,7 +1304,7 @@
         <button onClick="{{ dBack }}" style="position:absolute;left:16px;top:58px;width:38px;height:38px;border-radius:999px;border:none;background:rgba(255,255,255,.92);font-size:17px;cursor:pointer;z-index:2"><svg viewBox="0 0 256 256" width="18" height="18" fill="currentColor" style="vertical-align:middle"><path d="{{ icArrowLeft }}"/></svg></button>
         <span class="lbl" style="position:absolute;top:62px;right:16px;font-size:9.5px;padding:4px 9px;border-radius:7px;background:{{ dPillBg }};color:{{ dPillFg }}">{{ dPillLabel }}</span>
         <div style="position:absolute;left:20px;right:20px;bottom:16px">
-          <div class="lbl" style="font-size:10px;color:rgba(255,255,255,.85);margin-bottom:4px">{{ dTime }} · {{ dFit }}</div>
+          <div class="lbl" style="font-size:13px;color:rgba(255,255,255,.85);margin-bottom:4px">{{ dTime }} · {{ dFit }}</div>
           <h1 class="ral" style="font-weight:600;font-size:32px;color:#fff;margin:0">{{ dName }}</h1>
         </div>
       </div>
@@ -1327,12 +1327,12 @@
           <span style="font-size:13.5px;color:var(--ink)"><span style="font-weight:600">Tip. </span>{{ dTip }}</span>
         </div>
         <div style="display:{{ dSeasonDisplay }};background:var(--well);border-radius:12px;padding:10px 12px;margin-bottom:14px;font-size:13px;color:var(--tip-ink)"><svg viewBox="0 0 256 256" width="13" height="13" fill="currentColor" style="vertical-align:middle"><path d="{{ icWarning }}"/></svg> {{ dSeasonNote }}</div>
-        <div style="display:{{ dHowToDisplay }}"><div class="lbl" style="font-size:10px;color:var(--sec);margin:0 0 6px">How to reach</div>
+        <div style="display:{{ dHowToDisplay }}"><div class="lbl" style="font-size:13px;color:var(--sec);margin:0 0 6px">How to reach</div>
         <p style="font-size:13.5px;color:var(--ink);margin:0 0 20px">{{ dHowTo }}</p></div>
         <div class="wandr-sys" style="font-size:14px;color:var(--sec);margin:6px 0 10px">The crew's take</div>
         <div style="display:flex;gap:8px;margin-bottom:18px">
           <sc-for list="{{ dReactions }}" as="rx" hint-placeholder-count="3">
-            <button class="wandr-btn" onClick="{{ rx.onTap }}" style="border:1px solid {{ rx.bord }};background:{{ rx.bg }};border-radius:999px;padding:8px 14px;font-size:14px;display:flex;align-items:center;gap:6px">{{ rx.emo }} <span class="lbl" style="font-size:10px;color:var(--ink)">{{ rx.n }}</span></button>
+            <button class="wandr-btn" onClick="{{ rx.onTap }}" style="border:1px solid {{ rx.bord }};background:{{ rx.bg }};border-radius:999px;padding:8px 14px;font-size:14px;display:flex;align-items:center;gap:6px">{{ rx.emo }} <span class="lbl" style="font-size:13px;color:var(--ink)">{{ rx.n }}</span></button>
           </sc-for>
         </div>
         <div class="lbl" style="font-size:14px;color:var(--sec);margin:6px 0 10px">Change this stop</div>
@@ -1398,7 +1398,7 @@
               <div style="flex:1;min-width:0;padding:2px 2px 2px 0">
                 <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:4px">
                   <span class="lbl" style="font-size:10px;padding:3px 7px;border-radius:7px;background:{{ a.pillBg }};color:{{ a.pillFg }}">{{ a.pillLabel }}</span>
-                  <span class="lbl" style="font-size:10px;color:var(--accent)">{{ a.fit }}% FIT</span><span class="lbl" style="display:{{ a.seasonDisplay }};font-size:8.5px;padding:2px 6px;border-radius:7px;background:var(--accent-weak);color:var(--tip-ink);margin-left:6px">SEASONAL</span>
+                  <span class="lbl" style="font-size:13px;color:var(--accent)">{{ a.fit }}% FIT</span><span class="lbl" style="display:{{ a.seasonDisplay }};font-size:8.5px;padding:2px 6px;border-radius:7px;background:var(--accent-weak);color:var(--tip-ink);margin-left:6px">SEASONAL</span>
                 </div>
                 <h3 class="sec-h" style="font-size:17px;color:var(--ink);margin:0 0 3px">{{ a.name }}</h3>
                 <p style="font-size:12.5px;color:var(--sec);margin:0 0 6px">{{ a.why }}</p>
@@ -1439,7 +1439,7 @@
           <sc-for list="{{ retimeOptions }}" as="o" hint-placeholder-count="4">
             <button onClick="{{ o.onClick }}" class="card" style="display:flex;width:100%;align-items:center;justify-content:space-between;padding:14px 16px;margin-bottom:9px;cursor:pointer;font-family:inherit;box-shadow:none;{{ o.hl }}">
               <span class="lbl" style="font-size:14px;color:var(--ink);">{{ o.time }}</span>
-              <span class="lbl" style="font-size:10px;color:var(--accent)">{{ o.tag }}</span>
+              <span class="lbl" style="font-size:13px;color:var(--accent)">{{ o.tag }}</span>
             </button>
           </sc-for>
           <button onClick="{{ backToMenu }}" class="ghost" style="width:100%;padding:13px;margin-top:6px;font-size:14px">Back</button>
@@ -1448,11 +1448,11 @@
         <sc-if value="{{ isEdit }}" hint-placeholder-val="{{ true }}">
         <div>
           <p style="font-size:13.5px;color:var(--sec);margin:6px 0 16px">Fine-tune this stop's details.</p>
-          <label class="lbl" style="font-size:10px;color:var(--sec);display:block;margin:0 2px 6px">Stop name</label>
+          <label class="lbl" style="font-size:13px;color:var(--sec);display:block;margin:0 2px 6px">Stop name</label>
           <input value="{{ formName }}" onInput="{{ onFormName }}" style="width:100%;padding:13px 14px;border:1px solid var(--border);border-radius:12px;font-family:'Raleway';font-weight:600;font-size:16px;color:var(--ink);margin-bottom:14px"/>
-          <label class="lbl" style="font-size:10px;color:var(--sec);display:block;margin:0 2px 6px">TIME</label>
+          <label class="lbl" style="font-size:13px;color:var(--sec);display:block;margin:0 2px 6px">TIME</label>
           <input value="{{ formTime }}" onInput="{{ onFormTime }}" style="width:100%;padding:13px 14px;border:1px solid var(--border);border-radius:12px;font-family:'DM Sans';font-weight:600;font-size:14px;color:var(--ink);margin-bottom:14px"/>
-          <label class="lbl" style="font-size:10px;color:var(--sec);display:block;margin:0 2px 6px">Notes for the group</label>
+          <label class="lbl" style="font-size:13px;color:var(--sec);display:block;margin:0 2px 6px">Notes for the group</label>
           <textarea onInput="{{ onFormNotes }}" placeholder="e.g. book a window table" style="width:100%;min-height:70px;padding:13px 14px;border:1px solid var(--border);border-radius:12px;font-family:'Inter';font-size:14px;color:var(--ink);margin-bottom:16px;resize:vertical">{{ formNotes }}</textarea>
           <button onClick="{{ onEditSave }}" class="cta" style="width:100%;padding:14px;font-size:15px">Save changes</button>
           <button onClick="{{ backToMenu }}" class="ghost" style="width:100%;padding:13px;margin-top:9px;font-size:14px">Back</button>
@@ -1468,15 +1468,15 @@
       <h1 class="disp" style="font-size:34px;color:var(--ink);margin:0 0 8px">{{ guardTitle }}</h1>
       <p style="font-size:15px;color:var(--sec);margin:0 0 22px;">{{ guardImpact }}</p>
       <div style="background:var(--accent-weak);border:1px solid rgba(255,90,31,.25);border-radius:18px;padding:16px 18px;margin-bottom:18px">
-        <div class="lbl" style="font-size:10px;color:var(--tip-ink);margin-bottom:10px"><svg viewBox="0 0 256 256" width="11" height="11" fill="currentColor" style="vertical-align:-1px"><path d="{{ guardBadgeIconPath }}"/></svg> {{ guardBadge }}</div>
+        <div class="lbl" style="font-size:13px;color:var(--tip-ink);margin-bottom:10px"><svg viewBox="0 0 256 256" width="11" height="11" fill="currentColor" style="vertical-align:-1px"><path d="{{ guardBadgeIconPath }}"/></svg> {{ guardBadge }}</div>
         <div style="font-size:14px;color:var(--ink);">{{ guardDetail }}</div>
       </div>
-      <div class="lbl" style="font-size:10px;color:var(--sec);margin:0 2px 10px">STOPS THAT SHIFT ({{ affectedCount }})</div>
+      <div class="lbl" style="font-size:13px;color:var(--sec);margin:0 2px 10px">STOPS THAT SHIFT ({{ affectedCount }})</div>
       <sc-for list="{{ affectedStops }}" as="s" hint-placeholder-count="2">
         <div class="card" style="display:flex;align-items:center;gap:12px;padding:13px 15px;margin-bottom:9px;box-shadow:none">
           <span class="lbl" style="font-size:14px;color:var(--sec);width:56px">{{ s.time }}</span>
           <span style="flex:1;font-family:'Raleway';font-weight:600;font-size:15px;color:var(--ink)">{{ s.name }}</span>
-          <span class="lbl" style="font-size:10px;color:var(--sec)">Pushed later</span>
+          <span class="lbl" style="font-size:13px;color:var(--sec)">Pushed later</span>
         </div>
       </sc-for>
       <button onClick="{{ onGuardContinue }}" class="cta" style="width:100%;padding:16px;margin-top:20px;font-size:16px">Continue - review change</button>
@@ -1504,14 +1504,14 @@
           <div style="font-size:12px;color:var(--sec)">{{ plAfterMeta }}</div>
         </div>
       </div>
-      <div class="lbl" style="font-size:10px;color:var(--sec);margin:0 2px 10px">Who gets notified</div>
+      <div class="lbl" style="font-size:13px;color:var(--sec);margin:0 2px 10px">Who gets notified</div>
       <sc-for list="{{ notifyMembers }}" as="m" hint-placeholder-count="3">
         <div class="card" style="display:flex;align-items:center;gap:12px;padding:12px 14px;margin-bottom:9px;box-shadow:none">
           <span style="width:34px;height:34px;border-radius:999px;background:{{ m.avatar }};color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Raleway';font-weight:600;font-size:14px;flex:none;{{ m.ring }}">{{ m.initial }}</span>
           <span style="flex:1;min-width:0">
             <span style="display:block;font-family:'Raleway';font-weight:600;font-size:15px;color:var(--ink)">{{ m.name }} <span style="font-weight:500;color:var(--sec);font-size:12px">· {{ m.role }}</span></span>
           </span>
-          <span class="lbl" style="font-size:10px;color:{{ m.tagColor }};text-align:right;max-width:110px">{{ m.tag }}</span>
+          <span class="lbl" style="font-size:13px;color:{{ m.tagColor }};text-align:right;max-width:110px">{{ m.tag }}</span>
         </div>
       </sc-for>
       <button onClick="{{ onConfirm }}" class="cta" style="width:100%;padding:16px;margin-top:20px;font-size:16px">Confirm &amp; push live</button>
@@ -1530,7 +1530,7 @@
         <p style="font-size:15px;color:rgba(255,255,255,.9);margin:0;">{{ changeSummary }}</p>
       </div>
       <div style="padding:24px 22px 0">
-        <div class="lbl" style="font-size:10px;color:var(--sec);margin:0 2px 12px">Group activity</div>
+        <div class="lbl" style="font-size:13px;color:var(--sec);margin:0 2px 12px">Group activity</div>
         <sc-for list="{{ feed }}" as="f" hint-placeholder-count="3">
           <div style="display:flex;gap:12px;padding:10px 0;border-bottom:1px solid var(--border)">
             <span style="width:34px;height:34px;border-radius:999px;background:{{ f.avatar }};color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Raleway';font-weight:600;font-size:14px;flex:none">{{ f.initial }}</span>
@@ -1824,7 +1824,7 @@
             <button onClick="{{ lvBackToOverview }}" style="border:none;background:transparent;font-size:16px;color:var(--ink);cursor:pointer;padding:2px 6px 2px 0"><svg viewBox="0 0 256 256" width="18" height="18" fill="currentColor" style="vertical-align:middle"><path d="{{ icArrowLeft }}"/></svg></button><span class="lbl" style="font-size:14px;color:var(--sec)">{{ lvDayLabel }}</span>
           </div>
           <h1 class="ral" style="font-weight:600;font-size:38px;color:var(--ink);margin:0">{{ todayTitle }}</h1>
-          <div class="lbl" style="font-size:10px;color:var(--sec);margin-top:8px">{{ todayMeta }}</div>
+          <div class="lbl" style="font-size:13px;color:var(--sec);margin-top:8px">{{ todayMeta }}</div>
         </div>
         <button onClick="{{ toggleOffline }}" title="Toggle offline" style="border:1px solid var(--border);background:{{ offlineBtnBg }};color:{{ offlineBtnFg }};cursor:pointer;font-family:inherit;padding:7px 11px;border-radius:999px;font-size:11px;font-weight:600;white-space:nowrap;display:inline-flex;align-items:center;gap:6px"><svg viewBox="0 0 256 256" width="13" height="13" fill="currentColor" style="flex:none"><path d="{{ offlineIconPath }}"/></svg>{{ offlineBtnLabel }}</button>
       </div>
@@ -1832,7 +1832,7 @@
         <div style="margin:8px 20px 0;padding:12px 14px;border-radius:14px;background:var(--sand);border:1px dashed #C9C3B8;display:flex;align-items:flex-start;gap:9px">
           <span style="display:flex;color:var(--sec);margin-top:1px"><svg viewBox="0 0 256 256" width="15" height="15" fill="currentColor" style="flex:none;"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm64-88a8,8,0,0,1-8,8H128a8,8,0,0,1-8-8V72a8,8,0,0,1,16,0v48h48A8,8,0,0,1,192,128Z"/></svg></span>
           <div>
-            <span class="lbl" style="font-size:10px;color:var(--sec)">CACHED · LAST UPDATED 8:00 AM</span>
+            <span class="lbl" style="font-size:13px;color:var(--sec)">CACHED · LAST UPDATED 8:00 AM</span>
             <div style="font-size:12px;color:var(--tip-ink);margin-top:4px">Live updates paused - you may be missing changes.</div>
           </div>
         </div>
@@ -1886,13 +1886,13 @@
       <sc-if value="{{ showResolved }}" hint-placeholder-val="{{ false }}">
         <div style="margin:16px 20px 0;padding:14px 16px;border-radius:18px;background:rgba(31,138,95,.08);border:1px solid rgba(31,138,95,.16);display:flex;gap:10px;align-items:center">
           <span style="font-size:18px">✅</span>
-          <div><div class="lbl" style="font-size:10px;color:#1F8A5F">Alert resolved</div>
+          <div><div class="lbl" style="font-size:13px;color:#1F8A5F">Alert resolved</div>
           <div style="font-size:13.5px;color:var(--ink);margin-top:2px">{{ resolvedText }}</div></div>
         </div>
       </sc-if>
       <sc-if value="{{ showDismissed }}" hint-placeholder-val="{{ false }}">
         <div style="margin:16px 20px 0;padding:12px 14px;border-radius:14px;background:var(--well);border:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:10px">
-          <span class="lbl" style="font-size:10px;color:var(--sec)">🌧️ WEATHER ALERT DISMISSED</span>
+          <span class="lbl" style="font-size:13px;color:var(--sec)">🌧️ WEATHER ALERT DISMISSED</span>
           <button onClick="{{ reopenAlert }}" style="border:none;background:none;cursor:pointer;font-family:inherit;font-size:12px;font-weight:600;color:var(--accent)">Review</button>
         </div>
       </sc-if>
@@ -1904,7 +1904,7 @@
       </div>
       <div style="padding:22px 20px 0">
         <h2 class="ral" style="font-weight:600;font-size:22px;color:var(--ink);margin:0 0 4px">The day, stop by stop</h2>
-        <p class="lbl" style="font-size:10px;color:var(--sec);margin:0 0 16px">Check in as you go</p>
+        <p class="lbl" style="font-size:13px;color:var(--sec);margin:0 0 16px">Check in as you go</p>
         <sc-for list="{{ dayStops }}" as="stop" hint-placeholder-count="3">
           <div style="display:grid;grid-template-columns:26px 1fr;gap:12px">
             <div style="display:flex;flex-direction:column;align-items:center;padding-top:6px">
@@ -1959,7 +1959,7 @@
             <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(36,31,26,.15),rgba(36,31,26,.6))"></div>
             <span class="lbl" style="position:absolute;top:9px;left:9px;font-size:10px;padding:4px 8px;border-radius:7px;background:rgba(31,138,95,.14);color:#1F8A5F">BEFORE</span>
           </div>
-          <div style="padding:12px 13px"><h4 class="ral" style="font-weight:600;font-size:16px;color:var(--ink);margin:0 0 5px">{{ lvBeforeName }}</h4><div class="lbl" style="font-size:10px;color:var(--sec)">{{ lvBeforeMeta }}</div></div>
+          <div style="padding:12px 13px"><h4 class="ral" style="font-weight:600;font-size:16px;color:var(--ink);margin:0 0 5px">{{ lvBeforeName }}</h4><div class="lbl" style="font-size:13px;color:var(--sec)">{{ lvBeforeMeta }}</div></div>
         </div>
         <div style="display:flex;align-items:center;color:var(--accent);font-size:20px;animation:wandrFadeIn .3s ease-out .18s both"><svg viewBox="0 0 256 256" width="20" height="20" fill="currentColor" style="vertical-align:middle"><path d="{{ icArrowRight }}"/></svg></div>
         <div style="flex:1;min-width:0;border:1px solid var(--border);border-radius:18px;overflow:hidden;background:#fff;animation:wandrCardIn .3s ease-out .28s both">
@@ -1968,13 +1968,13 @@
             <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(36,31,26,.15),rgba(36,31,26,.6))"></div>
             <span class="lbl" style="position:absolute;top:9px;left:9px;font-size:10px;padding:4px 8px;border-radius:7px;background:var(--accent-weak);color:#B0451A">AFTER</span>
           </div>
-          <div style="padding:12px 13px"><h4 class="ral" style="font-weight:600;font-size:16px;color:var(--ink);margin:0 0 5px">{{ lvAfterName }}</h4><div class="lbl" style="font-size:10px;color:var(--sec)">{{ lvAfterMeta }}</div></div>
+          <div style="padding:12px 13px"><h4 class="ral" style="font-weight:600;font-size:16px;color:var(--ink);margin:0 0 5px">{{ lvAfterName }}</h4><div class="lbl" style="font-size:13px;color:var(--sec)">{{ lvAfterMeta }}</div></div>
         </div>
       </div>
       <div style="padding:14px 16px;border-radius:16px;background:var(--accent-weak);border:1px solid rgba(255,90,31,.2);display:flex;gap:11px;align-items:flex-start;margin-bottom:22px">
         <span style="font-size:16px"><svg viewBox="0 0 256 256" width="16" height="16" fill="currentColor" style="vertical-align:middle"><path d="{{ icWarning }}"/></svg></span>
         <div>
-          <div class="lbl" style="font-size:10px;color:var(--tip-ink);margin-bottom:3px">Member preference</div>
+          <div class="lbl" style="font-size:13px;color:var(--tip-ink);margin-bottom:3px">Member preference</div>
           <div style="font-size:13.5px;color:var(--ink)">Aanya <span class="lbl" style="font-size:10px;color:#1F8A5F;background:rgba(31,138,95,.14);padding:2px 6px;border-radius:6px">PACKED · ADVENTURE</span> {{ replanMemberNote }}</div>
         </div>
       </div>
@@ -1992,11 +1992,11 @@
         <sc-for list="{{ doneStops }}" as="stop" hint-placeholder-count="3">
           <div style="display:flex;align-items:center;gap:12px;padding:14px 16px;border-bottom:{{ stop.divider }}">
             <span style="width:26px;height:26px;border-radius:999px;background:#1F8A5F;color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;flex:none"><svg viewBox="0 0 256 256" width="12" height="12" fill="currentColor" style="vertical-align:middle"><path d="{{ icCheck }}"/></svg></span>
-            <div style="flex:1;min-width:0"><div style="font-size:15px;font-weight:600;color:var(--ink)">{{ stop.name }}</div><div class="lbl" style="font-size:10px;color:var(--sec);margin-top:2px">{{ stop.meta }}</div></div>
+            <div style="flex:1;min-width:0"><div style="font-size:15px;font-weight:600;color:var(--ink)">{{ stop.name }}</div><div class="lbl" style="font-size:13px;color:var(--sec);margin-top:2px">{{ stop.meta }}</div></div>
           </div>
         </sc-for>
       </div>
-      <div class="lbl" style="font-size:10px;color:var(--sec);margin-bottom:10px">{{ photosLabel }}</div>
+      <div class="lbl" style="font-size:13px;color:var(--sec);margin-bottom:10px">{{ photosLabel }}</div>
       <div style="display:flex;gap:8px;margin-bottom:24px">
         <sc-for list="{{ donePhotos }}" as="ph" hint-placeholder-count="3">
           <div style="position:relative;flex:1;height:78px;border-radius:12px;overflow:hidden;background:#E9DDC8"><img class="wandr-photo" data-src="{{ ph.photoUrl }}" data-photo="{{ ph.photo }}" alt="{{ ph.name }}" style="width:100%;height:100%;object-fit:cover;display:block"/></div>
@@ -2009,11 +2009,11 @@
             <button onClick="{{ star.onStar }}" style="cursor:pointer;border:none;background:none;padding:0;display:flex;color:{{ star.color }}"><svg viewBox="0 0 256 256" width="28" height="28" fill="currentColor"><path d="M234.29,114.85l-45,38.83L203,211.75a16.4,16.4,0,0,1-24.5,17.82L128,198.49,77.47,229.57A16.4,16.4,0,0,1,53,211.75l13.76-58.07-45-38.83A16.46,16.46,0,0,1,31.08,86l59-4.76,22.76-55.08a16.36,16.36,0,0,1,30.27,0l22.75,55.08,59,4.76a16.46,16.46,0,0,1,9.37,28.86Z"/></svg></button>
           </sc-for>
         </div>
-        <div class="lbl" style="font-size:10px;color:var(--accent);margin-top:10px;display:{{ feedbackThanksDisplay }}">Thanks - saved to the trip</div>
+        <div class="lbl" style="font-size:13px;color:var(--accent);margin-top:10px;display:{{ feedbackThanksDisplay }}">Thanks - saved to the trip</div>
       </div>
       <div style="border:1px dashed #C9C3B8;border-radius:20px;padding:16px 18px;background:#fff;display:flex;align-items:center;gap:12px;margin-bottom:26px">
         <div style="position:relative;width:56px;height:56px;border-radius:14px;overflow:hidden;flex:none;background:#E9DDC8"><img class="wandr-photo" data-src="{{ tomorrowPhotoUrl }}" data-photo="{{ tomorrowPhotoQ }}" alt="" style="width:100%;height:100%;object-fit:cover"/></div>
-        <div><div class="lbl" style="font-size:10px;color:var(--sec);margin-bottom:3px">{{ tomorrowKicker }}</div><div style="font-size:15px;font-weight:600;color:var(--ink)">{{ tomorrowName }}</div><div style="font-size:12.5px;color:var(--sec)">Starts 9:30 AM</div></div>
+        <div><div class="lbl" style="font-size:13px;color:var(--sec);margin-bottom:3px">{{ tomorrowKicker }}</div><div style="font-size:15px;font-weight:600;color:var(--ink)">{{ tomorrowName }}</div><div style="font-size:12.5px;color:var(--sec)">Starts 9:30 AM</div></div>
       </div>
       <button onClick="{{ toRecap }}" style="width:100%;padding:16px;border:none;border-radius:999px;background:var(--ink);color:#fff;font-family:inherit;font-size:15.5px;font-weight:600;cursor:pointer;margin-bottom:10px">Wrap the trip, see the recap <svg viewBox="0 0 256 256" width="13" height="13" fill="currentColor" style="vertical-align:-2px;margin-left:3px"><path d="{{ icArrowRight }}"/></svg></button>
       <button onClick="{{ backToday }}" style="width:100%;padding:13px;border:1px solid var(--border);border-radius:999px;background:#fff;color:var(--sec);font-family:inherit;font-size:14px;font-weight:600;cursor:pointer">Back to today</button>
@@ -2027,8 +2027,8 @@
       <p style="font-size:14.5px;color:var(--sec);margin:0 0 12px">{{ recapSub }}</p>
       <button class="cta" onClick="{{ wrapPlay }}" style="width:100%;padding:14px;font-size:15px;margin-bottom:18px">Play the wrap ▶</button>
       <div style="display:flex;gap:12px;margin-bottom:24px">
-        <div style="flex:1;border:1px solid var(--border);border-radius:18px;padding:16px;background:var(--well)"><div class="lbl" style="font-size:10px;color:var(--sec)">Places visited</div><div class="ral" data-countup="1" style="font-weight:600;font-size:32px;color:var(--ink);margin-top:4px">{{ placesCount }}</div></div>
-        <div style="flex:1;border:1px solid var(--border);border-radius:18px;padding:16px;background:var(--well)"><div class="lbl" style="font-size:10px;color:var(--sec)">SPEND / PERSON</div><div class="ral" data-countup="1" style="font-weight:600;font-size:32px;color:var(--ink);margin-top:4px">{{ spendLabel }}</div></div>
+        <div style="flex:1;border:1px solid var(--border);border-radius:18px;padding:16px;background:var(--well)"><div class="lbl" style="font-size:13px;color:var(--sec)">Places visited</div><div class="ral" data-countup="1" style="font-weight:600;font-size:32px;color:var(--ink);margin-top:4px">{{ placesCount }}</div></div>
+        <div style="flex:1;border:1px solid var(--border);border-radius:18px;padding:16px;background:var(--well)"><div class="lbl" style="font-size:13px;color:var(--sec)">SPEND / PERSON</div><div class="ral" data-countup="1" style="font-weight:600;font-size:32px;color:var(--ink);margin-top:4px">{{ spendLabel }}</div></div>
       </div>
       <div style="border:1px solid var(--border);border-radius:20px;padding:18px;margin-bottom:24px">
         <div style="font-size:15px;font-weight:600;color:var(--ink);margin-bottom:14px">Spend vs budget</div>
@@ -2036,18 +2036,18 @@
           <div style="margin-bottom:18px">
             <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px">
               <span style="font-size:13.5px;font-weight:500;color:var(--ink)">{{ cat.label }}</span>
-              <span class="lbl" style="font-size:10px;color:{{ cat.color }}">{{ cat.amountLabel }}</span>
+              <span class="lbl" style="font-size:13px;color:{{ cat.color }}">{{ cat.amountLabel }}</span>
             </div>
             <div style="position:relative;height:12px;border-radius:999px;background:var(--well)">
               <div class="wandr-bar" data-grow="1" style="position:absolute;left:0;top:0;height:100%;width:{{ cat.underWidth }};border-radius:999px 0 0 999px;background:#1F8A5F"></div>
               <div style="position:absolute;top:0;height:100%;left:{{ cat.underWidth }};width:{{ cat.overWidth }};border-radius:0 999px 999px 0;background:var(--accent);display:{{ cat.overDisplay }}"></div>
               <div style="position:absolute;top:-2px;height:14px;width:2px;left:min({{ cat.tickPct }},calc(100% - 2px));background:var(--ink);border-radius:2px"></div>
             </div>
-            <div class="lbl" style="font-size:10px;color:var(--sec);margin-top:5px;text-align:left;padding-left:min(calc({{ cat.tickPct }} - 22px),calc(100% - 52px))">BUDGET ↑</div>
+            <div class="lbl" style="font-size:13px;color:var(--sec);margin-top:5px;text-align:left;padding-left:min(calc({{ cat.tickPct }} - 22px),calc(100% - 52px))">BUDGET ↑</div>
           </div>
         </sc-for>
       </div>
-      <div class="lbl" style="font-size:10px;color:var(--sec);margin-bottom:10px">📸 6 MOMENTS</div>
+      <div class="lbl" style="font-size:13px;color:var(--sec);margin-bottom:10px">📸 6 MOMENTS</div>
       <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:26px">
         <sc-for list="{{ moments }}" as="m" hint-placeholder-count="6">
           <div style="position:relative;height:96px;border-radius:14px;overflow:hidden;background:#E9DDC8;transform:{{ m.transform }};box-shadow:{{ m.shadow }};z-index:{{ m.z }}"><img class="wandr-photo" data-src="{{ m.photoUrl }}" data-photo="{{ m.photo }}" alt="" style="width:100%;height:100%;object-fit:cover;display:block"/></div>
