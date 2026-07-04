@@ -996,7 +996,7 @@
     </sc-if>
 
     <sc-if value="{{ scr_s6 }}" hint-placeholder-val="{{ true }}">
-    <div class="screen" style="min-height:852px;padding:20px 22px 64px;display:flex;flex-direction:column">
+    <div class="screen" style="min-height:100%;padding:20px 22px 24px;display:flex;flex-direction:column">
       <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px">
         <button class="wandr-btn backbtn" onClick="{{ goS5 }}"><svg viewBox="0 0 256 256" width="18" height="18" fill="currentColor" style="vertical-align:middle"><path d="{{ icArrowLeft }}"/></svg></button>
         <div style="flex:1;display:flex;align-items:center;gap:10px">
@@ -1004,19 +1004,19 @@
           <div style="flex:1;height:4px;border-radius:999px;background:var(--well);overflow:hidden"><div class="wandr-bar" style="height:100%;width:{{ progPct }};background:var(--accent)"></div></div>
         </div>
         <button class="wandr-btn" onClick="{{ exitSetupAsk }}" aria-label="Exit setup" style="width:38px;height:38px;border-radius:999px;border:1px solid var(--border);background:#fff;color:var(--sec);flex:none;font-size:17px" ><svg viewBox="0 0 256 256" width="18" height="18" fill="currentColor" style="vertical-align:middle"><path d="{{ icX }}"/></svg></button>
-        <button class="wandr-btn wandr-sys" onClick="{{ goS7 }}" style="border:none;background:transparent;font-size:10px;color:var(--sec);margin-right:42px">DONE <svg viewBox="0 0 256 256" width="13" height="13" fill="currentColor" style="vertical-align:-2px;margin-left:3px"><path d="{{ icArrowRight }}"/></svg></button>
       </div>
       <h1 class="wandr-hero" style="font-size:clamp(26px,7vw,32px);margin:0 0 4px">Pick what excites you</h1>
       <p style="font-size:13px;color:var(--sec);margin:0 0 14px">Swipe right to save. Left to skip. <span class="lbl" style="font-size:11px;color:var(--ink)">{{ dkSavedCount }} saved</span></p>
       <sc-if value="{{ dkHasCard }}" hint-placeholder-val="{{ true }}">
-      <div style="position:relative;flex:1;min-height:360px">
-        <div style="position:absolute;inset:12px 10px 26px;background:var(--well);border-radius:22px;transform:rotate(2deg)"></div>
-        <div class="card" onPointerDown="{{ dkPtrDown }}" onPointerMove="{{ dkPtrMove }}" onPointerUp="{{ dkPtrUp }}" onPointerCancel="{{ dkPtrUp }}" style="position:absolute;inset:0 0 14px;overflow:hidden;padding:0;animation:wandrCardIn .22s ease-out;transform:translateX({{ dkDrag }}px) rotate({{ dkDragRot }}deg);transition:{{ dkDragTrans }};touch-action:pan-y;cursor:grab;user-select:none">
-          <div style="position:relative;height:62%;background:var(--sand)">
+      <div style="position:relative;margin-bottom:14px">
+        <div style="position:absolute;inset:12px 10px -14px;background:var(--well);border-radius:22px;transform:rotate(2deg);z-index:0"></div>
+        <div class="card" onPointerDown="{{ dkPtrDown }}" onPointerMove="{{ dkPtrMove }}" onPointerUp="{{ dkPtrUp }}" onPointerCancel="{{ dkPtrUp }}" style="position:relative;z-index:1;overflow:hidden;padding:0;animation:wandrCardIn .22s ease-out;transform:translateX({{ dkDrag }}px) rotate({{ dkDragRot }}deg);transition:{{ dkDragTrans }};touch-action:pan-y;cursor:grab;user-select:none">
+          <div style="position:relative;height:220px;background:var(--sand)">
             <img class="wandr-photo" data-src="{{ dkPhotoUrl }}" data-photo="{{ dkPhotoQ }}" alt="{{ dkName }}" style="width:100%;height:100%;object-fit:cover;display:block"/>
             <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(36,31,26,.05),rgba(36,31,26,.45))"></div>
             <span class="lbl" style="position:absolute;top:12px;left:12px;font-size:9.5px;padding:4px 9px;border-radius:7px;background:{{ dkPillBg }};color:{{ dkPillFg }}">{{ dkPillLabel }}</span>
             <span class="lbl" style="position:absolute;top:12px;right:12px;font-size:9.5px;padding:4px 9px;border-radius:7px;background:rgba(255,255,255,.94);color:var(--tip-ink)">{{ dkPct }}</span>
+            <span class="lbl" style="display:{{ dkRecDisplay }};position:absolute;bottom:12px;left:12px;font-size:9.5px;font-weight:700;padding:4px 9px;border-radius:7px;background:var(--accent);color:#fff">RECOMMENDED FOR YOU</span>
           </div>
           <div style="padding:14px 16px">
             <h2 class="sec-h" style="font-size:22px;margin:0 0 6px">{{ dkName }}</h2>
@@ -1034,24 +1034,30 @@
           </div>
         </div>
       </div>
-      <div style="display:flex;gap:10px;margin-top:6px">
-        <button class="ghost" onClick="{{ dkSkip }}" style="flex:1;padding:15px;font-size:15px">Skip</button>
-        <button class="cta" onClick="{{ dkSave }}" style="flex:1;padding:15px;font-size:15px;display:flex;align-items:center;justify-content:center;gap:6px"><svg viewBox="0 0 256 256" width="15" height="15" fill="currentColor"><path d="{{ icBookmark }}"/></svg> Bookmark</button>
-      </div>
-      <sc-if value="{{ dkShowDone }}" hint-placeholder-val="{{ false }}">
-        <button class="cta" onClick="{{ goS7 }}" style="width:100%;margin-top:10px;padding:14px;font-size:15px;display:flex;align-items:center;justify-content:center;gap:6px;background:var(--ink);color:#fff">Done, build my plan <svg viewBox="0 0 256 256" width="13" height="13" fill="currentColor"><path d="{{ icArrowRight }}"/></svg></button>
-      </sc-if>
-      <sc-if value="{{ dkCanUndo }}" hint-placeholder-val="{{ false }}">
-        <button class="wandr-btn" onClick="{{ dkUndo }}" style="border:none;background:transparent;padding:10px;font-size:12.5px;color:var(--sec);text-decoration:underline;cursor:pointer">Undo last</button>
-      </sc-if>
       </sc-if>
       <sc-if value="{{ dkDone }}" hint-placeholder-val="{{ false }}">
-        <div class="card" style="padding:32px 24px;text-align:center;margin-top:20px">
+        <div class="card" style="padding:32px 24px;text-align:center;margin-bottom:14px">
           <h3 class="sec-h" style="font-size:19px;margin:0 0 6px">{{ dkSavedCount }} bookmarked</h3>
-          <p style="font-size:13.5px;color:var(--sec);margin:0 0 16px">These get priority when we build your days.</p>
-          <button class="cta" onClick="{{ goS7 }}" style="padding:13px 24px;font-size:14.5px">Build my plan <svg viewBox="0 0 256 256" width="13" height="13" fill="currentColor" style="vertical-align:-2px;margin-left:3px"><path d="{{ icArrowRight }}"/></svg></button>
+          <p style="font-size:13.5px;color:var(--sec);margin:0">These get priority when we build your days.</p>
         </div>
       </sc-if>
+      <div style="margin-top:auto">
+        <sc-if value="{{ dkHasCard }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex;gap:10px;margin-bottom:10px">
+          <button class="ghost" onClick="{{ dkSkip }}" style="flex:1;padding:15px;font-size:15px">Skip</button>
+          <button class="cta" onClick="{{ dkSave }}" style="flex:1;padding:15px;font-size:15px;display:flex;align-items:center;justify-content:center;gap:6px"><svg viewBox="0 0 256 256" width="15" height="15" fill="currentColor"><path d="{{ icBookmark }}"/></svg> Bookmark</button>
+        </div>
+        </sc-if>
+        <sc-if value="{{ dkShowDone }}" hint-placeholder-val="{{ false }}">
+          <button class="cta" onClick="{{ goS7 }}" style="width:100%;margin-bottom:8px;padding:14px;font-size:15px;display:flex;align-items:center;justify-content:center;gap:6px;background:var(--ink);color:#fff">Done, build my plan <svg viewBox="0 0 256 256" width="13" height="13" fill="currentColor"><path d="{{ icArrowRight }}"/></svg></button>
+        </sc-if>
+        <sc-if value="{{ dkDone }}" hint-placeholder-val="{{ false }}">
+          <button class="cta" onClick="{{ goS7 }}" style="width:100%;padding:14px;font-size:15px">Build my plan <svg viewBox="0 0 256 256" width="13" height="13" fill="currentColor" style="vertical-align:-2px;margin-left:3px"><path d="{{ icArrowRight }}"/></svg></button>
+        </sc-if>
+        <sc-if value="{{ dkCanUndo }}" hint-placeholder-val="{{ false }}">
+          <button class="wandr-btn" onClick="{{ dkUndo }}" style="display:block;width:100%;border:none;background:transparent;padding:10px;font-size:12.5px;color:var(--sec);text-decoration:underline;cursor:pointer">Undo last</button>
+        </sc-if>
+      </div>
     </div>
     </sc-if>
 
