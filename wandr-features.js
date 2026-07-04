@@ -59,7 +59,7 @@ window.WandrFeatures = {
         icArrowLeft: ICONS['arrow-left'], icArrowRight: ICONS['arrow-right'],
         icCaretLeft: ICONS['caret-left'], icCaretRight: ICONS['caret-right'],
         icX: ICONS['x'], icCheck: ICONS['check'],
-        icStar: ICONS['star'], icStarFill: ICONS['star-fill'], icBookmark: ICONS['bookmark-simple'],
+        icStar: ICONS['star'], icStarFill: ICONS['star-fill'], icBookmark: ICONS['bookmark-simple'], icPlus: ICONS['plus'],
         icWarning: ICONS['warning-circle'], icSparkle: ICONS['sparkle'], icLock: ICONS['lock'],
         icClock: ICONS['clock'], icArrowsDownUp: ICONS['arrows-down-up'], icCircle: ICONS['circle'], icCircleFill: ICONS['circle-fill'], icDotsVertical: ICONS['dots-three-vertical'],
         icUsers: ICONS['users'],
