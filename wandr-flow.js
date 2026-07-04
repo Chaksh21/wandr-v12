@@ -122,8 +122,10 @@ window.WandrFlow = {
     inst.suNav = (s) => inst.setState({ suScreen:s });
     inst.suProgFor = (screen) => {
       const imp = inst.state.suPath==='import';
-      const denom = imp ? 8 : 7;
-      const stepMap = imp ? { s2:1, s3:2, s4:3, s4b:4, s5:5, s5a:6, s6:7, s7:8 } : { s2:1, s3:2, s4:3, s4b:4, s5:5, s6:6, s7:7 };
+      const denom = 8;
+      const stepMap = imp
+        ? { s2:1, s3:2, s4:3, s4b:4, s5:5, s5a:6, s6:7, s7:7, s12:7, s8:8 }
+        : { s2:1, s3:2, s4:3, s4b:4, s5:5, s6:6, s7:6, s12:6, s8:8 };
       const n = stepMap[screen] || denom;
       const pad = x => (x<10?'0':'')+x;
       return { label: pad(n)+'/'+pad(denom), pct: Math.round(n/denom*100)+'%' };
