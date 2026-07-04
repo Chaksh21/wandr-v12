@@ -1,11 +1,11 @@
 *{box-sizing:border-box}
-html,body{margin:0}
+html,body{margin:0;height:100%;overflow:hidden}
 :root{
   --canvas:#FFFFFF; --ink:#241F1A; --sec:#6B6358; --accent:#FF5A1F; --accent-weak:rgba(255,90,31,.10);
   --tip-ink:#B0451A; --border:#ECEAE6; --well:#F4F3F1; --sand:#F1F0EE; --screen:#FDFDFD;
 }
 body{background:#FFFFFF;font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased;color:var(--ink)}
-.wandr-gallery{min-height:100vh;min-height:100dvh;display:flex;justify-content:center;align-items:flex-start;padding:0;background:#EDEAE4}
+.wandr-gallery{height:100%;overflow-y:auto;display:flex;justify-content:center;align-items:flex-start;padding:0;background:#EDEAE4}
 .wandr-phone{position:relative;width:100%;max-width:440px;min-height:100vh;min-height:100dvh;height:100vh;height:100dvh;flex:none;background:var(--screen);overflow:hidden}
 .wandr-app{height:100%;overflow-y:auto}
 @media (max-width:480px){
