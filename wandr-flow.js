@@ -126,11 +126,8 @@ window.WandrFlow = {
         const n = Math.min(4, inst.state.qzStep+1);
         return { label: pad(n)+'/'+pad(4), pct: Math.round(n/4*100)+'%' };
       }
-      const imp = inst.state.suPath==='import';
-      const denom = 9;
-      const stepMap = imp
-        ? { s4:1, s4b:2, sPeople:3, s5:4, s5a:5, s6:6, s7:7, s12:8, s8:9 }
-        : { s4:1, s4b:2, sPeople:3, s5:4, s6:5, s7:6, s12:7, s8:9 };
+      const denom = 6;
+      const stepMap = { s4:1, s4b:2, sPeople:3, s5:4, s6:5, s12:6 };
       const n = stepMap[screen] || denom;
       return { label: pad(n)+'/'+pad(denom), pct: Math.round(n/denom*100)+'%' };
     };
