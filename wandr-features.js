@@ -485,6 +485,14 @@ window.WandrFeatures = {
         return { photo:s.photo, name:s.name, why:s.why, hours:s.hours, reach:s.reach, reachIconPath:reachIcon(s.reach), time:s.time, photoUrl:photoUrl(s.photo), costLabel:moneyFree(s.cost), pinBg: done?'#1F8A5F':'var(--accent)', pinLabel: done?'':String(s.pin), pinCheckDisplay: done?'inline-block':'none', pinClass: done?'wandr-pop':'', nextDisplay: isNext?'inline-block':'none', ring: isNext?'0 0 0 2px var(--accent),0 8px 24px rgba(36,31,26,.06)':'0 8px 24px rgba(36,31,26,.06)', pillBg:p.bg, pillFg:p.fg, pillLabel:p.label, checkinPrompt, promptColor, checkinLabel, checkinIconDisplay: done?'inline-block':'none', checkinBg, onCheckin };
       });
       const swapStop = alertSwapStop(dest, this.plMult());
+      const swapOutPlace = dest.places.find(p=>p.name.indexOf(dest.alert.swapOut)===0) || { id:'swapout', name:dest.alert.swapOut, photo:dest.photo, cat:'sights' };
+      const swapAlt3 = dest.places.find(p=>p.cat===swapOutPlace.cat && p.id!==swapOutPlace.id && p.name!==swapStop.name) || dest.places.find(p=>p.id!==swapOutPlace.id && p.name!==swapStop.name) || swapOutPlace;
+      const swapChoices = [
+        { id:swapOutPlace.id, name:swapOutPlace.name, photo:swapOutPlace.photo },
+        { id:swapStop.id, name:swapStop.name, photo:swapStop.photo },
+        { id:swapAlt3.id, name:swapAlt3.name, photo:swapAlt3.photo },
+      ];
+      const lvSwapPick = st.lvSwapPick || swapOutPlace.id;
       const alertToday = lvStops.some(s=>s.name.indexOf(dest.alert.swapOut)===0);
       const lvBefore = lvStops.find(s=>s.name.indexOf(dest.alert.swapOut)===0) || lvStops[0] || { name:dest.alert.swapOut, pin:1, cost:0, reach:'', time:'12:30 PM', photo:dest.photo };
       const lvAfterD = swapStop;
@@ -517,10 +525,15 @@ window.WandrFeatures = {
         offlineBtnBg: lvOffline?'var(--ink)':'var(--canvas)', offlineBtnFg: lvOffline?'#fff':'var(--sec)', offlineBtnLabel: lvOffline?'Offline':'Online', offlineIconPath: lvOffline?ICONS['wifi-slash']:ICONS['wifi-high'], showOffline:lvOffline,
         showAlert: !lvOffline && !live.swapped && !live.dismissed, showResolved: !lvOffline && live.swapped, showDismissed: !lvOffline && !live.swapped && live.dismissed,
         resolvedText: dest.alert.swapOut+' swapped for '+shortName(swapStop.name)+'.',
-        alertIcon:dest.alert.icon, alertKicker:String(dest.alert.type||'ALERT').toUpperCase()+' ALERT · '+(alertToday?'LIVE':'HEADS-UP'), alertTitle:dest.alert.title, alertWhy:dest.alert.why, alertImpact:dest.alert.impact, alertAffects:'AFFECTS · '+String(dest.alert.swapOut).toUpperCase()+(alertToday&&lvBefore&&lvBefore.pin?' (STOP '+lvBefore.pin+')':' (LATER THIS TRIP)'),
+        alertIcon:dest.alert.icon, alertKicker:String(dest.alert.type||'ALERT').toUpperCase()+' ALERT · '+(alertToday?'LIVE':'HEADS-UP'), alertTitle:dest.alert.title, alertWhy:dest.alert.why,
         alertCtaLabel: alertToday ? 'See the suggested swap' : 'Got it, swap on the day',
         alertCtaArrowDisplay: alertToday ? 'inline-block' : 'none',
-        alertCta: alertToday ? ()=>this.setState({ lvScreen:'replan' }) : ()=>{ this.lvDismiss(); this.toast("Noted - we'll suggest a swap that morning"); },
+        alertCta: alertToday ? ()=>this.setState({ lvScreen:'replan' }) : ()=>this.setState({ lvSwapOpen:true, lvSwapPick:swapOutPlace.id }),
+        showSwapSheet: !!st.lvSwapOpen,
+        swapSheetTitle: 'Swap '+shortName(dest.alert.swapOut)+'?',
+        swapChoices: swapChoices.map(c=>({ id:c.id, name:c.name, photoUrl:photoUrl(c.photo), photoQ:c.photo, ring: lvSwapPick===c.id?'2px solid var(--accent)':'1px solid var(--border)', onPick:()=>this.setState({ lvSwapPick:c.id }) })),
+        swapConfirm:()=>{ const picked=swapChoices.find(c=>c.id===lvSwapPick)||swapOutPlace; this.setState({ lvSwapOpen:false }); this.lvDismiss(); if (picked.id!==swapOutPlace.id) this.toast('Swapped '+shortName(dest.alert.swapOut)+' for '+shortName(picked.name)+' on the day'); else this.toast("Keeping "+shortName(dest.alert.swapOut)+" - we'll watch the weather"); },
+        swapCancel:()=>this.setState({ lvSwapOpen:false }),
         lvStopCount:String(lvStops.length).padStart(2,'0'),
         lvProgressLabel: lvDoneCount+' of '+lvStops.length+' checked in',
         lvHasPending: !!(t.group && t.group.openVote),
