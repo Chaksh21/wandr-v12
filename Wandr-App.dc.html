@@ -974,14 +974,7 @@
         <p style="font-size:12px;color:var(--sec);margin:0;">We read only booking emails, and nothing is stored on our servers. You can also forward a confirmation to <span style="color:var(--ink)">trips@wandr.app</span> instead.</p>
       </div>
       <div style="padding-top:20px">
-        <sc-if value="{{ notConfirmed }}" hint-placeholder-val="{{ true }}">
-          <button class="wandr-btn" onClick="{{ confirmBooking }}" style="display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:16px;border:none;border-radius:999px;background:var(--accent);color:#241F1A;font-size:16px;font-weight:600;box-shadow:0 10px 26px rgba(255,90,31,.3)">Yes, this is right <svg viewBox="0 0 256 256" width="12" height="12" fill="currentColor" style="vertical-align:middle"><path d="{{ icCheck }}"/></svg></button>
-          <div class="wandr-sys" style="text-align:center;font-size:12px;color:var(--sec);margin-top:12px">Looks good, build my plan</div>
-        </sc-if>
-        <sc-if value="{{ isConfirmed }}" hint-placeholder-val="{{ true }}">
-          <button class="wandr-btn" onClick="{{ goS6 }}" style="display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:16px;border:none;border-radius:999px;background:var(--ink);color:#fff;font-size:16px;font-weight:600">Continue <span><svg viewBox="0 0 256 256" width="13" height="13" fill="currentColor" style="vertical-align:-2px"><path d="{{ icArrowRight }}"/></svg></span></button>
-          <div class="wandr-sys" style="text-align:center;font-size:11px;color:#2E4034;margin-top:12px"><svg viewBox="0 0 256 256" width="12" height="12" fill="currentColor" style="vertical-align:middle"><path d="{{ icCheck }}"/></svg> CONFIRMED</div>
-        </sc-if>
+        <button class="wandr-btn" onClick="{{ confirmBooking }}" style="display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:16px;border:none;border-radius:999px;background:var(--accent);color:#241F1A;font-size:16px;font-weight:600;box-shadow:0 10px 26px rgba(255,90,31,.3)">Looks good, build my plan <svg viewBox="0 0 256 256" width="13" height="13" fill="currentColor" style="vertical-align:-2px"><path d="{{ icArrowRight }}"/></svg></button>
       </div>
     </div>
     </sc-if>
@@ -1793,7 +1786,7 @@
         <div>
           <div style="display:inline-flex;align-items:center;gap:7px;margin-bottom:8px">
             <span style="width:8px;height:8px;border-radius:999px;background:var(--accent);animation:wandrPulse 1.8s infinite"></span>
-            <button onClick="{{ lvBackToOverview }}" style="border:none;background:transparent;font-size:16px;color:var(--ink);cursor:pointer;padding:2px 6px 2px 0"><svg viewBox="0 0 256 256" width="18" height="18" fill="currentColor" style="vertical-align:middle"><path d="{{ icArrowLeft }}"/></svg></button><span class="lbl" style="font-size:14px;color:var(--sec)">LIVE · DAY 01</span>
+            <button onClick="{{ lvBackToOverview }}" style="border:none;background:transparent;font-size:16px;color:var(--ink);cursor:pointer;padding:2px 6px 2px 0"><svg viewBox="0 0 256 256" width="18" height="18" fill="currentColor" style="vertical-align:middle"><path d="{{ icArrowLeft }}"/></svg></button><span class="lbl" style="font-size:14px;color:var(--sec)">{{ lvDayLabel }}</span>
           </div>
           <h1 class="ral" style="font-weight:600;font-size:38px;color:var(--ink);margin:0">{{ todayTitle }}</h1>
           <div class="lbl" style="font-size:10px;color:var(--sec);margin-top:8px">{{ todayMeta }}</div>
@@ -1957,8 +1950,8 @@
 
     <sc-if value="{{ isComplete }}" hint-placeholder-val="{{ false }}">
     <div class="wandr-scroll screen" style="min-height:852px;padding:54px 20px 100px">
-      <div class="lbl" style="font-size:14px;color:var(--sec);margin-bottom:8px">DAY 01 · COMPLETE</div>
-      <h1 class="ral" style="font-weight:600;font-size:36px;color:var(--ink);margin:0 0 6px">That's a wrap on Day 1</h1>
+      <div class="lbl" style="font-size:14px;color:var(--sec);margin-bottom:8px">{{ wrapDayKicker }}</div>
+      <h1 class="ral" style="font-weight:600;font-size:36px;color:var(--ink);margin:0 0 6px">{{ wrapDayHeading }}</h1>
       <p style="font-size:14.5px;color:var(--sec);margin:0 0 24px">{{ completeSub }}</p>
       <div style="border:1px solid var(--border);border-radius:20px;overflow:hidden;margin-bottom:22px">
         <sc-for list="{{ doneStops }}" as="stop" hint-placeholder-count="3">
@@ -1985,7 +1978,7 @@
       </div>
       <div style="border:1px dashed #C9C3B8;border-radius:20px;padding:16px 18px;background:#fff;display:flex;align-items:center;gap:12px;margin-bottom:26px">
         <div style="position:relative;width:56px;height:56px;border-radius:14px;overflow:hidden;flex:none;background:#E9DDC8"><img class="wandr-photo" data-src="{{ tomorrowPhotoUrl }}" data-photo="{{ tomorrowPhotoQ }}" alt="" style="width:100%;height:100%;object-fit:cover"/></div>
-        <div><div class="lbl" style="font-size:10px;color:var(--sec);margin-bottom:3px">TOMORROW · DAY 02</div><div style="font-size:15px;font-weight:600;color:var(--ink)">{{ tomorrowName }}</div><div style="font-size:12.5px;color:var(--sec)">Starts 9:30 AM</div></div>
+        <div><div class="lbl" style="font-size:10px;color:var(--sec);margin-bottom:3px">{{ tomorrowKicker }}</div><div style="font-size:15px;font-weight:600;color:var(--ink)">{{ tomorrowName }}</div><div style="font-size:12.5px;color:var(--sec)">Starts 9:30 AM</div></div>
       </div>
       <button onClick="{{ toRecap }}" style="width:100%;padding:16px;border:none;border-radius:999px;background:var(--ink);color:#fff;font-family:inherit;font-size:15.5px;font-weight:600;cursor:pointer;margin-bottom:10px">Wrap the trip, see the recap <svg viewBox="0 0 256 256" width="13" height="13" fill="currentColor" style="vertical-align:-2px;margin-left:3px"><path d="{{ icArrowRight }}"/></svg></button>
       <button onClick="{{ backToday }}" style="width:100%;padding:13px;border:1px solid var(--border);border-radius:999px;background:#fff;color:var(--sec);font-family:inherit;font-size:14px;font-weight:600;cursor:pointer">Back to today</button>
@@ -2227,7 +2220,7 @@ class Component extends DCLogic {
       // SETUP funnel
       suScreen:'s1', suName:'', suHomeCity:'', suPace:'', suStyleTags:[],
       suTripName:'', suDateStart:null, suDateEnd:null, suPath:null, suConfirmed:false, suStaged:[], suLockedTheme:null,
-      suDestText:'', suDestConfirmed:false,
+      suDestText:'', suDestConfirmed:false, suEditReturn:null,
       newDestKey:'shimla',
 
       // PLAN editor

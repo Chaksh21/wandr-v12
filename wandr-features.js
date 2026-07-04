@@ -120,7 +120,7 @@ window.WandrFeatures = {
       const previewLine = suPaceLabel+' pace · '+(st.suStyleTags.length ? st.suStyleTags.slice(0,3).join(' · ') : 'no styles yet');
       const social = MEMBERS.map((m,i)=>({ initial:initialOf(m), bg:m.bg, gap:i===0?'0':'-9px' }));
       const cityKeys = ['shimla','goa','manali','jaipur','rishikesh','udaipur'];
-      const pickDest = (k)=>{ this.setState({ newDestKey:k, suDestConfirmed:true, suDestText:'' }); setTimeout(()=>this.suNav('s4b'), 220); };
+      const pickDest = (k)=>{ this.setState({ newDestKey:k, suDestConfirmed:true, suDestText:'' }); const ret=st.suEditReturn; setTimeout(()=>{ if (ret){ this.setState({ suEditReturn:null }); this.suNav(ret); } else { this.suNav('s4b'); } }, 220); };
       const q = (st.suDestText||'').trim().toLowerCase();
       let destResults = [], destNotice = null;
       if (st.suDestConfirmed){
@@ -160,9 +160,9 @@ window.WandrFeatures = {
       const dayCountLabel = dayCount ? (dayCount + (dayCount===1 ? ' day' : ' days')) : '';
       const dayCountDisplay = dayCount ? 'inline-block' : 'none';
       const parsedFields = [
-        { label:'DESTINATION', value:funnelDest.name,           lowConfidence:false, onEdit:()=>this.setState({ suScreen:'s4', suDestConfirmed:false, suDestText:'', suConfirmed:false }) },
-        { label:'DATES',       value:suDates,                   lowConfidence:false, onEdit:()=>this.setState({ suScreen:'s4b' }) },
-        { label:'HOTEL',       value:'A central stay in '+funnelDest.name, lowConfidence:true, onEdit:()=>this.toast('Edit hotel') },
+        { label:'DESTINATION', value:funnelDest.name,           lowConfidence:false, onEdit:()=>this.setState({ suScreen:'s4', suDestConfirmed:false, suDestText:'', suConfirmed:false, suEditReturn:'s5a' }) },
+        { label:'DATES',       value:suDates,                   lowConfidence:false, onEdit:()=>this.setState({ suScreen:'s4b', suEditReturn:'s5a' }) },
+        { label:'HOTEL',       value:'A central stay in '+funnelDest.name, lowConfidence:true, onEdit:()=>this.toast('Search for your actual hotel - coming soon') },
       ].map(f=>Object.assign(f, { confDisplay: f.lowConfidence?'inline-flex':'none', rowBg: f.lowConfidence?'var(--accent-weak)':'transparent' }));
       const tasks = [
         { label:'Read your booking', tag:'COMPLETE', s:'done' },
@@ -229,7 +229,7 @@ window.WandrFeatures = {
         progLabel:prog.label, progPct:prog.pct,
         seeSample:()=>{ const tt=st.trips.find(x=>x.status==='active')||st.trips[0]; if (tt) openTripId(tt.id); },
         goS1:()=>this.suNav('s1'), exitSetup:()=>this.setState({ view:'home', suLockedTheme:null, suConfirmed:false, suStaged:[], suPath:null, suTripName:'', suDateStart:null, suDateEnd:null, suDestConfirmed:false, suDestText:'' }), goS2:()=>this.suNav('s2'), goS3:()=>this.suNav('s3'), goS4:()=>this.suNav('s4'),
-        goS5:()=>this.suNav('s5'), goS6:()=>this.suNav('s6'), goS7:()=>this.suNav('s7'), goS8:()=>this.suNav('s8'), goS12:()=>this.suNav('s12'),
+        goS5:()=>{ if (st.suEditReturn){ const ret=st.suEditReturn; this.setState({ suEditReturn:null }); this.suNav(ret); } else { this.suNav('s5'); } }, goS6:()=>this.suNav('s6'), goS7:()=>this.suNav('s7'), goS8:()=>this.suNav('s8'), goS12:()=>this.suNav('s12'),
         suViewItinerary:()=>openTripId(this.state.activeTripId),
         name:st.suName, homeCity:st.suHomeCity, setName:(e)=>this.setState({ suName:e.target.value }), setHome:(e)=>this.setState({ suHomeCity:e.target.value }),
         paceChips, styleTags, previewInitial:suInitial, previewName:suNameOr, previewLine,
@@ -246,7 +246,7 @@ window.WandrFeatures = {
         scr_s4b:st.suScreen==='s4b',
         dow:['S','M','T','W','T','F','S'], calCells, rangeLabel, dayCountLabel, dayCountDisplay,
         pickImport:()=>{ this.setState({ suPath:'import', suConfirmed:false, suScreen:'s5a' }); }, pickScratch:()=>{ this.setState({ suPath:'scratch', suScreen:'s6' }); },
-        parsedFields, notConfirmed:!st.suConfirmed, isConfirmed:st.suConfirmed, confirmBooking:()=>{ this.setState({ suConfirmed:true }); this.toast('Booking confirmed'); },
+        parsedFields, notConfirmed:!st.suConfirmed, isConfirmed:st.suConfirmed, confirmBooking:()=>{ this.setState({ suConfirmed:true }); this.suNav('s6'); },
         backFromS6:()=>{ if (st.suPath==='import') this.suNav('s5a'); else this.suNav('s5'); }, s6Cta: st.suStaged.length?'Synthesise plan':'Skip & draft',
         tasks,
         tripCode:t.code, destName: (V==='setup' ? funnelDest.name : dest.name), suMapPins, contributors, contributorsSummary, lockedLabel, invite:()=>this.toast('Invite link copied · '+t.code),
@@ -427,7 +427,7 @@ window.WandrFeatures = {
       const live = t.live;
       const lvStops = this.liveStops();
       const lvNextId = this.lvNextStopId();
-      const lvDoneCount = Object.keys(live.checkins).length;
+      const lvDoneCount = lvStops.filter(s=>!!live.checkins[s.id]).length;
       const lvNextStop = lvStops.find(s=>s.id===lvNextId) || null;
       const lvAllDone = lvDoneCount>0 && !lvNextStop;
       const lvEtaLine = lvAllDone ? 'ALL WRAPPED FOR TODAY' : 'NEXT · '+(lvNextStop?shortName(lvNextStop.name):'-')+' · ~15 MIN AWAY';
@@ -478,11 +478,16 @@ window.WandrFeatures = {
       while (momentQs.length<6) momentQs.push(dest.photo);
       const moments = momentQs.slice(0,6).map((q,i)=>({ photoUrl:photoUrl(q), photo:q, transform: i===1?'rotate(-2.5deg)':'none', shadow: i===1?'0 8px 18px rgba(36,31,26,.14)':'none', z: i===1?'2':'1' }));
       const foodList = dest.food.map(f=>({ name:f.name, tag:String(f.tag).toUpperCase(), photoUrl:photoUrl(dest.name+' '+f.name+' food'), detail:f.tip+' · '+moneyRs(f.cost), onBook:()=>this.toast('Reserved at '+f.name+' (demo)') }));
-      const d1 = t.days[1] || { stops:[] };
+      const lvActiveDayIdx = st.lvActiveDay||0;
+      const d1 = t.days[lvActiveDayIdx+1] || { stops:[] };
       const tomorrowName = d1.stops.slice(0,2).map(s=>shortName(s.name)).join(' & ') || 'More to explore';
       const tomorrowPhotoQ = (d1.stops[0] && d1.stops[0].photo) || dest.photo;
       return {
         isToday:st.lvScreen==='today', isReplan:st.lvScreen==='replan', isComplete:st.lvScreen==='complete', isRecap:st.lvScreen==='recap', foodOpen:st.lvFoodOpen,
+        lvDayLabel: 'LIVE · DAY '+String(lvActiveDayIdx+1).padStart(2,'0'),
+        wrapDayHeading: "That's a wrap on Day "+(lvActiveDayIdx+1),
+        wrapDayKicker: 'DAY '+String(lvActiveDayIdx+1).padStart(2,'0')+' · COMPLETE',
+        tomorrowKicker: 'TOMORROW · DAY '+String(lvActiveDayIdx+2).padStart(2,'0'),
         todayTitle:'Today in '+dest.name+' '+t.emoji, todayMeta:t.code+' · '+lvDoneCount+'/'+lvStops.length+' DONE · '+ALL_COUNT+' TRAVELLERS',
         lvEtaLine, lvCheckpoints,
         offlineBtnBg: lvOffline?'var(--ink)':'var(--canvas)', offlineBtnFg: lvOffline?'#fff':'var(--sec)', offlineBtnLabel: lvOffline?'Offline':'Online', offlineIconPath: lvOffline?ICONS['wifi-slash']:ICONS['wifi-high'], showOffline:lvOffline,

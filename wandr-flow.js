@@ -312,7 +312,7 @@ window.WandrFlow = {
     // ============================================================
     //  LIVE flow
     // ============================================================
-    inst.liveStops = () => { const t=inst.currentTrip(); return t.live.stops || liveStopsFromDay(t.days[0]); };
+    inst.liveStops = () => { const t=inst.currentTrip(); const dayIdx=inst.state.lvActiveDay||0; if (dayIdx>0) return liveStopsFromDay(t.days[dayIdx]||t.days[0]); return t.live.stops || liveStopsFromDay(t.days[0]); };
     inst.lvNextStopId = () => { const stops=inst.liveStops(); const ci=inst.currentTrip().live.checkins; const s=stops.find(s=>!ci[s.id]); return s ? s.id : null; };
     inst.lvAccept = () => {
       const dest=inst.currentDest(); const a=dest.alert; const sw=alertSwapStop(dest, inst.plMult());
