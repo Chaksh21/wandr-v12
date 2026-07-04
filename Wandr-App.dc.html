@@ -2069,8 +2069,7 @@
 
   <!-- ==================== SPLASH ==================== -->
   <sc-if value="{{ viewSplash }}" hint-placeholder-val="{{ false }}">
-  <div class="screen {{ splashExitClass }}" onClick="{{ splashSkip }}" role="button" aria-label="Continue" style="position:absolute;inset:0;z-index:46;background:var(--accent);display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;overflow:visible">
-    <img src="./assets/illustrations/Splash.png" alt="" class="wandr-splash-mark" style="width:130%;max-width:none;height:auto;margin-bottom:8px;pointer-events:none"/>
+  <div class="screen {{ splashExitClass }}" onClick="{{ splashSkip }}" role="button" aria-label="Continue" style="position:absolute;inset:0;z-index:46;background:var(--accent);display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;overflow:hidden">
     <div class="wandr-sys wandr-splash-kicker" style="font-size:14px;color:rgba(255,255,255,.78);margin-bottom:16px;">One plan. Whole group.</div>
     <h1 class="wandr-hero wandr-splash-mark" style="font-size:56px;margin:0;color:#fff">Wandr</h1>
   </div>
@@ -2085,7 +2084,7 @@
         <p style="font-size:16px;color:var(--sec);margin:12px 0 0">Plan together. Vote it in. Ship the trip.</p>
       </div>
       <div style="flex:1;display:flex;align-items:center;justify-content:center;min-height:240px;margin:20px 0">
-        <img src="./assets/illustrations/ill_signup_persona_planner.png" alt="" style="width:100%;max-width:260px;height:auto"/>
+        <img src="./assets/illustrations/Splash.png" alt="" style="width:100%;max-width:320px;height:auto"/>
       </div>
       <div>
         <button class="cta" onClick="{{ auSignup }}" style="width:100%;padding:16px;font-size:16px;box-shadow:0 12px 30px rgba(255,90,31,.3)">Start the trip of your dreams</button>
