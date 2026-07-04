@@ -169,7 +169,7 @@ window.WandrFeatures = {
         { label:'Sort inspiration into places', tag:'COMPLETE', s:'done' },
         { label:'Draft day-by-day itinerary', tag:'IN PROGRESS', s:'now' },
         { label:'Match group pace & budget', tag:'QUEUED', s:'wait' },
-      ].map(t2=>({ label:t2.label, tag:t2.tag, dotIcon: t2.s==='done'?ICONS['check']:(t2.s==='now'?ICONS['circle-fill']:ICONS['circle']), dotBg: t2.s==='done'?'#2E4034':(t2.s==='now'?'var(--accent)':'#C7C1B8'), tagFg: t2.s==='done'?'#2E4034':(t2.s==='now'?'var(--accent)':'var(--sec)'), bg: t2.s==='now'?'var(--accent-weak)':'#fff' }));
+      ].map(t2=>({ label:t2.label, tag:t2.tag, dotIcon: t2.s==='done'?ICONS['check']:(t2.s==='now'?ICONS['circle-fill']:ICONS['circle']), dotBg: t2.s==='done'?'#1F8A5F':(t2.s==='now'?'var(--accent)':'#C7C1B8'), tagFg: t2.s==='done'?'#1F8A5F':(t2.s==='now'?'var(--accent)':'var(--sec)'), bg: t2.s==='now'?'var(--accent-weak)':'#fff' }));
       const lockId = st.suLockedTheme || 'classic';
       const lockedLabel = (cfg.themes.find(t2=>t2.id===lockId)||{}).label || 'Classic Highlights';
       const lockedDraft = draftGen(funnelDest, suPrefs, lockId, 2);
@@ -314,7 +314,7 @@ window.WandrFeatures = {
       };
       const plFeed = [
         { name:'You', initial:'Y', avatar:'var(--accent)', text:'updated the plan in place.', when:'JUST NOW' },
-        { name:'Aanya', initial:'A', avatar:'#2E4034', text:'is viewing the changes.', when:'LIVE' },
+        { name:'Aanya', initial:'A', avatar:'#1F8A5F', text:'is viewing the changes.', when:'LIVE' },
         { name:'Rohit', initial:'R', avatar:'#7A6E5C', text:'is still pending - will get the update on join.', when:'PENDING' }
       ];
       return {
@@ -363,7 +363,7 @@ window.WandrFeatures = {
         else if (pending){ tag='PENDING'; tagBg='transparent'; tagFg='var(--tip-ink)'; tagExtra='border:1px dashed var(--accent);'; }
         else if (vetoed){ tag='VETOED'; tagBg='var(--accent-weak)'; tagFg='var(--tip-ink)'; }
         else if (voted){ tag='VOTED'; tagBg='var(--accent)'; tagFg='#241F1A'; }
-        else if (editor){ tag='EDITING'; tagBg='rgba(46,64,52,.14)'; tagFg='#2E4034'; }
+        else if (editor){ tag='EDITING'; tagBg='rgba(31,138,95,.14)'; tagFg='#1F8A5F'; }
         const showProceedLink = pending && !g.proceeded;
         const showManage = !companion && !pending;
         return { id:m.id, name:m.name, role:roleLabel, sub:m.sub, initial:m.name[0], bg:m.bg,
@@ -387,7 +387,7 @@ window.WandrFeatures = {
       const resolveReason = this.grIsDeadlock() ? 'MUTUAL-VETO DEADLOCK - NEEDS A NEUTRAL PICK' : 'TIE - NEEDS A PLANNER TIEBREAK';
       const tiebreakChoices = poll.options.map(o=>({ label:'Pick '+o.label, onPick:()=>this.grFinish(o.label,'PLANNER TIEBREAK') }));
       const grActivity = [
-        { initial:'A', bg:'#2E4034', text:'Aanya is editing Day 1', time:'2M AGO' },
+        { initial:'A', bg:'#1F8A5F', text:'Aanya is editing Day 1', time:'2M AGO' },
         { initial:'Y', bg:'#FF5A1F', text:'You opened a vote', time:'11M AGO' },
         { initial:'R', bg:'#7A6E5C', text:'Rohit was invited', time:'34M AGO' },
       ];
@@ -406,7 +406,7 @@ window.WandrFeatures = {
         onCloseMemberAction: ()=>this.grCloseMemberAction(),
         showProceeded: grGroup && g.proceeded,
         pollQuestion:poll.question, deadline:poll.deadline, pollStatus:this.grStatusLabel(grStatus),
-        statusBg: grStatus==='RESOLVED'?'var(--accent)':(grStatus==='VOTING_OPEN'?'rgba(46,64,52,.14)':'var(--accent-weak)'), statusFg: grStatus==='RESOLVED'?'#fff':(grStatus==='VOTING_OPEN'?'#2E4034':'var(--tip-ink)'),
+        statusBg: grStatus==='RESOLVED'?'var(--accent)':(grStatus==='VOTING_OPEN'?'rgba(31,138,95,.14)':'var(--accent-weak)'), statusFg: grStatus==='RESOLVED'?'#fff':(grStatus==='VOTING_OPEN'?'#1F8A5F':'var(--tip-ink)'),
         grBackToOverview:()=>this.setState({ view:'overview', grSheetOpen:false, grInviteOpen:false, grVetoConfirm:null, grResolveMode:null }),
         grOpenInvite:()=>this.setState({ grInviteOpen:true }), grCloseInvite:()=>this.setState({ grInviteOpen:false }),
         grQr: Array.from({length:36},(x,i)=>({ c: ((i*7+3)%5<2 || i===0 || i===5 || i===30) ? 'var(--ink)' : 'transparent' })),
@@ -431,7 +431,7 @@ window.WandrFeatures = {
       const lvNextStop = lvStops.find(s=>s.id===lvNextId) || null;
       const lvAllDone = lvDoneCount>0 && !lvNextStop;
       const lvEtaLine = lvAllDone ? 'ALL WRAPPED FOR TODAY' : 'NEXT · '+(lvNextStop?shortName(lvNextStop.name):'-')+' · ~15 MIN AWAY';
-      const cpDone={bg:'#2E4034',mark:ICONS['check'],fg:'var(--ink)'}, cpCurrent={bg:'var(--accent)',mark:ICONS['circle-fill'],fg:'var(--ink)'}, cpPending={bg:'#C7C1B8',mark:ICONS['circle'],fg:'var(--sec)'};
+      const cpDone={bg:'#1F8A5F',mark:ICONS['check'],fg:'var(--ink)'}, cpCurrent={bg:'var(--accent)',mark:ICONS['circle-fill'],fg:'var(--ink)'}, cpPending={bg:'#C7C1B8',mark:ICONS['circle'],fg:'var(--sec)'};
       const lvCheckpoints = lvAllDone ? [
         Object.assign({ label:'Left stay' }, cpDone, { line:'var(--border)', lineDisplay:'block' }),
         Object.assign({ label:'En route' }, cpDone, { line:'var(--border)', lineDisplay:'block' }),
@@ -446,19 +446,19 @@ window.WandrFeatures = {
         Object.assign({ label: lvNextStop?shortName(lvNextStop.name):'-' }, cpCurrent, { line:'transparent', lineDisplay:'none' }),
       ]);
       const lvPinPos = [[18,58],[48,30],[78,66]];
-      const lvMapPins = lvStops.map((s,i)=>{ const done=!!live.checkins[s.id]; const pos=lvPinPos[i%3]; return { style:'position:absolute;left:'+pos[0]+'%;top:'+pos[1]+'%;transform:translate(-50%,-50%);width:28px;height:28px;border-radius:999px;background:'+(done?'#2E4034':'var(--accent)')+';color:#fff;display:flex;align-items:center;justify-content:center;font-family:\'DM Sans\';font-weight:600;font-size:13px;border:2px solid #fff;box-shadow:0 3px 8px rgba(36,31,26,.25)', label: done?'':String(s.pin), checkDisplay: done?'inline-block':'none' }; });
+      const lvMapPins = lvStops.map((s,i)=>{ const done=!!live.checkins[s.id]; const pos=lvPinPos[i%3]; return { style:'position:absolute;left:'+pos[0]+'%;top:'+pos[1]+'%;transform:translate(-50%,-50%);width:28px;height:28px;border-radius:999px;background:'+(done?'#1F8A5F':'var(--accent)')+';color:#fff;display:flex;align-items:center;justify-content:center;font-family:\'DM Sans\';font-weight:600;font-size:13px;border:2px solid #fff;box-shadow:0 3px 8px rgba(36,31,26,.25)', label: done?'':String(s.pin), checkDisplay: done?'inline-block':'none' }; });
       const lvOffline = st.lvOffline;
       const dayStops = lvStops.map(s=>{
         const done=!!live.checkins[s.id], isNext=s.id===lvNextId, p=pillFor(s.cat);
         const pend=!!(live.pending&&live.pending[s.id]);
         let checkinPrompt, promptColor, checkinLabel, checkinBg, onCheckin;
-        if (done){ checkinPrompt='You made it'; promptColor='#2E4034'; checkinLabel='Checked in'; checkinBg='#2E4034'; onCheckin=()=>{}; }
+        if (done){ checkinPrompt='You made it'; promptColor='#1F8A5F'; checkinLabel='Checked in'; checkinBg='#1F8A5F'; onCheckin=()=>{}; }
         else if (lvOffline){
           checkinPrompt='Check-in syncs when back online'; promptColor='var(--sec)'; checkinLabel='Sync paused'; checkinBg='#B8B2A8'; onCheckin=()=>this.lvQueueCheckin(s.id);
           if (pend){ checkinPrompt='Saved offline'; checkinLabel='Sync pending'; checkinBg='#B8B2A8'; promptColor='var(--sec)'; }
         }
         else { checkinPrompt='Did you go?'; promptColor='var(--sec)'; checkinLabel='Check in'; checkinBg='var(--ink)'; onCheckin=()=>this.lvCheckin(s.id); }
-        return { photo:s.photo, name:s.name, why:s.why, hours:s.hours, reach:s.reach, reachIconPath:reachIcon(s.reach), time:s.time, photoUrl:photoUrl(s.photo), costLabel:moneyFree(s.cost), pinBg: done?'#2E4034':'var(--accent)', pinLabel: done?'':String(s.pin), pinCheckDisplay: done?'inline-block':'none', pinClass: done?'wandr-pop':'', nextDisplay: isNext?'inline-block':'none', ring: isNext?'0 0 0 2px var(--accent),0 8px 24px rgba(36,31,26,.06)':'0 8px 24px rgba(36,31,26,.06)', pillBg:p.bg, pillFg:p.fg, pillLabel:p.label, checkinPrompt, promptColor, checkinLabel, checkinIconDisplay: done?'inline-block':'none', checkinBg, onCheckin };
+        return { photo:s.photo, name:s.name, why:s.why, hours:s.hours, reach:s.reach, reachIconPath:reachIcon(s.reach), time:s.time, photoUrl:photoUrl(s.photo), costLabel:moneyFree(s.cost), pinBg: done?'#1F8A5F':'var(--accent)', pinLabel: done?'':String(s.pin), pinCheckDisplay: done?'inline-block':'none', pinClass: done?'wandr-pop':'', nextDisplay: isNext?'inline-block':'none', ring: isNext?'0 0 0 2px var(--accent),0 8px 24px rgba(36,31,26,.06)':'0 8px 24px rgba(36,31,26,.06)', pillBg:p.bg, pillFg:p.fg, pillLabel:p.label, checkinPrompt, promptColor, checkinLabel, checkinIconDisplay: done?'inline-block':'none', checkinBg, onCheckin };
       });
       const swapStop = alertSwapStop(dest, this.plMult());
       const alertToday = lvStops.some(s=>s.name.indexOf(dest.alert.swapOut)===0);
@@ -472,7 +472,7 @@ window.WandrFeatures = {
       const mult=(DATASET.config.budget[t.prefs.budget]||DATASET.config.budget.comfort).mult; const catBudgets = { 'Sights & entries': Math.round(900*mult), 'Food & dining': Math.round(500*mult) };
       const spentByCat = { 'Sights & entries':0, 'Food & dining':0 };
       lvStops.forEach(s=>{ spentByCat[catLabelFor(s.cat)] += (s.cost||0); });
-      const budgetBars = Object.keys(catBudgets).map(label=>{ const budget=catBudgets[label], spent=spentByCat[label], over=spent>budget, maxVal=Math.max(budget,spent,1); const underPct=Math.round(Math.min(spent,budget)/maxVal*100), overPct=over?Math.round((spent-budget)/maxVal*100):0, tickPct=Math.round(budget/maxVal*100); return { label, color: over?'var(--accent)':'#2E4034', amountLabel: moneyRs(spent)+' / '+moneyRs(budget)+(over?' · OVER':' · UNDER'), underWidth:underPct+'%', overWidth:overPct+'%', overDisplay: over?'block':'none', tickPct:tickPct+'%' }; });
+      const budgetBars = Object.keys(catBudgets).map(label=>{ const budget=catBudgets[label], spent=spentByCat[label], over=spent>budget, maxVal=Math.max(budget,spent,1); const underPct=Math.round(Math.min(spent,budget)/maxVal*100), overPct=over?Math.round((spent-budget)/maxVal*100):0, tickPct=Math.round(budget/maxVal*100); return { label, color: over?'var(--accent)':'#1F8A5F', amountLabel: moneyRs(spent)+' / '+moneyRs(budget)+(over?' · OVER':' · UNDER'), underWidth:underPct+'%', overWidth:overPct+'%', overDisplay: over?'block':'none', tickPct:tickPct+'%' }; });
       const allStopPhotos = t.days.reduce((acc,d)=>acc.concat(d.stops.map(s=>s.photo)),[]);
       const momentQs = (allStopPhotos.length ? allStopPhotos.slice() : [dest.photo]);
       while (momentQs.length<6) momentQs.push(dest.photo);
@@ -565,7 +565,7 @@ window.WandrFeatures = {
       let exAll = cityKeysX.flatMap(k=>{ const d=DATASET.destinations[k]; return d.places.map(p=>({ k, p, d })); });
       if (st.exSlot)  exAll = exAll.filter(x=> x.p.slot===st.exSlot || (st.exSlot==='morning'&&x.p.slot==='fullday'));
       if (st.exPrice) exAll = exAll.filter(x=> priceBand(x.p.cost)===st.exPrice);
-      const exPlaces = exAll.slice(0, 10).map(({k,p,d})=>{ const pct=matchPct(p, st.user.prefs); const bg = pct>=90?'#2E4034':(pct>=75?'#5B7565':'#7A6E5C'); return { name:p.name, city:d.name, pct:pct+'% match', pctBg: bg, why:p.why, photoUrl:photoUrl(p.photo), photoQ:p.photo, cost:moneyFree(p.cost), saved:inShort(k,p.id), savedColor: inShort(k,p.id)?'var(--accent)':'var(--sec)', onSave:()=>toggleShort(k,p.id,p.name), onPick:()=>openPsDetailX(k, p.id) }; });
+      const exPlaces = exAll.slice(0, 10).map(({k,p,d})=>{ const pct=matchPct(p, st.user.prefs); const bg = pct>=90?'#1F8A5F':(pct>=75?'#3FA377':'#7A6E5C'); return { name:p.name, city:d.name, pct:pct+'% match', pctBg: bg, why:p.why, photoUrl:photoUrl(p.photo), photoQ:p.photo, cost:moneyFree(p.cost), saved:inShort(k,p.id), savedColor: inShort(k,p.id)?'var(--accent)':'var(--sec)', onSave:()=>toggleShort(k,p.id,p.name), onPick:()=>openPsDetailX(k, p.id) }; });
       const exFilterChipsSlot = ['morning','afternoon','evening'].map(sl=>({ label:sl.toUpperCase(), on:st.exSlot===sl, bg:st.exSlot===sl?'var(--ink)':'#fff', fg:st.exSlot===sl?'#fff':'var(--sec)', onPick:()=>this.setState(x=>({ exSlot: x.exSlot===sl?null:sl })) }));
       const exFilterChipsPrice = [['₹','Under 200'],['₹₹','200-800'],['₹₹₹','800+']].map(([pr,rng])=>({ label:pr+' '+rng, on:st.exPrice===pr, bg:st.exPrice===pr?'var(--ink)':'#fff', fg:st.exPrice===pr?'#fff':'var(--sec)', onPick:()=>this.setState(x=>({ exPrice: x.exPrice===pr?null:pr })) }));
       const shGroups = [];
@@ -620,7 +620,7 @@ window.WandrFeatures = {
         { label:'Draft locked', done:true },
         { label:'Group votes settled', done:!!t.group.resolved },
         { label:'Everyone joined', done:!MEMBERS.some(m=>m.status==='pending') },
-      ].map(x=>({ label:x.label, dotIcon:x.done?ICONS['check']:ICONS['circle'], fg:x.done?'#2E4034':'var(--sec)' }));
+      ].map(x=>({ label:x.label, dotIcon:x.done?ICONS['check']:ICONS['circle'], fg:x.done?'#1F8A5F':'var(--sec)' }));
       const moments = isPast ? (t.days[0]||{stops:[]}).stops.slice(0,3).map(x=>({ photoUrl:photoUrl(x.photo), photoQ:x.photo, name:x.name })) : [];
       return {
         viewOverview: st.view==='overview',
@@ -654,7 +654,7 @@ window.WandrFeatures = {
       const { st, t } = c;
       const perP = t.days.reduce((x,d)=>x+d.stops.reduce((y,s2)=>y+(s2.cost||0),0),0);
       const settled = t.group.settled || {};
-      const rows = MEMBERS.filter(m=>m.id!=='me').map(m=>{ const isS = !!settled[m.id]; return { name:m.name, initial:(m.name[0]), bg:m.bg, amt: moneyRs(perP), status: isS?'SETTLED':'OWES YOU', fg: isS?'#2E4034':'var(--tip-ink)', btnLabel: isS?'Settled':'Mark settled', btnIconDisplay: isS?'inline-block':'none', onToggle:()=>{ this.updTrip(tt=>{ tt.group.settled = Object.assign({}, tt.group.settled, { [m.id]: !isS }); }); } }; });
+      const rows = MEMBERS.filter(m=>m.id!=='me').map(m=>{ const isS = !!settled[m.id]; return { name:m.name, initial:(m.name[0]), bg:m.bg, amt: moneyRs(perP), status: isS?'SETTLED':'OWES YOU', fg: isS?'#1F8A5F':'var(--tip-ink)', btnLabel: isS?'Settled':'Mark settled', btnIconDisplay: isS?'inline-block':'none', onToggle:()=>{ this.updTrip(tt=>{ tt.group.settled = Object.assign({}, tt.group.settled, { [m.id]: !isS }); }); } }; });
       const owed = MEMBERS.filter(m=>m.id!=='me' && !settled[m.id]).length * perP;
       const buPrivacyOn = !!t.group.budgetPrivate;
       return {
@@ -675,7 +675,7 @@ window.WandrFeatures = {
       const { st, t } = c;
       const items = t.group.packing || PACKING_DEFAULT;
       const doneN = items.filter(i=>i.done).length;
-      const pkItems = items.map((it,i)=>{ const mem = MEMBERS.find(m=>m.name===it.owner); const ownerBg = mem?mem.bg:'#7A6E5C'; const ownerInitial = it.owner==='You'?'Y':(it.owner[0]||'?'); return { label:it.label, checkBorder: it.done?'#2E4034':'var(--border)', checkBg: it.done?'#2E4034':'#fff', checkIconDisplay: it.done?'inline-block':'none', strike: it.done?'text-decoration:line-through;opacity:.45;':'', ownerBg, ownerInitial, onToggle:()=>{ this.updTrip(tt=>{ const arr=(tt.group.packing||PACKING_DEFAULT).map(x=>Object.assign({},x)); arr[i].done=!arr[i].done; tt.group.packing=arr; }); } }; });
+      const pkItems = items.map((it,i)=>{ const mem = MEMBERS.find(m=>m.name===it.owner); const ownerBg = mem?mem.bg:'#7A6E5C'; const ownerInitial = it.owner==='You'?'Y':(it.owner[0]||'?'); return { label:it.label, checkBorder: it.done?'#1F8A5F':'var(--border)', checkBg: it.done?'#1F8A5F':'#fff', checkIconDisplay: it.done?'inline-block':'none', strike: it.done?'text-decoration:line-through;opacity:.45;':'', ownerBg, ownerInitial, onToggle:()=>{ this.updTrip(tt=>{ const arr=(tt.group.packing||PACKING_DEFAULT).map(x=>Object.assign({},x)); arr[i].done=!arr[i].done; tt.group.packing=arr; }); } }; });
       return {
         viewPacking: st.view==='packing',
         pkBack: ()=>this.setState({ view:'overview' }),

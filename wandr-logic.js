@@ -17,7 +17,7 @@ var CURRENT_SCHEMA = 1;
 // ---------- group (shared sample across trips) ----------
 var MEMBERS = [
   { id:'me', name:'You',   role:'PLANNER · ADMIN', status:'joined',  type:'app',       bg:'#FF5A1F', sub:'Balanced pace · Chill, Foodie' },
-  { id:'m2', name:'Aanya', role:'COLLABORATOR',    status:'joined',  type:'app',       bg:'#2E4034', sub:'Packed pace · Adventure, Active' },
+  { id:'m2', name:'Aanya', role:'COLLABORATOR',    status:'joined',  type:'app',       bg:'#1F8A5F', sub:'Packed pace · Adventure, Active' },
   { id:'m3', name:'Rohit', role:'COLLABORATOR',    status:'pending', type:'app',       bg:'#7A6E5C', sub:'Slow pace · Chill, Culture' },
   { id:'m4', name:'Dadi',  role:'COMPANION',       status:'joined',  type:'companion', bg:'#B0451A', sub:'Added by You - on the trip, not on the app' },
 ];
@@ -141,8 +141,8 @@ function moneyFree(n){ return n===0 ? 'Free' : '₹'+Number(n).toLocaleString('e
 function moneyRs(n){ return n===0 ? '₹0' : '₹'+Number(n).toLocaleString('en-IN'); }
 function pillFor(cat){
   if (cat==='food')   return { bg:'var(--accent-weak)', fg:'var(--tip-ink)', label:'FOOD' };
-  if (cat==='nature') return { bg:'rgba(46,64,52,.14)', fg:'#2E4034', label:'NATURE' };
-  return { bg:'rgba(46,64,52,.14)', fg:'#2E4034', label:'SIGHTS' };
+  if (cat==='nature') return { bg:'rgba(31,138,95,.14)', fg:'#1F8A5F', label:'NATURE' };
+  return { bg:'rgba(31,138,95,.14)', fg:'#1F8A5F', label:'SIGHTS' };
 }
 function shortName(n){ return String(n).split(/[&(]/)[0].trim().split(' ').slice(0,2).join(' '); }
 function parseTimeStr(t){ const m=String(t).match(/(\d+):(\d+)\s*(AM|PM)/i); if(!m) return 0; let h=(+m[1])%12; if(/PM/i.test(m[3])) h+=12; return h*60+(+m[2]); }

@@ -776,7 +776,7 @@
             </span>
           </button>
         </sc-for>
-        <div class="lbl" style="font-size:9.5px;color:#2E4034;margin:4px 2px 0;min-height:14px">{{ qzAck }}</div>
+        <div class="lbl" style="font-size:9.5px;color:#1F8A5F;margin:4px 2px 0;min-height:14px">{{ qzAck }}</div>
       </sc-if>
       <sc-if value="{{ qzIsMulti }}" hint-placeholder-val="{{ false }}">
         <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px">
@@ -1079,8 +1079,8 @@
     <sc-if value="{{ scr_s8 }}" hint-placeholder-val="{{ true }}">
     <div style="padding:20px 22px 40px">
       <div style="display:flex;align-items:center;gap:12px;margin-bottom:22px">
-        <span class="wandr-sys" style="font-size:11px;color:#2E4034">COMPLETE · 100%</span>
-        <div style="flex:1;height:4px;border-radius:999px;background:var(--well);overflow:hidden"><div style="height:100%;width:100%;background:#2E4034"></div></div>
+        <span class="wandr-sys" style="font-size:11px;color:#1F8A5F">COMPLETE · 100%</span>
+        <div style="flex:1;height:4px;border-radius:999px;background:var(--well);overflow:hidden"><div style="height:100%;width:100%;background:#1F8A5F"></div></div>
       </div>
       <div style="text-align:center;margin-bottom:22px">
         <div style="width:64px;height:64px;border-radius:999px;background:var(--accent-weak);display:flex;align-items:center;justify-content:center;font-size:30px;margin:0 auto 14px">🎉</div>
@@ -1201,7 +1201,7 @@
         </sc-for>
       </div>
       <div style="margin:12px 20px 0;display:flex;gap:8px">
-        <button class="wandr-btn" onClick="{{ openRules }}" style="flex:1;display:flex;align-items:center;justify-content:space-between;gap:9px;border:none;background:#2E4034;color:#F3EEE4;border-radius:14px;padding:12px 14px;cursor:pointer">
+        <button class="wandr-btn" onClick="{{ openRules }}" style="flex:1;display:flex;align-items:center;justify-content:space-between;gap:9px;border:none;background:#1F8A5F;color:#F3EEE4;border-radius:14px;padding:12px 14px;cursor:pointer">
           <span style="display:flex;align-items:center;gap:8px"><svg viewBox="0 0 256 256" width="13" height="13" fill="currentColor" style="flex:none;color:#DDE7DF"><path d="M232,93.72,162.28,24A20,20,0,0,0,132,26.34L110.35,57.61a4,4,0,0,1-4.94,1.32L70.87,44.46A20,20,0,0,0,48.6,48.6h0a20,20,0,0,0-4.14,22.27L58.93,105.4a4,4,0,0,1-1.32,4.94L26.34,132A20,20,0,0,0,24,162.28L93.72,232a20,20,0,0,0,30.24-2.34l21.67-31.27a4,4,0,0,1,4.94-1.32l34.54,14.47a20,20,0,0,0,22.27-4.14h0a20,20,0,0,0,4.14-22.27L197.07,150.6a4,4,0,0,1,1.32-4.94L229.66,124A20,20,0,0,0,232,93.72Z"/></svg><span class="lbl" style="font-size:10.5px;color:#DDE7DF">3 THINGS TO KNOW</span></span>
           <span style="font-size:14px;color:#DDE7DF"><svg viewBox="0 0 256 256" width="14" height="14" fill="currentColor" style="vertical-align:middle"><path d="{{ icCaretRight }}"/></svg></span>
         </button>
@@ -1330,7 +1330,7 @@
       <div onClick="{{ closeRules }}" role="button" aria-label="Close" style="position:absolute;inset:0;background:rgba(36,31,26,.42);animation:wandrFadeIn .28s ease;z-index:20"></div>
       <div class="scroll" role="dialog" aria-modal="true" style="position:absolute;left:0;right:0;bottom:0;background:var(--canvas);border-radius:26px 26px 0 0;box-shadow:0 -14px 40px rgba(36,31,26,.22);animation:wandrSheetIn .34s cubic-bezier(.22,1,.36,1);z-index:21;max-height:70%;overflow:auto;padding:8px 20px 30px">
         <div style="width:42px;height:5px;border-radius:999px;background:var(--border);margin:6px auto 16px"></div>
-        <div class="lbl" style="font-size:10.5px;color:#2E4034;margin-bottom:5px">PINNED · GOOD TO KNOW</div>
+        <div class="lbl" style="font-size:10.5px;color:#1F8A5F;margin-bottom:5px">PINNED · GOOD TO KNOW</div>
         <h2 class="disp" style="font-size:24px;color:var(--ink);margin:0 0 12px">Three things to know</h2>
         <sc-for list="{{ flexRules }}" as="r" hint-placeholder-count="3">
           <div style="display:flex;gap:10px;padding:9px 0;font-size:14px;color:var(--ink);border-bottom:1px solid var(--border)">
@@ -1838,7 +1838,7 @@
       </div>
       <div style="padding:14px 20px 0">
         <div style="position:relative;height:150px;border-radius:18px;overflow:hidden;border:1px solid var(--border);background:radial-gradient(circle at 30% 20%, #eef1ec 0 30%, transparent 31%),linear-gradient(135deg,#EFF2ED 0%,#E7ECE6 100%)">
-          <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(46,64,52,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(46,64,52,.05) 1px,transparent 1px);background-size:26px 26px"></div>
+          <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(31,138,95,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(31,138,95,.05) 1px,transparent 1px);background-size:26px 26px"></div>
           <svg style="position:absolute;inset:0;width:100%;height:100%" preserveAspectRatio="none"><path d="M18,90 L200,45 L320,100" stroke="rgba(255,90,31,.35)" stroke-width="2" stroke-dasharray="5 5" fill="none"/></svg>
           <sc-for list="{{ lvMapPins }}" as="pin" hint-placeholder-count="3">
             <div style="{{ pin.style }}"><svg viewBox="0 0 256 256" width="13" height="13" fill="currentColor" style="display:{{ pin.checkDisplay }}"><path d="{{ icCheck }}"/></svg>{{ pin.label }}</div>
@@ -1862,9 +1862,9 @@
         </div>
       </sc-if>
       <sc-if value="{{ showResolved }}" hint-placeholder-val="{{ false }}">
-        <div style="margin:16px 20px 0;padding:14px 16px;border-radius:18px;background:rgba(46,64,52,.08);border:1px solid rgba(46,64,52,.16);display:flex;gap:10px;align-items:center">
+        <div style="margin:16px 20px 0;padding:14px 16px;border-radius:18px;background:rgba(31,138,95,.08);border:1px solid rgba(31,138,95,.16);display:flex;gap:10px;align-items:center">
           <span style="font-size:18px">✅</span>
-          <div><div class="lbl" style="font-size:10px;color:#2E4034">Alert resolved</div>
+          <div><div class="lbl" style="font-size:10px;color:#1F8A5F">Alert resolved</div>
           <div style="font-size:13.5px;color:var(--ink);margin-top:2px">{{ resolvedText }}</div></div>
         </div>
       </sc-if>
@@ -1935,7 +1935,7 @@
           <div style="position:relative;height:104px;background:#E9DDC8">
             <img class="wandr-photo" data-src="{{ lvBeforePhotoUrl }}" data-photo="{{ lvBeforePhoto }}" alt="{{ lvBeforeName }}" style="width:100%;height:100%;object-fit:cover;display:block"/>
             <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(36,31,26,.15),rgba(36,31,26,.6))"></div>
-            <span class="lbl" style="position:absolute;top:9px;left:9px;font-size:10px;padding:4px 8px;border-radius:7px;background:rgba(46,64,52,.14);color:#2E4034">BEFORE</span>
+            <span class="lbl" style="position:absolute;top:9px;left:9px;font-size:10px;padding:4px 8px;border-radius:7px;background:rgba(31,138,95,.14);color:#1F8A5F">BEFORE</span>
           </div>
           <div style="padding:12px 13px"><h4 class="ral" style="font-weight:600;font-size:16px;color:var(--ink);margin:0 0 5px">{{ lvBeforeName }}</h4><div class="lbl" style="font-size:10px;color:var(--sec)">{{ lvBeforeMeta }}</div></div>
         </div>
@@ -1953,7 +1953,7 @@
         <span style="font-size:16px"><svg viewBox="0 0 256 256" width="16" height="16" fill="currentColor" style="vertical-align:middle"><path d="{{ icWarning }}"/></svg></span>
         <div>
           <div class="lbl" style="font-size:10px;color:var(--tip-ink);margin-bottom:3px">Member preference</div>
-          <div style="font-size:13.5px;color:var(--ink)">Aanya <span class="lbl" style="font-size:10px;color:#2E4034;background:rgba(46,64,52,.14);padding:2px 6px;border-radius:6px">PACKED · ADVENTURE</span> {{ replanMemberNote }}</div>
+          <div style="font-size:13.5px;color:var(--ink)">Aanya <span class="lbl" style="font-size:10px;color:#1F8A5F;background:rgba(31,138,95,.14);padding:2px 6px;border-radius:6px">PACKED · ADVENTURE</span> {{ replanMemberNote }}</div>
         </div>
       </div>
       <button onClick="{{ accept }}" style="width:100%;padding:16px;border:none;border-radius:999px;background:var(--accent);color:#fff;font-family:inherit;font-size:16px;font-weight:600;cursor:pointer;box-shadow:0 10px 26px rgba(255,90,31,.3);margin-bottom:12px">{{ acceptLabel }} <svg viewBox="0 0 256 256" width="14" height="14" fill="currentColor" style="vertical-align:-2px;margin-left:4px"><path d="{{ icArrowRight }}"/></svg></button>
@@ -1969,7 +1969,7 @@
       <div style="border:1px solid var(--border);border-radius:20px;overflow:hidden;margin-bottom:22px">
         <sc-for list="{{ doneStops }}" as="stop" hint-placeholder-count="3">
           <div style="display:flex;align-items:center;gap:12px;padding:14px 16px;border-bottom:{{ stop.divider }}">
-            <span style="width:26px;height:26px;border-radius:999px;background:#2E4034;color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;flex:none"><svg viewBox="0 0 256 256" width="12" height="12" fill="currentColor" style="vertical-align:middle"><path d="{{ icCheck }}"/></svg></span>
+            <span style="width:26px;height:26px;border-radius:999px;background:#1F8A5F;color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;flex:none"><svg viewBox="0 0 256 256" width="12" height="12" fill="currentColor" style="vertical-align:middle"><path d="{{ icCheck }}"/></svg></span>
             <div style="flex:1;min-width:0"><div style="font-size:15px;font-weight:600;color:var(--ink)">{{ stop.name }}</div><div class="lbl" style="font-size:10px;color:var(--sec);margin-top:2px">{{ stop.meta }}</div></div>
           </div>
         </sc-for>
@@ -2017,7 +2017,7 @@
               <span class="lbl" style="font-size:10px;color:{{ cat.color }}">{{ cat.amountLabel }}</span>
             </div>
             <div style="position:relative;height:12px;border-radius:999px;background:var(--well)">
-              <div class="wandr-bar" data-grow="1" style="position:absolute;left:0;top:0;height:100%;width:{{ cat.underWidth }};border-radius:999px 0 0 999px;background:#2E4034"></div>
+              <div class="wandr-bar" data-grow="1" style="position:absolute;left:0;top:0;height:100%;width:{{ cat.underWidth }};border-radius:999px 0 0 999px;background:#1F8A5F"></div>
               <div style="position:absolute;top:0;height:100%;left:{{ cat.underWidth }};width:{{ cat.overWidth }};border-radius:0 999px 999px 0;background:var(--accent);display:{{ cat.overDisplay }}"></div>
               <div style="position:absolute;top:-2px;height:14px;width:2px;left:min({{ cat.tickPct }},calc(100% - 2px));background:var(--ink);border-radius:2px"></div>
             </div>
