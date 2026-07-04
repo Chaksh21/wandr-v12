@@ -126,16 +126,16 @@ window.WandrFeatures = {
       if (st.suDestConfirmed){
         destResults = [];
       } else if (!q){
-        destResults = ['shimla','goa','jaipur'].map(k=>{ const d=DATASET.destinations[k]; return { emoji:"", name:d.name, sub:d.tagline, kind:'POPULAR', onPick:()=>pickDest(k) }; });
+        destResults = ['shimla','goa','jaipur'].map(k=>{ const d=DATASET.destinations[k]; return { emoji:"", name:d.name, sub:d.tagline, kind:'POPULAR', photoUrl:photoUrl(d.photo), photoQ:d.photo, onPick:()=>pickDest(k) }; });
       } else {
         const covered = cityKeys.filter(k=>{ const d=DATASET.destinations[k]; return k.indexOf(q)===0 || d.name.toLowerCase().indexOf(q)===0; });
         if (covered.length){
-          destResults = covered.map(k=>{ const d=DATASET.destinations[k]; return { emoji:"", name:d.name, sub:d.tagline, kind:'AVAILABLE', onPick:()=>pickDest(k) }; });
+          destResults = covered.map(k=>{ const d=DATASET.destinations[k]; return { emoji:"", name:d.name, sub:d.tagline, kind:'AVAILABLE', photoUrl:photoUrl(d.photo), photoQ:d.photo, onPick:()=>pickDest(k) }; });
         } else {
           const near = cityKeys.map(k=>({ k, d:editDist(q, k) })).filter(x=>x.d<=2).sort((a,b)=>a.d-b.d)[0];
           if (near){
             const d=DATASET.destinations[near.k];
-            destResults = [{ emoji:"", name:d.name, sub:'Did you mean '+d.name+'?', kind:'AVAILABLE', onPick:()=>pickDest(near.k) }];
+            destResults = [{ emoji:"", name:d.name, sub:'Did you mean '+d.name+'?', kind:'AVAILABLE', photoUrl:photoUrl(d.photo), photoQ:d.photo, onPick:()=>pickDest(near.k) }];
           } else if (FAMOUS_INTL.some(x=>x.indexOf(q)===0 || q.indexOf(x)===0)){
             destNotice = { icon:'🌍', title:'International is on the way', body:"We'll be adding international destinations soon. For now, Wandr covers Indian getaways." };
           } else {

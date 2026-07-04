@@ -863,7 +863,7 @@
         <div class="wandr-sys" style="font-size:13px;color:var(--sec);margin:0 0 8px">SUGGESTIONS</div>
         <sc-for list="{{ destResults }}" as="r" hint-placeholder-count="3">
           <button class="wandr-btn card" onClick="{{ r.onPick }}" style="display:flex;width:100%;align-items:center;gap:12px;text-align:left;padding:13px 15px;margin-bottom:9px;cursor:pointer;box-shadow:none">
-            <span style="font-size:22px">{{ r.emoji }}</span>
+            <span style="position:relative;width:56px;height:56px;border-radius:13px;overflow:hidden;flex:none;background:var(--sand)"><img class="wandr-photo" data-src="{{ r.photoUrl }}" data-photo="{{ r.photoQ }}" alt="{{ r.name }}" style="width:100%;height:100%;object-fit:cover"/></span>
             <span style="flex:1;min-width:0">
               <span style="display:block;font-size:15px;font-weight:600;color:var(--ink)">{{ r.name }}</span>
               <span style="display:block;font-size:12px;color:var(--sec)">{{ r.sub }}</span>
