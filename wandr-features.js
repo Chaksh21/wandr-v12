@@ -181,7 +181,17 @@ window.WandrFeatures = {
       const seasonalConflicts = funnelDest.places.filter(p=>p.closedMonths && p.closedMonths.includes(TRIP_MONTH));
       const showSeasonBanner = seasonalConflicts.length>0;
       const seasonBannerText = seasonalConflicts.length ? ('Heads-up · '+seasonalConflicts[0].name+' is closed in July - we\'ll plan around it') : '';
-      const suOptions = optionsFor(funnelDest, suPrefs, ALL_COUNT).map(o=>{ const sel=st.suLockedTheme===o.id; const previewStops=o.allStops.slice(0,4); const matchesYourPace = o.themePace===suPrefs.pace; return { label:o.label, blurb:o.blurb, paceNote:o.paceNote, matchesYourPaceDisplay: matchesYourPace?'inline-flex':'none', stops:String(o.stops), perPerson:moneyRs(o.perPerson), group:moneyRs(o.group), rating:o.rating.toFixed(1), best:o.id===suBest, ring: sel?'2px solid var(--accent)':'1px solid var(--border)', cardBg: sel?'var(--accent-weak)':'#fff', checkDisplay: sel?'inline-block':'none', checkBg: sel?'var(--accent)':'transparent', checkBord: sel?'none':'2px solid var(--border)', preview:previewStops.map(s=>({ name:s.name, photo:photoUrl(s.photo), q:s.photo })), previewTileWidth: (Math.floor(100/previewStops.length)-2)+'%', onPick:()=>this.setState({ suLockedTheme:o.id }) }; });
+      const suOptions = optionsFor(funnelDest, suPrefs, ALL_COUNT).map(o=>{
+        const sel=st.suLockedTheme===o.id;
+        const totalStops=o.allStops.length;
+        const overflow=totalStops>4;
+        const shownStops=overflow?o.allStops.slice(0,3):o.allStops.slice(0,4);
+        const extraCount=totalStops-3;
+        const matchesYourPace = o.themePace===suPrefs.pace;
+        const tileCount = overflow ? 4 : shownStops.length;
+        const preview = shownStops.map(s=>({ name:s.name, photo:photoUrl(s.photo), q:s.photo, moreDisplay:'none', moreLabel:'' }));
+        if (overflow){ const last=o.allStops[3]; preview.push({ name:last.name, photo:photoUrl(last.photo), q:last.photo, moreDisplay:'flex', moreLabel:'+'+extraCount }); }
+        return { label:o.label, blurb:o.blurb, paceNote:o.paceNote, matchesYourPaceDisplay: matchesYourPace?'inline-flex':'none', stops:String(o.stops), runningLine: o.stops+' stops · '+moneyRs(o.group)+' total', perPerson:moneyRs(o.perPerson), group:moneyRs(o.group), rating:o.rating.toFixed(1), best:o.id===suBest, bestDisplay: o.id===suBest?'inline-flex':'none', ring: sel?'2px solid var(--accent)':'1px solid var(--border)', cardBg: sel?'var(--accent-weak)':'#fff', radioBg: sel?'var(--accent)':'transparent', radioBord: sel?'none':'2px solid var(--border)', radioCheckDisplay: sel?'inline-block':'none', preview, previewTileWidth: (Math.floor(100/tileCount)-2)+'%', onPick:()=>this.setState({ suLockedTheme:o.id }) }; });
       const suPicked = !!st.suLockedTheme;
       const prog = this.suProgFor(st.suScreen);
       return {
