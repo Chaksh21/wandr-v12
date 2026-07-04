@@ -228,7 +228,7 @@ window.WandrFeatures = {
         scr_s8:st.suScreen==='s8', scr_s12:st.suScreen==='s12',
         progLabel:prog.label, progPct:prog.pct,
         seeSample:()=>{ const tt=st.trips.find(x=>x.status==='active')||st.trips[0]; if (tt) openTripId(tt.id); },
-        goS1:()=>this.suNav('s1'), exitSetup:()=>this.setState({ view:'home', suLockedTheme:null, suConfirmed:false, suStaged:[], suPath:null, suTripName:'', suDateStart:null, suDateEnd:null, suDestConfirmed:false, suDestText:'' }), goS2:()=>this.suNav('s2'), goS3:()=>this.suNav('s3'), goS4:()=>this.suNav('s4'),
+        goS1:()=>this.suNav('s1'), exitSetupAsk:()=>this.setState({ suExitConfirm:true }), exitSetupCancel:()=>this.setState({ suExitConfirm:false }), showExitConfirm:!!st.suExitConfirm, exitSetup:()=>this.setState({ view:'home', suExitConfirm:false, suLockedTheme:null, suConfirmed:false, suStaged:[], suPath:null, suTripName:'', suDateStart:null, suDateEnd:null, suDestConfirmed:false, suDestText:'' }), goS2:()=>this.suNav('s2'), goS3:()=>this.suNav('s3'), goS4:()=>this.suNav('s4'),
         goS5:()=>{ if (st.suEditReturn){ const ret=st.suEditReturn; this.setState({ suEditReturn:null }); this.suNav(ret); } else { this.suNav('s5'); } }, goS6:()=>this.suNav('s6'), goS7:()=>this.suNav('s7'), goS8:()=>this.suNav('s8'), goS12:()=>this.suNav('s12'),
         suViewItinerary:()=>openTripId(this.state.activeTripId),
         name:st.suName, homeCity:st.suHomeCity, setName:(e)=>this.setState({ suName:e.target.value }), setHome:(e)=>this.setState({ suHomeCity:e.target.value }),
