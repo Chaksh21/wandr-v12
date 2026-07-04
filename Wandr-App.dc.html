@@ -2058,7 +2058,7 @@
 
   <!-- ==================== AUTH ==================== -->
   <sc-if value="{{ viewAuth }}" hint-placeholder-val="{{ false }}">
-  <div class="screen scroll" style="position:absolute;inset:0;z-index:45;background:var(--screen);overflow-y:auto;padding:20px 26px 56px;display:flex;flex-direction:column">
+  <div class="screen scroll" style="position:absolute;inset:0;z-index:45;background:var(--screen);overflow-y:auto;padding:20px 26px calc(56px + env(safe-area-inset-bottom));display:flex;flex-direction:column">
     <sc-if value="{{ auIsWelcome }}" hint-placeholder-val="{{ true }}">
       <div style="position:absolute;right:-70px;top:110px;width:250px;height:250px;border-radius:999px;background:var(--accent-weak);filter:blur(2px)"></div>
       <img src="./assets/illustrations/ill_splash_wordmark_backdrop.png" alt="" style="position:absolute;right:0;top:0;width:60%;height:auto;opacity:.85;pointer-events:none;z-index:0"/>

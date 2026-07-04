@@ -5,14 +5,14 @@ html,body{margin:0}
   --tip-ink:#B0451A; --border:#ECEAE6; --well:#F4F3F1; --sand:#F1F0EE; --screen:#FDFDFD;
 }
 body{background:#FFFFFF;font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased;color:var(--ink)}
-.wandr-gallery{min-height:100vh;display:flex;justify-content:center;align-items:flex-start;padding:0}
-.wandr-phone{position:relative;width:100%;max-width:440px;min-height:100vh;height:100vh;flex:none;background:var(--screen);overflow:hidden}
+.wandr-gallery{min-height:100vh;min-height:100dvh;display:flex;justify-content:center;align-items:flex-start;padding:0}
+.wandr-phone{position:relative;width:100%;max-width:440px;min-height:100vh;min-height:100dvh;height:100vh;height:100dvh;flex:none;background:var(--screen);overflow:hidden}
 .wandr-app{height:100%;overflow-y:auto}
 @media (max-width:480px){
-  .wandr-phone{width:100%;max-width:100%;min-height:100vh;height:100vh;border-radius:0}
+  .wandr-phone{width:100%;max-width:100%;min-height:100vh;min-height:100dvh;height:100vh;height:100dvh;border-radius:0}
 }
 @media (min-width:481px){
-  .wandr-phone{height:min(956px,100vh)}
+  .wandr-phone{height:min(956px,100vh);height:min(956px,100dvh)}
 }
 .wandr-home-ind{display:none}
 .wandr-island{display:none}
