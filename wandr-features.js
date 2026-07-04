@@ -80,7 +80,7 @@ window.WandrFeatures = {
       const heroCta = heroT ? ()=>{ openTripId(heroT.id); if (heroT.status==='active') this.setState({ view:'live', lvScreen:'today' }); } : ()=>{};
       const upcomingCard = (!liveTrip && upcomingList[0]) ? (u=>{ const d=getDestination(u.destKey); return { name:u.name, emoji:u.emoji, code:u.code, photoQ:d.photo, photoUrl:photoUrl(d.photo), range:fmtRange(u), countdown:'IN '+tripDaysUntil(u)+' DAYS', onOpen:()=>openTripId(u.id) }; })(upcomingList[0]) : null;
       const cityKeys0 = ['shimla','goa','manali','jaipur','rishikesh','udaipur'];
-      const enterSetupWith = (k)=>{ if (!st.user.authed){ this.setState({ view:'auth', auScreen:'auth', auAfter:'newtrip', grSheetOpen:false, grInviteOpen:false, lvFoodOpen:false, plSheetOpen:false, exFilterOpen:false }); this.toast('Quick sign-in - then straight to your trip'); return; } this.setState({ view:'setup', suScreen:'s2', newDestKey:k, suDestConfirmed:true, suDestText:'', suLockedTheme:null, suConfirmed:false, suStaged:[], suPath:null, suTripName:'', suDateStart:null, suDateEnd:null, qzStep:0, dkIdx:0, suSeedPids:[] }); };
+      const enterSetupWith = (k)=>{ if (!st.user.authed){ this.setState({ view:'auth', auScreen:'auth', auAfter:'newtrip', grSheetOpen:false, grInviteOpen:false, lvFoodOpen:false, plSheetOpen:false, exFilterOpen:false }); this.toast('Quick sign-in - then straight to your trip'); return; } this.setState({ view:'setup', suScreen:'s2', newDestKey:k, suDestConfirmed:true, suDestText:'', suLockedTheme:null, suConfirmed:false, suStaged:[], suPath:null, suTripName:'', suDateStart:null, suDateEnd:null, qzStep: st.user.name ? 1 : 0, dkIdx:0, suSeedPids:[] }); };
       const openPsDetail = (destKey, placeId)=>this.setState({ view:'placeSearch', psScreen:'detail', psDestKey:destKey, psPlaceId:placeId||null, psFrom:'home', psViaSearch:false });
       const placesRail = cityKeys0.map(k=>{ const d=DATASET.destinations[k]; return { name:d.name, emoji:"", tagline:d.tagline, photoUrl:photoUrl(d.photo), photoQ:d.photo, onPick:()=>openPsDetail(k, null) }; });
       const groupsRail = [ ['shimla','s1'], ['goa','g2'], ['jaipur','j1'], ['rishikesh','r3'] ].map(([ck,pid])=>{ const d=DATASET.destinations[ck]; const p=d.places.find(x=>x.id===pid)||d.places[0]; return { name:p.name, city:d.name, photoUrl:photoUrl(p.photo), photoQ:p.photo, onPick:()=>openPsDetail(ck, p.id) }; });
@@ -97,7 +97,7 @@ window.WandrFeatures = {
         ucName: upcomingCard?upcomingCard.name:'', ucEmoji: upcomingCard? (upcomingList[0]||{}).emoji||'':'', ucRange: upcomingCard?upcomingCard.range:'', ucCountdown: upcomingCard?upcomingCard.countdown:'', ucPhotoUrl: upcomingCard?upcomingCard.photoUrl:'', ucPhotoQ: upcomingCard?upcomingCard.photoQ:'', ucOpen: upcomingCard?upcomingCard.onOpen:()=>{},
         placesRail, groupsRail, hmMembers,
         openSearch,
-        addTrip:()=>{ if (!st.user.authed){ this.setState({ view:'auth', auScreen:'auth', auAfter:'newtrip', grSheetOpen:false, grInviteOpen:false, lvFoodOpen:false, plSheetOpen:false, exFilterOpen:false }); this.toast('Quick sign-in - then straight to your trip'); return; } this.setState({ view:'setup', suScreen:'s2', suLockedTheme:null, suConfirmed:false, suStaged:[], suPath:null, suTripName:'', suDateStart:null, suDateEnd:null, newDestKey:'shimla', suDestConfirmed:false, suDestText:'', qzStep:0, dkIdx:0, suSeedPids:[] }); },
+        addTrip:()=>{ if (!st.user.authed){ this.setState({ view:'auth', auScreen:'auth', auAfter:'newtrip', grSheetOpen:false, grInviteOpen:false, lvFoodOpen:false, plSheetOpen:false, exFilterOpen:false }); this.toast('Quick sign-in - then straight to your trip'); return; } this.setState({ view:'setup', suScreen:'s2', suLockedTheme:null, suConfirmed:false, suStaged:[], suPath:null, suTripName:'', suDateStart:null, suDateEnd:null, newDestKey:'shimla', suDestConfirmed:false, suDestText:'', qzStep: st.user.name ? 1 : 0, dkIdx:0, suSeedPids:[] }); },
         goTripsTab:()=>this.setState({ view:'trips' }),
         seeSample:()=>{ const tt=st.trips.find(x=>x.status==='active')||st.trips[0]; if (tt) openTripId(tt.id); },
         travellerCount:ALL_COUNT, hasPending:MEMBERS.some(m=>m.status==='pending'), pendingLabel:'1 PENDING · ROHIT',
@@ -188,7 +188,7 @@ window.WandrFeatures = {
         dkCards: funnelDest.places.slice().sort((a,b)=>b.suitability-a.suitability).slice(0,6),
         qzPct: Math.round((st.qzStep+1)/4*100)+'%',
         qzKicker: ['01 · YOU','02 · PACE','03 · STYLE','04 · SPEND'][st.qzStep]||'',
-        qzQuestion: ['What do we call you?','How do you like your days?','What are you into?','How does the group spend?'][(!st.user.name && st.qzStep===0) ? 0 : Math.max(st.qzStep,1)]||'',
+        qzQuestion: ['What do we call you?','How do you like your days?','What are you into?','How does the group spend?'][st.qzStep]||'',
         qzIsName: st.qzStep===0, qzIsChoice: st.qzStep===1||st.qzStep===3, qzIsMulti: st.qzStep===2,
         qzAck: st.qzStep===1 && st.suPace ? ('Got it - '+st.suPace+' it is.') : (st.qzStep===3 ? '' : ''),
         qzBack: ()=>{ if (this._qzT){ clearTimeout(this._qzT); this._qzT=null; } if (st.qzStep>0) this.setState({ qzStep:st.qzStep-1 }); else this.setState({ view:'home', suLockedTheme:null, suConfirmed:false, suStaged:[], suPath:null, suTripName:'', suDateStart:null, suDateEnd:null, suDestConfirmed:false, suDestText:'' }); },
@@ -542,18 +542,18 @@ window.WandrFeatures = {
         tpHeroName: tpHero?tpHero.name:'', tpHeroEmoji: tpHero?tpHero.emoji:'', tpHeroRange: tpHero?tpHero.range:'', tpHeroCountdown: tpHero?tpHero.countdown:'', tpHeroPhotoUrl: tpHero?tpHero.photoUrl:'', tpHeroPhotoQ: tpHero?tpHero.photoQ:'', tpHeroProgress: tpHero?tpHero.progress:'0%', tpHeroProgressLabel: tpHero?tpHero.progressLabel:'', tpHeroOpen: tpHero?tpHero.onOpen:()=>{},
         tpRest, tpHasRest: tpRest.length>0, tpYears: years,
         tpEmpty: !tpHero && tpRest.length===0 && years.length===0,
-        tpNewTrip:()=>{ if (!st.user.authed){ this.setState({ view:'auth', auScreen:'auth', auAfter:'newtrip', grSheetOpen:false, grInviteOpen:false, lvFoodOpen:false, plSheetOpen:false, exFilterOpen:false }); this.toast('Quick sign-in - then straight to your trip'); return; } this.setState({ view:'setup', suScreen:'s2', suLockedTheme:null, suConfirmed:false, suStaged:[], suPath:null, suTripName:'', suDateStart:null, suDateEnd:null, newDestKey:'shimla', suDestConfirmed:false, suDestText:'', qzStep:0, dkIdx:0, suSeedPids:[] }); },
+        tpNewTrip:()=>{ if (!st.user.authed){ this.setState({ view:'auth', auScreen:'auth', auAfter:'newtrip', grSheetOpen:false, grInviteOpen:false, lvFoodOpen:false, plSheetOpen:false, exFilterOpen:false }); this.toast('Quick sign-in - then straight to your trip'); return; } this.setState({ view:'setup', suScreen:'s2', suLockedTheme:null, suConfirmed:false, suStaged:[], suPath:null, suTripName:'', suDateStart:null, suDateEnd:null, newDestKey:'shimla', suDestConfirmed:false, suDestText:'', qzStep: st.user.name ? 1 : 0, dkIdx:0, suSeedPids:[] }); },
       };
     };
 
     inst.rvExplore = function(c){
       const { st } = c;
       const cityKeysX = ['shimla','goa','manali','jaipur','rishikesh','udaipur'];
-      const enterSetupWithX = (k, theme)=>{ if (!st.user.authed){ this.setState({ view:'auth', auScreen:'auth', auAfter:'newtrip', grSheetOpen:false, grInviteOpen:false, lvFoodOpen:false, plSheetOpen:false, exFilterOpen:false }); this.toast('Quick sign-in - then straight to your trip'); return; } this.setState({ view:'setup', suScreen:'s2', newDestKey:k, suDestConfirmed:true, suDestText:'', suLockedTheme:theme||null, suConfirmed:false, suStaged:[], suPath:null, suTripName:'', suDateStart:null, suDateEnd:null, qzStep:0, dkIdx:0, suSeedPids:[] }); };
+      const enterSetupWithX = (k, theme)=>{ if (!st.user.authed){ this.setState({ view:'auth', auScreen:'auth', auAfter:'newtrip', grSheetOpen:false, grInviteOpen:false, lvFoodOpen:false, plSheetOpen:false, exFilterOpen:false }); this.toast('Quick sign-in - then straight to your trip'); return; } this.setState({ view:'setup', suScreen:'s2', newDestKey:k, suDestConfirmed:true, suDestText:'', suLockedTheme:theme||null, suConfirmed:false, suStaged:[], suPath:null, suTripName:'', suDateStart:null, suDateEnd:null, qzStep: st.user.name ? 1 : 0, dkIdx:0, suSeedPids:[] }); };
       const openPsDetailX = (destKey, placeId)=>this.setState({ view:'placeSearch', psScreen:'detail', psDestKey:destKey, psPlaceId:placeId||null, psFrom:'explore', psViaSearch:false });
       const exTrending = cityKeysX.map(k=>{ const d=DATASET.destinations[k]; const top=d.places.slice().sort((a,b)=>b.suitability-a.suitability)[0]; return { name:d.name, emoji:"", tagline:d.tagline, pct:matchPct(top, st.user.prefs)+'%', photoUrl:photoUrl(d.photo), photoQ:d.photo, onPick:()=>openPsDetailX(k, null) }; });
       const exCurated = [ ['shimla','classic'], ['goa','chill'], ['jaipur','classic'], ['rishikesh','adventure'] ].map(([k,th])=>{ const d=DATASET.destinations[k]; const theme=(DATASET.config.themes.find(x=>x.id===th)||DATASET.config.themes[0]); const opts=optionsFor(d, { pace:'balanced', budget:'comfort', styleTags:st.user.prefs.styleTags }, ALL_COUNT); const o=opts.find(x=>x.id===th)||opts[0]; return { title:theme.label, city:d.name, emoji:"", stops:o.stops+' stops', per:moneyRs(o.perPerson)+'/person', photoUrl:photoUrl(d.photo), photoQ:d.photo, onPick:()=>this.setState({ view:'curatedPreview', cpDestKey:k, cpThemeId:th }) }; });
-      const exSoon = ['Varanasi','Leh','Munnar','Pondicherry','Coorg','Darjeeling'].map(n=>({ name:n, onNotify:()=>{ this.toast("Draft a "+n+" trip - be the first"); if (!st.user.authed){ this.setState({ view:'auth', auScreen:'auth', auAfter:'newtrip', suDestText:n }); return; } this.setState({ view:'setup', suScreen:'s2', newDestKey:'shimla', suDestConfirmed:false, suDestText:n, suLockedTheme:null, suConfirmed:false, suStaged:[], suPath:null, suTripName:'', suDateStart:null, suDateEnd:null, qzStep:0, dkIdx:0, suSeedPids:[] }); } }));
+      const exSoon = ['Varanasi','Leh','Munnar','Pondicherry','Coorg','Darjeeling'].map(n=>({ name:n, onNotify:()=>{ this.toast("Draft a "+n+" trip - be the first"); if (!st.user.authed){ this.setState({ view:'auth', auScreen:'auth', auAfter:'newtrip', suDestText:n }); return; } this.setState({ view:'setup', suScreen:'s2', newDestKey:'shimla', suDestConfirmed:false, suDestText:n, suLockedTheme:null, suConfirmed:false, suStaged:[], suPath:null, suTripName:'', suDateStart:null, suDateEnd:null, qzStep: st.user.name ? 1 : 0, dkIdx:0, suSeedPids:[] }); } }));
       const priceBand = (cost)=> cost<200?'₹':(cost<=800?'₹₹':'₹₹₹');
       const inShort = (k,pid)=> st.shortlist.some(x=>x.destKey===k && x.placeId===pid);
       const toggleShort = (k,pid,name)=>{ this.setState(x=>({ shortlist: x.shortlist.some(y=>y.destKey===k&&y.placeId===pid) ? x.shortlist.filter(y=>!(y.destKey===k&&y.placeId===pid)) : [...x.shortlist, { destKey:k, placeId:pid }] })); this.toast(inShort(k,pid) ? (name+' removed from shortlist') : (name+' shortlisted')); };
@@ -578,7 +578,7 @@ window.WandrFeatures = {
         shBack:()=>this.setState({ view:'explore' }),
         shGroups,
         shStartLabel: shTop ? ('Start a '+shTop.city+' trip from these') : '',
-        shStart: shTop ? (()=>{ if (!st.user.authed){ this.setState({ view:'auth', auScreen:'auth', auAfter:'newtrip' }); this.toast('Quick sign-in - then straight to your trip'); return; } const pids=shTop.rows.length?st.shortlist.filter(x=>x.destKey===shTop.key).map(x=>x.placeId):[]; this.setState({ view:'setup', suScreen:'s2', newDestKey:shTop.key, suDestConfirmed:true, suDestText:'', suSeedPids:pids, suLockedTheme:null, suConfirmed:false, suStaged:[], suPath:null, suTripName:'', suDateStart:null, suDateEnd:null, qzStep:0, dkIdx:0 }); }) : (()=>{}),
+        shStart: shTop ? (()=>{ if (!st.user.authed){ this.setState({ view:'auth', auScreen:'auth', auAfter:'newtrip' }); this.toast('Quick sign-in - then straight to your trip'); return; } const pids=shTop.rows.length?st.shortlist.filter(x=>x.destKey===shTop.key).map(x=>x.placeId):[]; this.setState({ view:'setup', suScreen:'s2', newDestKey:shTop.key, suDestConfirmed:true, suDestText:'', suSeedPids:pids, suLockedTheme:null, suConfirmed:false, suStaged:[], suPath:null, suTripName:'', suDateStart:null, suDateEnd:null, qzStep: st.user.name ? 1 : 0, dkIdx:0 }); }) : (()=>{}),
       };
     };
 
@@ -762,7 +762,7 @@ window.WandrFeatures = {
           this.toast('Quick sign-in - then straight to your plan');
           return;
         }
-        this.setState({ view:'setup', suScreen:'s2', newDestKey:st.cpDestKey, suDestConfirmed:true, suDestText:'', suLockedTheme:theme.id, suConfirmed:false, suStaged:[], suPath:null, suTripName:'', suDateStart:null, suDateEnd:null, qzStep:0, dkIdx:0, suSeedPids:[] });
+        this.setState({ view:'setup', suScreen:'s2', newDestKey:st.cpDestKey, suDestConfirmed:true, suDestText:'', suLockedTheme:theme.id, suConfirmed:false, suStaged:[], suPath:null, suTripName:'', suDateStart:null, suDateEnd:null, qzStep: st.user.name ? 1 : 0, dkIdx:0, suSeedPids:[] });
       };
       return {
         viewCuratedPreview: st.view==='curatedPreview',
@@ -861,7 +861,7 @@ window.WandrFeatures = {
         psdBookmarkBorder: alreadyBookmarked ? '1px solid var(--accent)' : '1px solid var(--border)',
         psdBookmark: ()=>{ if (!detailDest) return; this.setState(x=>{ const has=(x.shortlist||[]).some(s=>s.destKey===bookmarkKey.destKey && (s.placeId||null)===bookmarkKey.placeId); return { shortlist: has ? x.shortlist.filter(s=>!(s.destKey===bookmarkKey.destKey && (s.placeId||null)===bookmarkKey.placeId)) : [...(x.shortlist||[]), bookmarkKey] }; }); this.toast(alreadyBookmarked?'Bookmark removed':'Bookmarked'); },
         psdStartTripLabel: 'Start a trip with this',
-        psdStartTrip: ()=>{ if (!detailDest) return; if (!st.user.authed){ this.setState({ view:'auth', auScreen:'auth', auAfter:'newtrip', newDestKey:st.psDestKey, suDestConfirmed:true, suLockedTheme:null }); this.toast('Quick sign-in - then straight to your plan'); return; } this.setState({ view:'setup', suScreen:'s2', newDestKey:st.psDestKey, suDestConfirmed:true, suDestText:'', suLockedTheme:null, suConfirmed:false, suStaged:[], suPath:null, suTripName:'', suDateStart:null, suDateEnd:null, qzStep:0, dkIdx:0, suSeedPids: detailPlace?[detailPlace.id]:[] }); },
+        psdStartTrip: ()=>{ if (!detailDest) return; if (!st.user.authed){ this.setState({ view:'auth', auScreen:'auth', auAfter:'newtrip', newDestKey:st.psDestKey, suDestConfirmed:true, suLockedTheme:null }); this.toast('Quick sign-in - then straight to your plan'); return; } this.setState({ view:'setup', suScreen:'s2', newDestKey:st.psDestKey, suDestConfirmed:true, suDestText:'', suLockedTheme:null, suConfirmed:false, suStaged:[], suPath:null, suTripName:'', suDateStart:null, suDateEnd:null, qzStep: st.user.name ? 1 : 0, dkIdx:0, suSeedPids: detailPlace?[detailPlace.id]:[] }); },
       };
     };
 
@@ -872,7 +872,7 @@ window.WandrFeatures = {
       // the one seeded demo account; anything else is treated as "no account yet" and
       // falls into the signup bucket instead of a dead-end error.
       const loginSuccess = ()=>{
-        this.setState(x=>{ const trips = x.trips.length ? x.trips : seedTrips(); const intent = x.auAfter==='newtrip'; return { user:Object.assign({},x.user,{ name:x.user.name||'Kabir', authed:true, seenWelcome:true }), trips, activeTripId: x.activeTripId || trips[0].id, view: intent?'setup':'home', suScreen: intent?'s2':x.suScreen, auScreen:'welcome', auMode:null, auAfter:null, auBusy:false, auPhone:'', auOtp:'' }; });
+        this.setState(x=>{ const trips = x.trips.length ? x.trips : seedTrips(); const intent = x.auAfter==='newtrip'; return { user:Object.assign({},x.user,{ name:x.user.name||'Kabir', authed:true, seenWelcome:true }), trips, activeTripId: x.activeTripId || trips[0].id, view: intent?'setup':'home', suScreen: intent?'s2':x.suScreen, qzStep: intent?1:x.qzStep, auScreen:'welcome', auMode:null, auAfter:null, auBusy:false, auPhone:'', auOtp:'' }; });
         this.toast('Welcome back'); this.saveState();
       };
       // Signup finishes INSIDE the app (Home) - the hub where explore, start-a-trip
@@ -880,7 +880,7 @@ window.WandrFeatures = {
       // funnel (s1) when they signed up *because* they hit a gated "start a trip"
       // action (auAfter==='newtrip'); otherwise land on Home like a login does.
       const finishAuth = (name)=>{
-        this.setState(x=>{ const intent = x.auAfter==='newtrip'; const dk = intent && x.newDestKey ? x.newDestKey : 'shimla'; const th = intent ? (x.suLockedTheme||null) : null; const dc = intent ? !!x.suDestConfirmed : false; return { user:Object.assign({},x.user,{ name:name||x.user.name||'Kabir', authed:true, seenWelcome:true }), view: intent ? 'setup' : 'home', suScreen: intent ? 's2' : x.suScreen, auScreen:'welcome', auMode:null, auAfter:null, auBusy:false, suLockedTheme:th, suConfirmed:false, suStaged:[], suPath:null, suTripName:'', suDateStart:null, suDateEnd:null, newDestKey:dk, suDestConfirmed:dc, suDestText:'', qzStep:0, dkIdx:0, suSeedPids:[] }; });
+        this.setState(x=>{ const intent = x.auAfter==='newtrip'; const dk = intent && x.newDestKey ? x.newDestKey : 'shimla'; const th = intent ? (x.suLockedTheme||null) : null; const dc = intent ? !!x.suDestConfirmed : false; const finalName = name||x.user.name||'Kabir'; return { user:Object.assign({},x.user,{ name:finalName, authed:true, seenWelcome:true }), view: intent ? 'setup' : 'home', suScreen: intent ? 's2' : x.suScreen, auScreen:'welcome', auMode:null, auAfter:null, auBusy:false, suLockedTheme:th, suConfirmed:false, suStaged:[], suPath:null, suTripName:'', suDateStart:null, suDateEnd:null, newDestKey:dk, suDestConfirmed:dc, suDestText:'', qzStep: finalName ? 1 : 0, dkIdx:0, suSeedPids:[] }; });
         this.toast('You’re in - welcome to Wandr'); this.saveState();
       };
       const provider = (label)=>{
