@@ -1,0 +1,335 @@
+// wandr-data.js - trip dataset (6 cities + generic template). Byte-identical to wandr-dataset.full.json.
+window.WANDR_DATASET =
+{
+  "$schema": "wandr-dataset/v1",
+  "meta": {
+    "name": "Wandr Seed Dataset",
+    "version": "1.0.0",
+    "purpose": "Static stand-in for all AI features. Every 'AI' action in the app (draft generation, recommendations, categorising inspiration, live alerts) is a lookup/derivation from this file. No network, no model calls.",
+    "currency": "INR",
+    "locale": "en-IN"
+  },
+  "config": {
+    "pace": {
+      "slow":     { "label": "Slow",     "stopsPerDay": 2, "note": "space to breathe, long meals" },
+      "balanced": { "label": "Balanced", "stopsPerDay": 3, "note": "a full but unrushed day" },
+      "packed":   { "label": "Packed",   "stopsPerDay": 4, "note": "see as much as possible" }
+    },
+    "budget": {
+      "shoestring": { "label": "Shoestring", "mult": 0.7 },
+      "comfort":    { "label": "Comfort",    "mult": 1.0 },
+      "splurge":    { "label": "Splurge",    "mult": 1.6 }
+    },
+    "travelTags": ["CHILL", "ACTIVE", "FOODIE", "CULTURE", "ADVENTURE", "LUXURY", "BUDGET"],
+    "veto": { "perPerson": 1, "scope": "trip", "burnsOnUse": true, "visibleToAll": true },
+    "timeSlots": ["morning", "afternoon", "evening", "fullday"],
+    "categories": ["sights", "nature", "food"],
+    "draftTimes": ["9:30 AM", "12:30 PM", "4:00 PM", "7:30 PM"],
+    "themes": [
+      { "id": "classic",   "label": "Classic Highlights", "blurb": "The must-dos, balanced.", "prefer": ["sights", "nature"] },
+      { "id": "chill",     "label": "Slow & Scenic",      "blurb": "Fewer stops, long meals, views.", "prefer": ["nature", "food"] },
+      { "id": "adventure", "label": "Active & Out",        "blurb": "Treks, day-trips, the outdoorsy cut.", "prefer": ["nature", "sights"] }
+    ]
+  },
+
+  "destinations": {
+    "shimla": {
+      "key": "shimla",
+      "name": "Shimla",
+      "region": "Himachal Pradesh",
+      "emoji": "🏔️",
+      "tagline": "Colonial hill station - ridges, toy train, pine walks.",
+      "bestMonths": "Mar–Jun, Sep–Nov",
+      "photo": "shimla ridge himalayas mall road",
+      "travelTags": ["CHILL", "CULTURE", "BUDGET"],
+      "flexRules": [
+        "Mall Road is pedestrian-only - plan on foot, not cab.",
+        "Most sights cluster around The Ridge; group by walking distance.",
+        "Afternoons can cloud over - do viewpoints in the morning."
+      ],
+      "places": [
+        { "id": "s1", "name": "The Ridge & Mall Road", "cat": "sights", "slot": "morning", "tags": ["CULTURE", "CHILL"], "photo": "shimla mall road ridge", "why": "The social heart - everything radiates from here on foot.", "suitability": 96, "hours": "Open all day", "cost": 0, "tip": "Start early, fewer crowds + clear views of the snow line.", "howToReach": "Walkable from most stays (5–15 min)" },
+        { "id": "s2", "name": "Jakhoo Temple", "cat": "sights", "slot": "morning", "tags": ["CULTURE", "ADVENTURE"], "photo": "jakhoo temple shimla hanuman", "why": "Highest point in Shimla, 360° valley views. Hanuman temple.", "suitability": 90, "hours": "7am–8pm", "cost": 50, "fixedCost": true, "tip": "Watch your snacks - monkeys. Walk up (30 min); ropeway is ₹500 return.", "howToReach": "Ropeway from The Ridge (10 min) or 30-min uphill walk" },
+        { "id": "s3", "name": "Christ Church", "cat": "sights", "slot": "morning", "tags": ["CULTURE"], "photo": "christ church shimla neo gothic", "why": "2nd-oldest church in N. India, the postcard of Shimla.", "suitability": 84, "hours": "9am–6pm", "cost": 0, "tip": "Best light for photos before 10am.", "howToReach": "On The Ridge, 2-min walk" },
+        { "id": "s4", "name": "Kufri", "cat": "nature", "slot": "fullday", "tags": ["ADVENTURE", "ACTIVE"], "photo": "kufri shimla snow point", "why": "Snow point + adventure park, 30-min drive out.", "suitability": 78, "hours": "9am–5pm", "cost": 600, "tip": "Skip the overpriced horse rides; walk the nature park.", "howToReach": "Cab from Mall Road, ~45 min each way" },
+        { "id": "s5", "name": "Café Sol / Mall Road dining", "cat": "food", "slot": "evening", "tags": ["FOODIE", "CHILL"], "photo": "shimla cafe valley view dinner", "why": "Reliable group dinner, vegetarian-friendly, valley view.", "suitability": 88, "hours": "12pm–11pm", "cost": 700, "tip": "Book a window table for sunset.", "howToReach": "On Mall Road" },
+        { "id": "s6", "name": "Scandal Point sunset", "cat": "nature", "slot": "evening", "tags": ["CHILL"], "photo": "shimla scandal point sunset", "why": "Where the Ridge meets Mall Road - golden hour spot.", "suitability": 80, "hours": "Open all day", "cost": 0, "tip": "Grab a chai from the kiosk and just sit.", "howToReach": "On The Ridge" },
+        { "id": "s7", "name": "Toy Train (Kalka–Shimla)", "cat": "sights", "slot": "morning", "tags": ["CULTURE", "CHILL"], "photo": "kalka shimla toy train heritage", "why": "UNESCO heritage narrow-gauge ride through 100+ tunnels.", "suitability": 85, "hours": "Fixed departures", "cost": 300, "fixedCost": true, "tip": "Book the short Shimla–Summer Hill leg if short on time.", "howToReach": "Shimla railway station" },
+        { "id": "s8", "name": "Annandale (Army Heritage)", "cat": "nature", "slot": "afternoon", "tags": ["CHILL", "CULTURE"], "photo": "annandale shimla meadow pines", "why": "Flat green meadow, quiet, good for a slow afternoon.", "suitability": 70, "hours": "10am–5pm", "cost": 100, "tip": "Carry ID - it sits inside an army area.", "howToReach": "Cab, ~20 min" }
+      ],
+      "food": [
+        { "name": "Wake & Bake Café", "tag": "breakfast", "cost": 400, "tip": "Great coffee, opens 8am" },
+        { "name": "Himachali Rasoi", "tag": "local thali", "cost": 350, "tip": "Try the siddu & dham" },
+        { "name": "Café Sol", "tag": "dinner", "cost": 700, "tip": "Pizza + valley view" }
+      ],
+      "alert": { "type": "weather", "icon": "🌧️", "title": "Rain expected 2–4pm near Kufri", "why": "Afternoon showers forecast at higher altitude. Outdoor viewpoints will be socked in.", "impact": "Kufri snow point visibility ~low.", "swapOut": "Kufri", "swapIn": "Indian Institute of Advanced Study (indoor heritage tour)" },
+      "inspiration": [
+        { "kind": "reel", "label": "Toy train POV reel", "categorisedAs": "s7" },
+        { "kind": "screenshot", "label": "Cafe with valley view", "categorisedAs": "s5" },
+        { "kind": "link", "label": "Blog: 1 day on the Ridge", "categorisedAs": "s1" }
+      ],
+      "drafts": [
+        { "id": "classic",   "theme": "classic",   "rating": 4.6, "feedbackCount": 12 },
+        { "id": "chill",     "theme": "chill",     "rating": 4.4, "feedbackCount": 8 },
+        { "id": "adventure", "theme": "adventure", "rating": 4.2, "feedbackCount": 5 }
+      ]
+    },
+
+    "goa": {
+      "key": "goa",
+      "name": "Goa",
+      "region": "India",
+      "emoji": "🏖️",
+      "tagline": "Beaches, cafés, Portuguese old town, sunset shacks.",
+      "bestMonths": "Nov–Feb",
+      "photo": "goa beach palm sunset shack",
+      "travelTags": ["CHILL", "FOODIE", "ADVENTURE"],
+      "flexRules": [
+        "North (party/cafés) vs South (quiet/clean) - pick one base, don't bounce.",
+        "Rent a scooter; cabs are pricey and scarce.",
+        "Beaches are an evening thing in peak heat - mornings for old town."
+      ],
+      "places": [
+        { "id": "g1", "name": "Fort Aguada", "cat": "sights", "slot": "morning", "tags": ["CULTURE"], "photo": "fort aguada goa lighthouse", "why": "17th-c. Portuguese fort + lighthouse over the Arabian Sea.", "suitability": 88, "hours": "9am–5:30pm", "cost": 0, "tip": "Go before 10am, no shade later.", "howToReach": "Scooter from Calangute, 20 min" },
+        { "id": "g2", "name": "Fontainhas (Latin Quarter)", "cat": "sights", "slot": "morning", "tags": ["CULTURE", "FOODIE"], "photo": "fontainhas panjim portuguese lanes", "why": "Candy-coloured Portuguese lanes, art cafés.", "suitability": 90, "hours": "All day", "cost": 0, "tip": "Best photo light early morning.", "howToReach": "Panjim centre" },
+        { "id": "g3", "name": "Baga / Calangute Beach", "cat": "nature", "slot": "evening", "tags": ["CHILL", "ACTIVE"], "photo": "baga beach goa watersports", "why": "Classic north-Goa beach + water sports.", "suitability": 82, "hours": "All day", "cost": 0, "tip": "Sunset + shack dinner combo.", "howToReach": "Central north Goa" },
+        { "id": "g4", "name": "Anjuna Flea Market", "cat": "sights", "slot": "afternoon", "tags": ["CULTURE", "BUDGET"], "photo": "anjuna flea market goa", "why": "Wednesday market, boho stalls, live music.", "suitability": 75, "hours": "Wed 9am–6pm", "cost": 0, "tip": "Wednesdays only - check your day.", "howToReach": "Anjuna" },
+        { "id": "g5", "name": "Curlies / beach shack dinner", "cat": "food", "slot": "evening", "tags": ["FOODIE", "CHILL"], "photo": "goa beach shack seafood sunset", "why": "Feet-in-sand seafood, sunset.", "suitability": 86, "hours": "12pm–late", "cost": 900, "tip": "Order the prawn balchão.", "howToReach": "Anjuna beach" },
+        { "id": "g6", "name": "Dudhsagar Falls", "cat": "nature", "slot": "fullday", "tags": ["ADVENTURE", "ACTIVE"], "photo": "dudhsagar falls goa jeep", "why": "Tiered jungle waterfall, jeep safari.", "suitability": 80, "hours": "Tour 7am–4pm", "cost": 1500, "fixedCost": true, "closedMonths": [7, 8, 9], "seasonNote": "Closed for monsoon (Jul–mid-Sept)", "tip": "Full-day trip - book a jeep tour.", "howToReach": "~60 km east, jeep tour" }
+      ],
+      "food": [
+        { "name": "Cafe Bodega", "tag": "breakfast", "cost": 500, "tip": "Garden café in Panjim" },
+        { "name": "Vinayak Family Restaurant", "tag": "local", "cost": 600, "tip": "Goan fish thali" },
+        { "name": "Curlies", "tag": "dinner", "cost": 900, "tip": "Beach shack classic" }
+      ],
+      "alert": { "type": "closure", "icon": "🚧", "title": "Anjuna market is closed today", "why": "The flea market only runs on Wednesdays - today is not Wednesday.", "impact": "Afternoon slot now empty.", "swapOut": "Anjuna Flea Market", "swapIn": "Chapora Fort + Vagator viewpoint" },
+      "inspiration": [
+        { "kind": "reel", "label": "Beach shack sunset reel", "categorisedAs": "g5" },
+        { "kind": "screenshot", "label": "Colourful lanes photo", "categorisedAs": "g2" },
+        { "kind": "link", "label": "Guide: North Goa in 3 days", "categorisedAs": "g3" }
+      ],
+      "drafts": [
+        { "id": "classic",   "theme": "classic",   "rating": 4.5, "feedbackCount": 14 },
+        { "id": "chill",     "theme": "chill",     "rating": 4.7, "feedbackCount": 19 },
+        { "id": "adventure", "theme": "adventure", "rating": 4.1, "feedbackCount": 6 }
+      ]
+    },
+
+    "manali": {
+      "key": "manali",
+      "name": "Manali",
+      "region": "Himachal Pradesh",
+      "emoji": "🏞️",
+      "tagline": "Snow passes, river cafés, adventure + old town charm.",
+      "bestMonths": "Oct–Jun",
+      "photo": "manali himalayas snow valley river",
+      "travelTags": ["ADVENTURE", "ACTIVE", "CHILL"],
+      "flexRules": [
+        "Atal Tunnel needs no permit (Rohtang Pass does) - either way start early, plan day 1.",
+        "Old Manali cafés are a 15-min uphill walk from Mall Road.",
+        "Weather flips fast at altitude - keep a buffer day."
+      ],
+      "places": [
+        { "id": "m1", "name": "Atal Tunnel / Sissu", "cat": "nature", "slot": "fullday", "tags": ["ADVENTURE", "ACTIVE"], "photo": "atal tunnel sissu snow manali", "why": "Drive through the world's longest high-altitude tunnel to snow.", "suitability": 92, "hours": "Best 6am–2pm", "cost": 2500, "tip": "Leave by 7am, roads close with snow.", "howToReach": "Cab, full day" },
+        { "id": "m2", "name": "Hadimba Temple", "cat": "sights", "slot": "morning", "tags": ["CULTURE", "CHILL"], "photo": "hadimba temple manali cedar forest", "why": "Cedar-forest wooden temple, 1553.", "suitability": 86, "hours": "8am–6pm", "cost": 0, "tip": "Lovely in morning mist.", "howToReach": "5 min from Mall Road" },
+        { "id": "m3", "name": "Old Manali cafés", "cat": "food", "slot": "evening", "tags": ["FOODIE", "CHILL"], "photo": "old manali riverside cafe", "why": "Riverside cafés, slow vibe, live music.", "suitability": 88, "hours": "9am–11pm", "cost": 600, "tip": "Café 1947 by the river.", "howToReach": "15-min walk uphill" },
+        { "id": "m4", "name": "Solang Valley", "cat": "nature", "slot": "fullday", "tags": ["ADVENTURE", "ACTIVE"], "photo": "solang valley manali paragliding snow", "why": "Paragliding, zorbing, ropeway, snow.", "suitability": 84, "hours": "9am–5pm", "cost": 1800, "tip": "Negotiate adventure-sport prices.", "howToReach": "Cab, 30 min" },
+        { "id": "m5", "name": "Mall Road & Manu Market", "cat": "sights", "slot": "evening", "tags": ["BUDGET", "FOODIE"], "photo": "manali mall road market", "why": "Shopping, woollens, street food.", "suitability": 74, "hours": "All day", "cost": 0, "tip": "Bargain for shawls.", "howToReach": "Town centre" },
+        { "id": "m6", "name": "Jogini Falls trek", "cat": "nature", "slot": "morning", "tags": ["ADVENTURE", "ACTIVE"], "photo": "jogini falls manali trek vashisht", "why": "Short scenic waterfall trek from Vashisht.", "suitability": 78, "hours": "Daylight", "cost": 0, "tip": "Carry water; ~1 hr each way.", "howToReach": "From Vashisht village" }
+      ],
+      "food": [
+        { "name": "Café 1947", "tag": "riverside", "cost": 700, "tip": "Live music, pasta" },
+        { "name": "Johnson's Café", "tag": "dinner", "cost": 900, "tip": "Famous trout" },
+        { "name": "Drifters' Inn", "tag": "breakfast", "cost": 450, "tip": "Old Manali, big portions" }
+      ],
+      "alert": { "type": "traffic", "icon": "🚗", "title": "Atal Tunnel jam - 90-min delay", "why": "Heavy tourist traffic + a snow-clearing convoy on the pass.", "impact": "Your full-day Sissu trip will eat into the evening.", "swapOut": "Atal Tunnel / Sissu", "swapIn": "Solang Valley (closer, same snow + sports)" },
+      "inspiration": [
+        { "kind": "reel", "label": "Snow at Sissu reel", "categorisedAs": "m1" },
+        { "kind": "screenshot", "label": "Riverside café", "categorisedAs": "m3" },
+        { "kind": "link", "label": "Manali adventure guide", "categorisedAs": "m4" }
+      ],
+      "drafts": [
+        { "id": "classic",   "theme": "classic",   "rating": 4.5, "feedbackCount": 11 },
+        { "id": "adventure", "theme": "adventure", "rating": 4.8, "feedbackCount": 22 },
+        { "id": "chill",     "theme": "chill",     "rating": 4.3, "feedbackCount": 7 }
+      ]
+    },
+
+    "jaipur": {
+      "key": "jaipur",
+      "name": "Jaipur",
+      "region": "Rajasthan",
+      "emoji": "🏰",
+      "tagline": "The Pink City - forts, palaces, bazaars, royal Rajputana.",
+      "bestMonths": "Oct–Mar",
+      "photo": "jaipur pink city hawa mahal fort",
+      "travelTags": ["CULTURE", "FOODIE", "LUXURY"],
+      "flexRules": [
+        "Summers are brutal (40°C+) - do forts before noon, bazaars after dark.",
+        "Amber Fort, Nahargarh & Jaigarh cluster north - do them as one day.",
+        "Old City (Pink City) sights are walkable - park once, explore on foot."
+      ],
+      "places": [
+        { "id": "j1", "name": "Amber Fort", "cat": "sights", "slot": "morning", "tags": ["CULTURE", "ADVENTURE"], "photo": "amber fort jaipur sheesh mahal", "why": "Hilltop Rajput fort-palace with mirror halls and ramparts.", "suitability": 95, "hours": "8am–5:30pm", "cost": 100, "fixedCost": true, "tip": "Reach by 8am to beat heat and crowds at the Sheesh Mahal.", "howToReach": "Cab from city, ~25 min north" },
+        { "id": "j2", "name": "Hawa Mahal", "cat": "sights", "slot": "morning", "tags": ["CULTURE"], "photo": "hawa mahal jaipur pink facade", "why": "The iconic 953-window honeycomb palace facade.", "suitability": 92, "hours": "9am–5pm", "cost": 50, "fixedCost": true, "tip": "Best light is early morning from the café across the road.", "howToReach": "Old City, walkable" },
+        { "id": "j3", "name": "City Palace", "cat": "sights", "slot": "afternoon", "tags": ["CULTURE", "LUXURY"], "photo": "jaipur city palace courtyard", "why": "Living royal palace with courtyards, textiles and armoury.", "suitability": 88, "hours": "9:30am–5pm", "cost": 300, "fixedCost": true, "tip": "The peacock gates in Pritam Niwas Chowk are the photo spot.", "howToReach": "Old City, next to Jantar Mantar" },
+        { "id": "j4", "name": "Jantar Mantar", "cat": "sights", "slot": "afternoon", "tags": ["CULTURE"], "photo": "jantar mantar jaipur sundial observatory", "why": "UNESCO 18th-c. astronomical instruments, incl. world's largest sundial.", "suitability": 82, "hours": "9am–4:30pm", "cost": 50, "fixedCost": true, "tip": "Hire a guide - the instruments make no sense without one.", "howToReach": "Old City, beside City Palace" },
+        { "id": "j5", "name": "Nahargarh Fort sunset", "cat": "nature", "slot": "evening", "tags": ["CHILL", "CULTURE"], "photo": "nahargarh fort jaipur sunset city view", "why": "Cliff-edge fort with the best sunset panorama over the Pink City.", "suitability": 87, "hours": "10am–10pm", "cost": 50, "fixedCost": true, "tip": "Padao café at the top for a drink at golden hour.", "howToReach": "Cab up the Aravalli road, ~30 min" },
+        { "id": "j6", "name": "Johari & Bapu Bazaar", "cat": "sights", "slot": "evening", "tags": ["FOODIE", "BUDGET"], "photo": "johari bazaar jaipur jewellery market", "why": "Jewellery, block-print textiles and mojari shoes in the old bazaars.", "suitability": 80, "hours": "11am–9pm (Sun off)", "cost": 0, "tip": "Bargain hard; most shops shut Sundays.", "howToReach": "Old City, walkable" },
+        { "id": "j7", "name": "Rawat / LMB thali dinner", "cat": "food", "slot": "evening", "tags": ["FOODIE", "CULTURE"], "photo": "rajasthani thali jaipur dal baati", "why": "Classic Rajasthani thali - dal baati churma, ghewar sweets.", "suitability": 84, "hours": "10am–11pm", "cost": 500, "tip": "Rawat's pyaaz kachori is the local legend.", "howToReach": "Station Road / Johari Bazaar" },
+        { "id": "j8", "name": "Jal Mahal viewpoint", "cat": "nature", "slot": "morning", "tags": ["CHILL"], "photo": "jal mahal jaipur lake water palace", "why": "Sandstone palace sitting mid-lake - a quick scenic photo stop.", "suitability": 76, "hours": "Open all day", "cost": 0, "tip": "You can't go inside; view it from the Amer road promenade.", "howToReach": "On the road to Amber, ~15 min" }
+      ],
+      "food": [
+        { "name": "Rawat Mishthan Bhandar", "tag": "breakfast", "cost": 250, "tip": "Pyaaz kachori + lassi" },
+        { "name": "Laxmi Mishthan Bhandar (LMB)", "tag": "thali", "cost": 550, "tip": "Rajasthani thali + ghewar" },
+        { "name": "Tapri Central", "tag": "dinner", "cost": 600, "tip": "Rooftop chai + views" }
+      ],
+      "alert": { "type": "heat", "icon": "🥵", "title": "Heatwave - 43°C by afternoon", "why": "A dry Rajasthan heat spike; the exposed hilltop forts have almost no shade past noon.", "impact": "An afternoon at Nahargarh Fort risks heat exhaustion.", "swapOut": "Nahargarh Fort sunset", "swapIn": "Albert Hall Museum (air-conditioned indoor galleries)" },
+      "inspiration": [
+        { "kind": "reel", "label": "Amber Fort ramparts drone reel", "categorisedAs": "j1" },
+        { "kind": "screenshot", "label": "Hawa Mahal pink facade", "categorisedAs": "j2" },
+        { "kind": "link", "label": "Guide: Jaipur bazaars & shopping", "categorisedAs": "j6" }
+      ],
+      "drafts": [
+        { "id": "classic",   "theme": "classic",   "rating": 4.7, "feedbackCount": 18 },
+        { "id": "chill",     "theme": "chill",     "rating": 4.3, "feedbackCount": 9 },
+        { "id": "adventure", "theme": "adventure", "rating": 4.4, "feedbackCount": 10 }
+      ]
+    },
+
+    "rishikesh": {
+      "key": "rishikesh",
+      "name": "Rishikesh",
+      "region": "Uttarakhand",
+      "emoji": "🧘",
+      "tagline": "Ganges gorge - yoga capital, rafting, aarti and swaying bridges.",
+      "bestMonths": "Sep–Nov, Feb–May",
+      "photo": "rishikesh ganges lakshman jhula bridge himalayas",
+      "travelTags": ["ADVENTURE", "CULTURE", "CHILL"],
+      "flexRules": [
+        "Rishikesh is dry & vegetarian - no meat or alcohol anywhere in town.",
+        "Rafting runs only when the river level is safe - book a morning slot.",
+        "Tapovan/Laxman Jhula side is the café-and-yoga hub; cross on foot."
+      ],
+      "places": [
+        { "id": "r1", "name": "Lakshman Jhula & Ram Jhula", "cat": "sights", "slot": "morning", "tags": ["CULTURE", "CHILL"], "photo": "lakshman jhula rishikesh suspension bridge", "why": "Iconic suspension bridges over the Ganga linking temples and cafés.", "suitability": 90, "hours": "Open all day", "cost": 0, "tip": "Cross early - motorbikes and monkeys crowd it by midday.", "howToReach": "Walkable from Tapovan" },
+        { "id": "r2", "name": "Triveni Ghat Ganga Aarti", "cat": "sights", "slot": "evening", "tags": ["CULTURE", "CHILL"], "photo": "triveni ghat rishikesh ganga aarti lamps", "why": "Nightly fire-lamp river ceremony - the spiritual heart of town.", "suitability": 93, "hours": "Aarti ~6pm", "cost": 0, "tip": "Arrive 45 min early for a spot on the steps.", "howToReach": "Central Rishikesh ghat" },
+        { "id": "r3", "name": "Ganga White-Water Rafting", "cat": "nature", "slot": "morning", "tags": ["ADVENTURE", "ACTIVE"], "photo": "rishikesh ganga white water rafting rapids", "why": "Grade II–IV rapids on the Ganga - the classic Rishikesh thrill.", "suitability": 91, "hours": "Slots 8am–3pm", "cost": 1200, "fixedCost": true, "closedMonths": [7, 8, 9], "seasonNote": "Closed for monsoon (Jul–mid-Sept)", "tip": "Do the 16km Shivpuri stretch; wear quick-dry clothes.", "howToReach": "Shuttle to Shivpuri put-in, ~30 min" },
+        { "id": "r4", "name": "Beatles Ashram (Chaurasi Kutia)", "cat": "sights", "slot": "afternoon", "tags": ["CULTURE", "CHILL"], "photo": "beatles ashram rishikesh graffiti domes", "why": "Abandoned ashram where the Beatles stayed, now covered in murals.", "suitability": 84, "hours": "10am–4pm", "cost": 200, "fixedCost": true, "tip": "Carry water; it's a leafy 40-min wander through the domes.", "howToReach": "Inside Rajaji forest, cab + short walk" },
+        { "id": "r5", "name": "Parmarth Niketan Ashram", "cat": "sights", "slot": "evening", "tags": ["CULTURE", "CHILL"], "photo": "parmarth niketan rishikesh ganga aarti ashram", "why": "Riverside ashram with a serene, well-known evening aarti.", "suitability": 82, "hours": "Aarti at sunset", "cost": 0, "tip": "A quieter, more musical aarti than Triveni's crowds.", "howToReach": "Ram Jhula, walkable" },
+        { "id": "r6", "name": "Neelkanth Mahadev Temple", "cat": "nature", "slot": "fullday", "tags": ["CULTURE", "ADVENTURE"], "photo": "neelkanth mahadev temple rishikesh hills", "why": "Hilltop Shiva temple through forested Himalayan foothills.", "suitability": 78, "hours": "6am–7pm", "cost": 0, "tip": "The 32km ghat road is winding - leave early, half a day gone.", "howToReach": "Cab, ~1.5 hr each way" },
+        { "id": "r7", "name": "The Sitting Elephant / riverside café", "cat": "food", "slot": "evening", "tags": ["FOODIE", "CHILL"], "photo": "rishikesh riverside cafe ganga view", "why": "Ganga-view cafés for a slow, meat-free dinner and mint tea.", "suitability": 83, "hours": "9am–10:30pm", "cost": 500, "tip": "Grab a river-facing cushion seat at dusk.", "howToReach": "Tapovan, near Lakshman Jhula" },
+        { "id": "r8", "name": "Kunjapuri Sunrise Point", "cat": "nature", "slot": "morning", "tags": ["ADVENTURE", "CHILL"], "photo": "kunjapuri temple rishikesh sunrise himalayas", "why": "Pre-dawn drive to a temple hilltop for Himalayan sunrise views.", "suitability": 80, "hours": "5am–7pm", "cost": 0, "tip": "Leave stay by 4:30am to catch the peaks glowing.", "howToReach": "Cab, ~45 min uphill" }
+      ],
+      "food": [
+        { "name": "Chotiwala", "tag": "local", "cost": 350, "tip": "Old-school pure-veg thali" },
+        { "name": "Little Buddha Café", "tag": "dinner", "cost": 550, "tip": "Treehouse Ganga views" },
+        { "name": "Ira's Kitchen & Tea Room", "tag": "breakfast", "cost": 450, "tip": "Great coffee + bakes" }
+      ],
+      "alert": { "type": "river-closure", "icon": "🌊", "title": "Rafting suspended - high water level", "why": "Upstream rain has pushed the Ganga above the safe rafting mark; operators are off the water.", "impact": "Your morning rafting slot is cancelled by the river authority.", "swapOut": "Ganga White-Water Rafting", "swapIn": "Yoga & meditation class at a Tapovan ashram (indoor)" },
+      "inspiration": [
+        { "kind": "reel", "label": "Ganga aarti lamps reel", "categorisedAs": "r2" },
+        { "kind": "screenshot", "label": "Beatles Ashram murals", "categorisedAs": "r4" },
+        { "kind": "link", "label": "Guide: Rishikesh rafting stretches", "categorisedAs": "r3" }
+      ],
+      "drafts": [
+        { "id": "classic",   "theme": "classic",   "rating": 4.5, "feedbackCount": 13 },
+        { "id": "adventure", "theme": "adventure", "rating": 4.9, "feedbackCount": 24 },
+        { "id": "chill",     "theme": "chill",     "rating": 4.6, "feedbackCount": 16 }
+      ]
+    },
+
+    "udaipur": {
+      "key": "udaipur",
+      "name": "Udaipur",
+      "region": "Rajasthan",
+      "emoji": "🛶",
+      "tagline": "City of Lakes - palaces on water, havelis and Aravalli sunsets.",
+      "bestMonths": "Sep–Mar",
+      "photo": "udaipur lake pichola city palace water sunset",
+      "travelTags": ["LUXURY", "CULTURE", "CHILL"],
+      "flexRules": [
+        "Everything orbits Lake Pichola - base yourself near the old city ghats.",
+        "Old-city lanes are tight - walk or take an auto, skip a big car.",
+        "Time the lake boat ride for golden hour, not the harsh midday sun."
+      ],
+      "places": [
+        { "id": "u1", "name": "City Palace", "cat": "sights", "slot": "morning", "tags": ["CULTURE", "LUXURY"], "photo": "udaipur city palace lake pichola facade", "why": "Sprawling lakeside Mewar palace of courtyards, glass and mirror work.", "suitability": 94, "hours": "9:30am–5:30pm", "cost": 350, "fixedCost": true, "tip": "Enter at opening to walk the Zenana Mahal before tour groups.", "howToReach": "Old city, lakefront" },
+        { "id": "u2", "name": "Lake Pichola Boat Ride", "cat": "nature", "slot": "evening", "tags": ["CHILL", "LUXURY"], "photo": "lake pichola udaipur boat sunset jag mandir", "why": "Sunset boat past the water palaces - the definitive Udaipur moment.", "suitability": 92, "hours": "10am–6pm", "cost": 700, "fixedCost": true, "tip": "Take the 4–5pm slot; it stops at Jag Mandir island.", "howToReach": "Rameshwar Ghat, City Palace" },
+        { "id": "u3", "name": "Jag Mandir", "cat": "sights", "slot": "afternoon", "tags": ["CULTURE", "LUXURY"], "photo": "jag mandir island palace lake pichola udaipur", "why": "17th-c. island palace with marble pavilions and a café.", "suitability": 85, "hours": "10am–6pm", "cost": 400, "tip": "Reached only by boat - combine with the Pichola ride.", "howToReach": "Boat from City Palace jetty" },
+        { "id": "u4", "name": "Bagore ki Haveli", "cat": "sights", "slot": "evening", "tags": ["CULTURE"], "photo": "bagore ki haveli udaipur dharohar dance", "why": "Lakeside haveli-museum with a nightly Rajasthani folk dance show.", "suitability": 83, "hours": "10am–7pm, show 7pm", "cost": 200, "tip": "Book the 7pm Dharohar dance - the ghoomar and bhavai are superb.", "howToReach": "Gangaur Ghat, walkable" },
+        { "id": "u5", "name": "Saheliyon ki Bari", "cat": "nature", "slot": "morning", "tags": ["CHILL", "CULTURE"], "photo": "saheliyon ki bari udaipur fountain garden", "why": "Ornamental 18th-c. garden of fountains, lotus pools and marble pavilions.", "suitability": 79, "hours": "8am–7pm", "cost": 10, "fixedCost": true, "tip": "Morning is coolest and the fountains run best.", "howToReach": "North of old city, auto ~15 min" },
+        { "id": "u6", "name": "Monsoon Palace (Sajjangarh)", "cat": "nature", "slot": "evening", "tags": ["CHILL", "ADVENTURE"], "photo": "monsoon palace sajjangarh udaipur hilltop sunset", "why": "Aravalli hilltop palace with a sweeping sunset over the lakes.", "suitability": 82, "hours": "9am–6pm", "cost": 300, "tip": "Take the forest-dept jeep from the gate; go for sunset.", "howToReach": "Cab to base + jeep up, ~30 min" },
+        { "id": "u7", "name": "Ambrai / Upre lakeside dinner", "cat": "food", "slot": "evening", "tags": ["FOODIE", "LUXURY"], "photo": "ambrai restaurant udaipur lake pichola night view", "why": "Lit-up palace views across the water with Rajasthani fine dining.", "suitability": 86, "hours": "12pm–11pm", "cost": 900, "tip": "Reserve a water-edge table at Ambrai after dark.", "howToReach": "Amet Haveli, Hanuman Ghat" },
+        { "id": "u8", "name": "Jagdish Temple", "cat": "sights", "slot": "morning", "tags": ["CULTURE"], "photo": "jagdish temple udaipur indo aryan carving", "why": "1651 Indo-Aryan Vishnu temple with intricate carved spires.", "suitability": 76, "hours": "5am–2pm, 4–10pm", "cost": 0, "tip": "A 3-min walk from City Palace - pair the two.", "howToReach": "Old city centre" }
+      ],
+      "food": [
+        { "name": "Ambrai", "tag": "dinner", "cost": 900, "tip": "Lake + palace night views" },
+        { "name": "Jheel's Ginger Coffee Bar", "tag": "breakfast", "cost": 400, "tip": "Rooftop lake view coffee" },
+        { "name": "Natraj Dining Hall", "tag": "thali", "cost": 300, "tip": "Unlimited Rajasthani thali" }
+      ],
+      "alert": { "type": "event", "icon": "🚦", "title": "Mewar Festival - old-city roads jammed", "why": "A palace procession has closed the ghat roads around Gangaur; traffic and parking near the lake are gridlocked.", "impact": "The evening Bagore ki Haveli dance show will be hard to reach in time.", "swapOut": "Bagore ki Haveli", "swapIn": "Sunset at Ambrai lakeside (walkable, skips the closed roads)" },
+      "inspiration": [
+        { "kind": "reel", "label": "Lake Pichola sunset boat reel", "categorisedAs": "u2" },
+        { "kind": "screenshot", "label": "City Palace mirror courtyard", "categorisedAs": "u1" },
+        { "kind": "link", "label": "Guide: Udaipur folk dance evening", "categorisedAs": "u4" }
+      ],
+      "drafts": [
+        { "id": "classic",   "theme": "classic",   "rating": 4.8, "feedbackCount": 20 },
+        { "id": "chill",     "theme": "chill",     "rating": 4.7, "feedbackCount": 17 },
+        { "id": "adventure", "theme": "adventure", "rating": 4.2, "feedbackCount": 8 }
+      ]
+    }
+  },
+
+  "generic": {
+    "note": "Any city NOT in `destinations` (or non-city text) resolves here. Title-case the input as the name and fill these templated places so the demo never dead-ends.",
+    "tagline": "A first-draft plan for {CITY}. Swap any stop you don't like.",
+    "bestMonths": "Year-round",
+    "photo": "{CITY} city travel landmark",
+    "flexRules": [
+      "This is a starter draft - edit freely, it won't rebuild.",
+      "Stops are grouped by time of day to cut backtracking.",
+      "Add your saved Reels & links to personalise it."
+    ],
+    "places": [
+      { "id": "x1", "name": "{CITY} Old Town", "cat": "sights", "slot": "morning", "tags": ["CULTURE"], "photo": "{CITY} old town", "why": "The historic core - best on foot, early.", "suitability": 90, "hours": "9am–6pm", "cost": 0, "tip": "Go before the crowds.", "howToReach": "Central area" },
+      { "id": "x2", "name": "{CITY} Central Market", "cat": "sights", "slot": "morning", "tags": ["BUDGET", "FOODIE"], "photo": "{CITY} market", "why": "Local life, snacks, souvenirs.", "suitability": 82, "hours": "8am–8pm", "cost": 0, "tip": "Try the street food row.", "howToReach": "Central area" },
+      { "id": "x3", "name": "{CITY} Viewpoint", "cat": "nature", "slot": "evening", "tags": ["CHILL"], "photo": "{CITY} viewpoint sunset", "why": "Golden-hour panorama over the city.", "suitability": 86, "hours": "All day", "cost": 0, "tip": "Sunset is the move.", "howToReach": "Central area" },
+      { "id": "x4", "name": "{CITY} Signature Restaurant", "cat": "food", "slot": "evening", "tags": ["FOODIE"], "photo": "{CITY} restaurant local food", "why": "Reliable group dinner, local cuisine.", "suitability": 84, "hours": "12pm–11pm", "cost": 700, "tip": "Book ahead for groups.", "howToReach": "Central area" },
+      { "id": "x5", "name": "{CITY} Park / Lake", "cat": "nature", "slot": "afternoon", "tags": ["CHILL"], "photo": "{CITY} park lake", "why": "Slow afternoon, easy pace.", "suitability": 74, "hours": "6am–7pm", "cost": 50, "tip": "Good for a recharge.", "howToReach": "Central area" },
+      { "id": "x6", "name": "{CITY} Museum", "cat": "sights", "slot": "afternoon", "tags": ["CULTURE"], "photo": "{CITY} museum", "why": "Indoor option - great rain backup.", "suitability": 70, "hours": "10am–5pm", "cost": 200, "tip": "Closed Mondays usually.", "howToReach": "Central area" }
+    ],
+    "food": [
+      { "name": "{CITY} Café", "tag": "breakfast", "cost": 400, "tip": "Good coffee" },
+      { "name": "{CITY} Local Kitchen", "tag": "lunch", "cost": 500, "tip": "Regional thali" },
+      { "name": "{CITY} Rooftop", "tag": "dinner", "cost": 800, "tip": "Views + drinks" }
+    ],
+    "alert": { "type": "weather", "icon": "🌧️", "title": "Afternoon rain expected", "why": "Showers forecast midday - outdoor stops will be wet.", "impact": "Afternoon viewpoint at risk.", "swapOut": "{CITY} Viewpoint", "swapIn": "{CITY} Museum (indoor backup)" }
+  },
+
+  "sampleGroup": {
+    "members": [
+      { "id": "me", "name": "You", "role": "planner", "status": "joined", "pace": "balanced", "styleTags": ["CHILL", "FOODIE"], "vetoUsed": false },
+      { "id": "m2", "name": "Aanya", "role": "contributor", "status": "joined", "pace": "packed", "styleTags": ["ADVENTURE", "ACTIVE"], "vetoUsed": false },
+      { "id": "m3", "name": "Rohit", "role": "contributor", "status": "pending", "pace": "slow", "styleTags": ["CHILL", "CULTURE"], "vetoUsed": false }
+    ],
+    "samplePoll": {
+      "question": "Day 2 evening - where to?",
+      "deadline": "6:00 PM",
+      "options": [ { "id": "beach", "label": "🏖️ Beach club", "votes": 1 }, { "id": "fort", "label": "🏰 Fort sunset", "votes": 1 } ],
+      "tieResolution": "Planner tiebreak. On a mutual-veto deadlock, propose a neutral 3rd option."
+    }
+  },
+
+  "derivations": {
+    "note": "How the app turns this data into the 'AI' outputs. Pure functions, no randomness needed.",
+    "draftGeneration": "For a chosen theme: rank places by (suitability + 20 if place.cat in theme.prefer), drop vetoed ids, slice config.pace[pace].stopsPerDay per day across `days`, order each day by slot (morning/fullday → afternoon → evening), assign config.draftTimes by index, set cost = round(place.cost * config.budget[budget].mult). Day.dayCost = sum of stop costs.",
+    "options": "Build one draft per config.themes entry; perPerson = sum(dayCost); group = perPerson * members; attach drafts[].rating + feedbackCount by matching theme id.",
+    "recommendations": "Explore = places filtered by travelTags / cat / slot, sorted by suitability; 'why it fits' = place.why; score = place.suitability.",
+    "categorise": "Inspiration items map to their categorisedAs place id - show 'AI sorted this into {place.name}'.",
+    "liveAlert": "Use destination.alert; 'Accept re-plan' swaps the stop whose name starts with alert.swapOut for alert.swapIn in today's day.",
+    "bestFit": "Tag the 'classic' theme as Best fit by default, or the draft with the highest rating."
+  }
+}
+;
