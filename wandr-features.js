@@ -200,7 +200,6 @@ window.WandrFeatures = {
         qzKicker: ['01 · YOU','02 · PACE','03 · STYLE','04 · SPEND'][st.qzStep]||'',
         qzQuestion: ['What do we call you?','How do you like your days?','What are you into?','How does the group spend?'][st.qzStep]||'',
         qzIsName: st.qzStep===0, qzIsChoice: st.qzStep===1||st.qzStep===3, qzIsMulti: st.qzStep===2,
-        qzAck: st.qzStep===1 && st.suPace ? ('Got it - '+st.suPace+' it is.') : (st.qzStep===3 ? '' : ''),
         qzBack: ()=>{ if (this._qzT){ clearTimeout(this._qzT); this._qzT=null; } if (st.qzStep>0) this.setState({ qzStep:st.qzStep-1 }); else this.setState({ view:'home', suLockedTheme:null, suConfirmed:false, suStaged:[], suPath:null, suTripName:'', suGroupName:'', suMembers: MEMBERS.map(m=>Object.assign({}, m)), suExtraCount:0, suDateStart:null, suDateEnd:null, suDestConfirmed:false, suDestText:'' }); },
         qzSkip: ()=>{ if (this._qzT){ clearTimeout(this._qzT); this._qzT=null; } this.setState(x=>({ user:Object.assign({},x.user,{ prefs:{ pace:x.suPace, styleTags:x.suStyleTags } }) })); this.suNav('s3'); },
         qzNext: ()=>{ if (this._qzT){ clearTimeout(this._qzT); this._qzT=null; } if (st.qzStep<3) this.setState({ qzStep:st.qzStep+1 }); else { this.setState(x=>({ user:Object.assign({},x.user,{ prefs:{ pace:x.suPace, styleTags:x.suStyleTags } }) })); this.suNav('s3'); } },
