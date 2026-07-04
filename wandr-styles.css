@@ -3,6 +3,55 @@ html,body{margin:0;height:100%;overflow:hidden}
 :root{
   --canvas:#FFFFFF; --ink:#241F1A; --sec:#6B6358; --accent:#FF5A1F; --accent-weak:rgba(255,90,31,.10);
   --tip-ink:#B0451A; --border:#ECEAE6; --well:#F4F3F1; --sand:#F1F0EE; --screen:#FDFDFD;
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+/* splash: brand-color field. Wordmark + kicker zoom in from a clearly-smaller
+   scale, then settle into a slow up/down bob to signal "still working" while
+   held. scale/translate are independent CSS properties (not the `transform`
+   shorthand) so the one-shot zoom-in and the looping bob never fight for
+   control of the same property. */
+@keyframes wandrSplashZoomIn{
+  0%{opacity:0;scale:.55}
+  70%{scale:1.04}
+  100%{opacity:1;scale:1}
+}
+@keyframes wandrSplashKickerIn{
+  0%{opacity:0;scale:.85;translate:0 8px}
+  100%{opacity:1;scale:1;translate:0 0}
+}
+@keyframes wandrSplashBob{
+  0%,100%{translate:0 0}
+  50%{translate:0 -7px}
+}
+@keyframes wandrSplashKickerBob{
+  0%,100%{translate:0 0}
+  50%{translate:0 -4px}
+}
+@keyframes wandrSplashFadeOut{from{opacity:1}to{opacity:0}}
+/* exit: camera pushes into the text as it dissolves - scale past 1, not back to 0 */
+@keyframes wandrSplashTextZoomOut{from{opacity:1;scale:1}to{opacity:0;scale:10}}
+
+.wandr-splash-mark{
+  opacity:0;
+  animation:
+    wandrSplashZoomIn 620ms var(--ease-out) both,
+    wandrSplashBob 2000ms ease-in-out 620ms infinite;
+}
+.wandr-splash-kicker{
+  opacity:0;
+  animation:
+    wandrSplashKickerIn 460ms var(--ease-out) 160ms both,
+    wandrSplashKickerBob 2000ms ease-in-out 780ms infinite;
+}
+.wandr-splash-exit{animation:wandrSplashFadeOut 320ms var(--ease-in-out) both !important}
+.wandr-splash-exit .wandr-splash-mark,
+.wandr-splash-exit .wandr-splash-kicker{animation:wandrSplashTextZoomOut 320ms var(--ease-in-out) both !important}
+
+@media (prefers-reduced-motion:reduce){
+  .wandr-splash-mark,.wandr-splash-kicker{animation:wandrFadeIn 300ms ease both!important}
+  .wandr-splash-exit{animation:wandrSplashFadeOut 200ms ease both!important}
 }
 body{background:#FFFFFF;font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased;color:var(--ink)}
 .wandr-gallery{height:100%;overflow-y:auto;display:flex;justify-content:center;align-items:flex-start;padding:0;background:#EDEAE4}

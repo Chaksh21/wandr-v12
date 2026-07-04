@@ -35,7 +35,8 @@ window.WandrFeatures = {
       const { st, V, t, dest, cfg, initialOf, navTabs, anySheet, appScroll, openTripId } = c;
       return {
         viewSplash: V==='splash',
-        splashSkip:()=>{ if (this._splashT){ clearTimeout(this._splashT); this._splashT=null; } this.splashAdvance(); },
+        splashExitClass: st.splashExiting ? 'wandr-splash-exit' : '',
+        splashSkip:()=>{ if (this._splashT){ clearTimeout(this._splashT); this._splashT=null; } if (this._splashT2){ clearTimeout(this._splashT2); this._splashT2=null; } this.splashAdvance(); },
         viewHome:  V==='home',
         viewSetup: V==='setup',
         viewPlan:  V==='plan',
