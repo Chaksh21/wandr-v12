@@ -740,7 +740,6 @@
     <div class="screen" style="min-height:852px;display:flex;flex-direction:column;justify-content:center;padding:76px 26px 56px;position:relative;overflow:hidden">
       <div style="position:absolute;right:-70px;top:120px;width:240px;height:240px;border-radius:999px;background:var(--accent-weak);filter:blur(2px)"></div>
       <div style="position:relative;margin:auto 0">
-        <div style="position:absolute;left:-26px;top:11px;width:20px;height:6px;border-radius:0 999px 999px 0;background:var(--accent)"></div>
         <div class="wandr-sys" style="font-size:14px;color:var(--sec);margin-bottom:34px">One plan. Whole group.</div>
         <h1 class="wandr-hero" style="font-size:clamp(52px,20vw,84px);margin:0">Wandr</h1>
         <p style="font-size:18px;color:var(--sec);margin:18px 0 0;max-width:280px;">Plan together. Vote it in. Ship the trip.</p>
@@ -763,6 +762,7 @@
         </div>
         <button class="wandr-btn" onClick="{{ exitSetupAsk }}" aria-label="Exit setup" style="width:38px;height:38px;border-radius:999px;border:1px solid var(--border);background:#fff;color:var(--sec);flex:none;font-size:17px" ><svg viewBox="0 0 256 256" width="18" height="18" fill="currentColor" style="vertical-align:middle"><path d="{{ icX }}"/></svg></button>
       </div>
+      <div class="lbl" style="font-size:11px;font-weight:700;letter-spacing:.03em;color:var(--accent);margin-bottom:10px">ABOUT YOU</div>
       <h1 class="wandr-hero" style="font-size:clamp(28px,7.5vw,36px);margin:0 0 18px">{{ qzQuestion }}</h1>
       <sc-if value="{{ qzIsName }}" hint-placeholder-val="{{ true }}">
         <input class="wandr-inp" value="{{ suNameVal }}" onChange="{{ setSuName }}" placeholder="Your name" style="margin-bottom:14px"/>
@@ -801,9 +801,8 @@
         </div>
         <button class="wandr-btn" onClick="{{ exitSetupAsk }}" aria-label="Exit setup" style="width:38px;height:38px;border-radius:999px;border:1px solid var(--border);background:#fff;color:var(--sec);flex:none;font-size:17px" ><svg viewBox="0 0 256 256" width="18" height="18" fill="currentColor" style="vertical-align:middle"><path d="{{ icX }}"/></svg></button>
       </div>
-      <div style="position:relative;margin-bottom:22px">
-        <div style="position:absolute;left:-22px;top:9px;width:16px;height:6px;border-radius:0 999px 999px 0;background:var(--accent)"></div>
-        <div class="wandr-sys" style="font-size:14px;color:var(--sec);margin-bottom:12px">What brings you here</div>
+      <div style="margin-bottom:22px">
+        <div class="lbl" style="font-size:11px;font-weight:700;letter-spacing:.03em;color:var(--accent);margin-bottom:12px">ABOUT TRIP</div>
         <h1 class="wandr-hero" style="font-size:clamp(30px,8vw,40px);margin:0">Where to,<br>{{ previewName }}?</h1>
       </div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:18px">
@@ -845,9 +844,8 @@
         </div>
         <button class="wandr-btn" onClick="{{ exitSetupAsk }}" aria-label="Exit setup" style="width:38px;height:38px;border-radius:999px;border:1px solid var(--border);background:#fff;color:var(--sec);flex:none;font-size:17px"><svg viewBox="0 0 256 256" width="18" height="18" fill="currentColor" style="vertical-align:middle"><path d="{{ icX }}"/></svg></button>
       </div>
-      <div style="position:relative;margin-bottom:22px">
-        <div style="position:absolute;left:-22px;top:9px;width:16px;height:6px;border-radius:0 999px 999px 0;background:var(--accent)"></div>
-        <div class="wandr-sys" style="font-size:14px;color:var(--sec);margin-bottom:12px">Who's this for</div>
+      <div style="margin-bottom:22px">
+        <div class="lbl" style="font-size:11px;font-weight:700;letter-spacing:.03em;color:var(--accent);margin-bottom:12px">ABOUT TRIP</div>
         <h1 class="wandr-hero" style="font-size:clamp(30px,8vw,40px);margin:0">Name your group</h1>
         <p style="font-size:14px;color:var(--sec);margin:8px 0 0">Shown to everyone you invite - you can change it later.</p>
       </div>
@@ -866,6 +864,7 @@
         </div>
         <button class="wandr-btn" onClick="{{ exitSetupAsk }}" aria-label="Exit setup" style="width:38px;height:38px;border-radius:999px;border:1px solid var(--border);background:#fff;color:var(--sec);flex:none;font-size:17px" ><svg viewBox="0 0 256 256" width="18" height="18" fill="currentColor" style="vertical-align:middle"><path d="{{ icX }}"/></svg></button>
       </div>
+      <div class="lbl" style="font-size:11px;font-weight:700;letter-spacing:.03em;color:var(--accent);margin-bottom:10px">ABOUT TRIP</div>
       <h1 class="wandr-hero" style="font-size:clamp(30px,8vw,40px);margin:0 0 16px">Where to?</h1>
       <div style="position:relative;margin-bottom:14px">
         <span style="position:absolute;left:14px;top:50%;transform:translateY(-50%);display:flex;color:var(--sec)"><svg viewBox="0 0 256 256" width="15" height="15" fill="currentColor" style="flex:none;"><path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"/></svg></span>
@@ -916,6 +915,7 @@
         </div>
         <button class="wandr-btn" onClick="{{ exitSetupAsk }}" aria-label="Exit setup" style="width:38px;height:38px;border-radius:999px;border:1px solid var(--border);background:#fff;color:var(--sec);flex:none;font-size:17px" ><svg viewBox="0 0 256 256" width="18" height="18" fill="currentColor" style="vertical-align:middle"><path d="{{ icX }}"/></svg></button>
       </div>
+      <div class="lbl" style="font-size:11px;font-weight:700;letter-spacing:.03em;color:var(--accent);margin-bottom:10px">ABOUT TRIP</div>
       <h1 class="wandr-hero" style="font-size:clamp(30px,8vw,40px);margin:0 0 6px">{{ confirmedName }}, then.</h1>
       <div class="wandr-sys" style="font-size:10px;color:var(--accent);margin:0 0 20px">SELECTED · {{ destSelectedLabel }}</div>
       <div class="wandr-sys" style="font-size:13px;color:var(--sec);margin:0 0 8px">Trip name</div>
@@ -954,6 +954,7 @@
         </div>
         <button class="wandr-btn" onClick="{{ exitSetupAsk }}" aria-label="Exit setup" style="width:38px;height:38px;border-radius:999px;border:1px solid var(--border);background:#fff;color:var(--sec);flex:none;font-size:17px" ><svg viewBox="0 0 256 256" width="18" height="18" fill="currentColor" style="vertical-align:middle"><path d="{{ icX }}"/></svg></button>
       </div>
+      <div class="lbl" style="font-size:11px;font-weight:700;letter-spacing:.03em;color:var(--accent);margin-bottom:10px">ABOUT TRIP</div>
       <h1 class="wandr-hero" style="font-size:clamp(28px,7.5vw,38px);margin:0 0 6px">Where are you at?</h1>
       <p style="font-size:15px;color:var(--sec);margin:0 0 24px;max-width:290px">Pull your bookings in, or begin with a blank canvas.</p>
       <button class="wandr-btn" onClick="{{ pickImport }}" style="display:block;width:100%;text-align:left;border:1px solid var(--border);border-radius:20px;padding:20px;background:#fff;box-shadow:0 8px 24px rgba(36,31,26,.06);margin-bottom:14px;position:relative;overflow:hidden">
@@ -1028,6 +1029,7 @@
         </div>
         <button class="wandr-btn" onClick="{{ exitSetupAsk }}" aria-label="Exit setup" style="width:38px;height:38px;border-radius:999px;border:1px solid var(--border);background:#fff;color:var(--sec);flex:none;font-size:17px" ><svg viewBox="0 0 256 256" width="18" height="18" fill="currentColor" style="vertical-align:middle"><path d="{{ icX }}"/></svg></button>
       </div>
+      <div class="lbl" style="font-size:11px;font-weight:700;letter-spacing:.03em;color:var(--accent);margin-bottom:8px">ABOUT TRIP</div>
       <h1 class="wandr-hero" style="font-size:clamp(26px,7vw,32px);margin:0 0 4px">Pick what excites you</h1>
       <p style="font-size:13px;color:var(--sec);margin:0 0 14px">Swipe right to save. Left to skip. <span class="lbl" style="font-size:11px;color:var(--ink)">{{ dkSavedCount }} saved</span></p>
       <sc-if value="{{ dkHasCard }}" hint-placeholder-val="{{ true }}">
